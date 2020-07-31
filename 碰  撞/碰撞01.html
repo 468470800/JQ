@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .div1{
+            width: 100px;
+            height: 100px;
+            background: #C70F0F;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            cursor: pointer;
+        }
+
+        .div2{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+            left: 300px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="div1" id="div1"></div>
+<div class="div2" id="div2"></div>
+</body>
+</html>
+<script type="text/javascript" src="插件/jquery-3.4.1.js"></script>
+<script>
+    $("#div1").mousedown(function(e){
+        //获取div1的距离
+        var disX = e.clientX-parseInt($(this).css("left"))
+        var disY = e.clientY-parseInt($(this).css("top"))
+
+        $(document).mousemove(function(e){
+
+//      获取div1移动的距离
+        var div1L = e.clientX - disX;
+        var div1T = e.clientY - disY;
+
+        //检测碰撞
+        var t1 = parseInt($("#div1").css("top"))
+        var l1 = parseInt($("#div1").css("left"))
+        var r1 = l1+parseInt($("#div1").css("width"))
+        var b1 = t1+$("#div1").css("height")
+
+        var t2 = parseInt($("#div2").css("top"))
+        var l2 = parseInt($("#div2").css("left"))
+        var r2 = l1+parseInt($("#div2").css("width"))
+        var b2 = t1+$("#div2").css("height")
+//找不到碰撞条件呢
+        if(b1<t2||l1>r2||t1>b2||r1<l2){
+            $("#div2").css("background","red")
+        }else{
+            $("#div2").css("background","green")
+        }
+
+
+
+
+            $("#div1").css({left:div1L+"px",top:div1T+"px"})
+        })
+                //解绑事件
+        $(document).mouseup(function(){
+            $(document).off("mousemove");
+            $(document).off("mouseup")
+        })
+            return false;
+    })
+</script>

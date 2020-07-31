@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+                    }
+
+        table{
+            width: 800px;
+            margin: 50px auto;
+            border: 0px;
+        }
+
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td><input type="checkbox">全选</td>
+        <td>商品</td>
+        <td>名称</td>
+        <td>价格</td>
+        <td>数量</td>
+        <td>计数</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/" alt=""></td>
+        <td>旅行包</td>
+        <td>6888</td>
+        <td>
+            <button>+</button>
+            <input type="text" value="1" size="1">
+            <button>-</button></td>
+        <td>1</td>
+        <td>删除</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="7"><input type="checkbox">全选
+            <button>删除所选</button>
+            <button>清空所有</button>
+            <button>结账买单</button>
+            <span>0</span>：价格
+        </td>
+    </tr>
+    </tfoot>
+</table>
+</body>
+</html>

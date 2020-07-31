@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-align: center;
+        }
+        img{
+            vertical-align: top;
+        }
+        .lll-banner{
+            width:1190px;
+            height:280px;
+            margin:100px auto;
+            background: darkorange;
+        }
+        .left{
+            box-sizing: border-box;
+            padding:50px 25px 0;
+            width:190px;
+            height:280px;
+            background: red;
+            float: left;
+        }
+        .left>div{
+            margin-bottom:20px;
+        }
+        .left>span{
+            display: inline-block;
+            width:40px;
+            height:40px;
+            background: #000;
+            line-height:40px;
+            text-align: center;
+            color: #fff;
+            margin-right:3px;
+            font-weight:900;
+        }
+
+        .llllunbo{
+            overflow: hidden;
+            position: relative;
+            float: left;
+            width:800px;
+            height:280px;
+            background: slateblue;
+        }
+        .llllunbo img{
+            width:180px;
+            height:180px;
+        }
+        .llllunbo>ul{
+            height:280px;
+        }
+        .llllunbo>ul>li{
+            position: absolute;
+            left:800px;
+            top:0;
+            overflow: hidden;
+            width:800px;
+            height:280px;
+        }
+        .llllunbo>ul>li>div{
+            width:200px;
+            height:240px;
+            padding-top:40px;
+            float: left;
+        }
+        .llllunbo>div>span{
+            position: absolute;
+            top:120px;
+            left:0px;
+            width: 20px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #eee;
+            font-size: 20px;
+        }
+        .llllunbo>div>span:nth-of-type(1){
+            position: absolute;
+            top:120px;
+            left:780px;
+            width: 20px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #eee;
+            font-size: 20px;
+        }
+        .right{
+            width:200px;
+            height:280px;
+            background: blue;
+            float: left;
+            position: relative;
+        }
+        .right img{
+            width:100%;
+            height:200px;
+        }
+        .right li{
+            position: absolute;
+            top: 0;
+            left:0;
+        }
+        .right>ul>li:nth-of-type(1){
+            z-index:1;
+        }
+        .right>ol{
+            position: absolute;
+            top:80%;
+            left:30%;
+            width:80px;
+            height:15px;
+        }
+        .right>ol>li{
+            width:10px;
+            height:10px;
+            border:2px solid #000;
+            border-radius: 50%;
+            float: left;
+            margin-right: 5px;
+        }
+        .right>ol>li:nth-of-type(1){
+            position: absolute;
+            top:80%;
+            left:30%;
+        }
+        .right>ol>li:nth-of-type(2){
+            position: absolute;
+            top:80%;
+            left:52%;
+        }
+        .right>ol>.olli{
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div class="lll-banner">
+    <div class="left">
+        <div><img src="img1/11.jpg" alt="" style="width: 140px;height: 140px;"></div>
+        <span>00</span>
+        <span>50</span>
+        <span>43</span>
+    </div>
+    <div class="llllunbo">
+        <ul>
+            <li style="left: 0px;">
+                <div>
+                    <img src="img1/11.jpg" alt="">
+                    <p>充气娃娃1</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/22.png" alt="">
+                    <p>充气娃娃1</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/33.png" alt="">
+                    <p>充气娃娃1</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/44.png" alt="">
+                    <p>充气娃娃1</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="img1/11.jpg" alt="">
+                    <p>充气娃娃2</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/33.png" alt="">
+                    <p>充气娃娃2</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/33.png" alt="">
+                    <p>充气娃娃2</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/22.png" alt="">
+                    <p>充气娃娃2</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="img1/22.png" alt="">
+                    <p>充气娃娃3</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/33.png" alt="">
+                    <p>充气娃娃3</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/44.png" alt="">
+                    <p>充气娃娃3</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/11.jpg" alt="">
+                    <p>充气娃娃3</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="img1/11.jpg" alt="">
+                    <p>充气娃娃4</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/33.png" alt="">
+                    <p>充气娃娃4</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/22.png" alt="">
+                    <p>充气娃娃4</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+                <div>
+                    <img src="img1/22.png" alt="">
+                    <p>充气娃娃4</p>
+                    <span>100</span>
+                    <span>9.9</span>
+                </div>
+            </li>
+        </ul>
+        <div><span>></span><span><</span></div>
+    </div>
+    <div class="right">
+        <ul>
+            <li><img src="img1/33.png" alt=""></li>
+            <li><img src="img1/22.png" alt=""></li>
+        </ul>
+        <ol>
+            <li class="olli"></li>
+            <li></li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    var index = 0;
+    $.fn.llllunbo = function(){
+    this.click(function(){
+        index++;
+        if(index >= 4){
+            index=0;
+            $('.llllunbo>ul>li').eq(index).animate({left:'0'},1000);
+            $('.llllunbo>ul>li').eq(3).animate({left:'-800px'},1000,function(){
+                $(this).css('left','800px');
+            })
+            return false;
+        }
+        $('.llllunbo>ul>li').eq(index).animate({left:'0'},1000);
+        $('.llllunbo>ul>li').eq(index-1).animate({left:'-800px'},1000,function(){
+            $(this).css('left','800px');
+        })
+    })
+    }
+    $('.llllunbo>div>span:eq(0)').llllunbo();
+    setInterval(function(){
+        var Wsj = new Date("2020-10-17 22:00:00");
+        var Wlsj = Wsj.getTime();
+
+        var Xsj = new Date();
+        var Xzsj = Xsj.getTime();
+
+        var Sj = Wlsj - Xzsj;
+
+        var Ms = parseInt(Sj/1000%60);
+        var Fz = parseInt(Sj/1000/60%60);
+        var Xs = parseInt(Sj/1000/60/60%60);
+
+        $('.left>span:eq(0)').html(Xs);
+        $('.left>span:eq(1)').html(Fz);
+        $('.left>span:eq(2)').html(Ms);
+    })
+    $.fn.right = function(){
+        this.mouseover(function(){
+        $(this).addClass('olli').siblings().removeClass('olli');
+        var inde = $(this).index();
+        $('.right>ul>li').eq(inde).show().siblings().hide();
+    })
+    }
+    $('.right>ol>li').right();
+</script>

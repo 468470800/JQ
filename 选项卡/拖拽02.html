@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .ll-main{
+            width: 1000px;
+            height: 500px;
+            background: #9a5f15;
+            position: relative;
+        }
+
+        .box{
+            width: 120px;
+            height: 130px;
+            background: #C70F0F;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="ll-main" id="ll-main">
+        <div class="box" id="box"></div>
+    </div>
+    <script type="text/javascript" src="插件/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $("#box").mousedown(function(e){
+            //获取鼠标在div上的标
+            var diX = e.clientX - parseInt($("#box").css("left"));
+            var diY = e.clientY - parseInt($("#box").css("top"));
+
+            //移动
+            $(document).mousemove(function(e){
+                //获取当前div的XY轴的距离
+                var zhL = e.clientX-diX;
+                var zhT = e.clientY-diY;
+                //设置边界
+                var zhMathL = parseInt($("#ll-main").css('width'))-parseInt($("#box").css('width'));
+                var zhMathT = parseInt($("#ll-main").css('height'))-parseInt($("#box").css('height'));
+
+            if(zhL <= 0){
+                zhL = 0;
+            }else if(zhL>=zhMathL){
+                zhL = zhMathL;
+            }
+
+                if(zhT <= 0){
+                    zhT = 0;
+                }else if(zhT>=zhMathT){
+                    zhT = zhMathT;
+                }
+                //将上面的值赋给div1
+                $("#box").css({left:zhL+"px",top:zhT+"px"});
+            })
+            //鼠标抬起时取消移动事件绑定
+            $(document).mouseup(function(){
+                $(document).off('mousemove');
+                $(document).off('mouseup');
+
+            })
+
+        })
+    </script>
+
+</body>
+</html>

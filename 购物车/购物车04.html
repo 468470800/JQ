@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border: 0;
+            width: 800px;
+            margin: 60px auto;
+        }
+
+        .tbody>tr>td>img{
+            width: 70px;
+        }
+
+        .tfoot>tr>td>span{
+            margin-left: 350px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .tfoot>tr>td{
+            text-align: center;
+        }
+
+        .tfoot>tr>td>button{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead class="thead">
+    <tr>
+        <th>全选 <input type="checkbox"> </th>
+        <th>商品</th>
+        <th>价格</th>
+        <th>数量</th>
+        <th>计数</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody class="tbody">
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/11.jpg" alt=""></td>
+        <td>988</td>
+        <td>
+            <button>+</button>
+            <input type="text" value="1" size="1">
+            <button>-</button></td>
+        <td>100</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/22.png" alt=""></td>
+        <td>789</td>
+        <td>
+            <button>+</button>
+            <input type="text" value="1" size="1">
+            <button>-</button></td>
+        <td>100</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/44.png" alt=""></td>
+        <td>28000</td>
+        <td>
+            <button>+</button>
+            <input type="text" value="1" size="1">
+            <button>-</button></td>
+        <td>100</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/33.png" alt=""></td>
+        <td>1200</td>
+        <td>
+            <button>+</button>
+            <input type="text" value="1" size="1">
+            <button>-</button></td>
+        <td>100</td>
+        <td>删除</td>
+    </tr>
+    </tbody>
+    <tfoot class="tfoot" id="tfoot">
+    <tr>
+        <td colspan="7">
+            <input type="checkbox">全选
+            <button>删除所选</button>
+            <button>清空购物车</button>
+            <span>0</span>总计：
+            <button>结算</button>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"> </script>
+<script>
+    $(function(){
+        //加减
+        $("button:contains('+')").click(function(){
+            var num = $(this).next().val()-0;
+            if(num>=5){
+                alert('朕即天下')
+                return false;
+            }
+            $(this).next().val(num+1)
+          //小计
+            var oTr = $(this).parents('tr')
+            xiaoji(oTr)
+                    zongji();
+        })
+        $("button:contains('-')").click(function(){
+            var num = $(this).prev().val()-0;
+            if(num<1){
+                alert('朕即天下')
+                return false;
+            }
+            $(this).prev().val(num-1)
+            //小计
+            var oTr = $(this).parents('tr')
+            xiaoji(oTr)
+                    zongji();
+        })
+        //删除单行
+        $(".tbody td:contains('删除')").click(function(){
+            $(this).parent('tr').remove()
+            //小计
+            var oTr = $(this).parents('tr')
+            xiaoji(oTr)
+                    zongji();
+        })
+        //删除全部
+        $(".tfoot>tr>td>button:eq(1)").click(function(){
+            $('.tbody').empty();
+                    zongji();
+        })
+        //全选
+        $('.thead :checkbox,.tfoot :checkbox').click(function(){
+            var bool = $(this).prop('checked')
+            $(".tbody :checkbox").prop("checked",bool)
+            $(".thead :checkbox").prop("checked",bool)
+            $(".tfoot :checkbox").prop("checked",bool)
+
+                    zongji();
+        })
+//        //反选
+        $(".tbody :checkbox").click(function(){
+            alert('朕即天下')
+            var checkboxNum = $(".tbody :checkbox").length;
+            var checkedNum = $(".tbody :checked").length;
+            if(checkboxNum == checkedNum){
+                $(".tbody tr:checkbox,.thead :checkbox,.tfoot :checkbox").prop("checked",true)
+            }else{
+                $(".tbody tr:checkbox,.thead :checkbox,.tfoot :checkbox").prop("checked",false)
+            }
+                    zongji();
+        })
+        //删除所选
+        $(".tfoot>tr>td>button:eq(0)").click(function(){
+//            alert('朕即天下')
+            $(".tbody :checked").parents('tr').remove();
+                    zongji();
+        })
+        //小计
+        function xiaoji(oTr){
+            var num = oTr.find('td [type=text]').val()-0;
+            var price = oTr.find('td').eq(2).html()-0;
+            var xj = num*price;
+            oTr.find('td').eq(4).html(xj)
+            console.log(num,price,xj)
+        }
+        var oTr = $('.tbody tr').eq(0);
+        console.log(oTr)
+        xiaoji(oTr)
+        //总计
+        function zongji(){
+            var sum = 0;
+            $(".tbody tr input:checked").each(function(index,element){
+                var xj = $(element).parent('td').nextAll().eq(3).html()-0;
+                sum = sum+xj;
+            });
+            $(".tfoot span").html(sum)
+        }
+        zongji();
+    })
+</script>

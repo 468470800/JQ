@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li{
+            list-style: none;
+        }
+
+        ol li{
+            list-style: none;
+        }
+
+        .wrapper{
+            width: 1500px;
+            height: 600px;
+            /*border: 1px solid #000;*/
+            margin: 0 auto;
+        }
+
+        .nav{
+            width: 1500px;
+            height: 40px;
+            background: #f1ae00;
+            /*border: 1px solid #000;*/
+            line-height:40px;
+        }
+
+        .banner{
+            width: 1500px;
+            height: 560px;
+            position: relative;
+        }
+
+        .main>li{
+            position: absolute;
+        }
+
+        .main>li>p{
+            width: 1480px;
+            height: 40px;
+            background: #C70F0F;
+            color: #ffffff;
+            line-height: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            padding-left: 20px;
+            position: absolute;
+            bottom: 3px;
+            background: rgba(5,0,201,0.4);
+        }
+
+        img{
+            width: 1500px;
+            height: 560px;
+        }
+
+        .nav>li{
+            float: left;
+            font-size: 25px;
+            font-weight: bold;
+            padding:0 69px;
+            color: #ffffff;
+        }
+
+        .nav>li:hover{
+            background: #97EDFC;
+        }
+
+        .nav>li{
+            position: relative;
+        }
+
+        .nav>li>ol{
+            position: absolute;
+            background: #97EDFC;
+            width: 140px;
+            z-index: 1;
+            display: none;
+        }
+
+        .banner>ol{
+            width: 400px;
+            height: 20px;
+            position: absolute;
+            bottom: 200px;
+            left: 600px;
+            /*background: #f1ae00;*/
+        }
+
+        .banner>ol>li{
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            float: left;
+            margin-left: 20px;
+            background: #ffffff;
+        }
+
+        .banner>ol>.ol-li1{
+            background: pink;
+        }
+
+        .banner>i:nth-of-type(1){
+            display: block;
+            width: 40px;
+            height: 60px;
+            position: absolute;
+            bottom: 300px;
+            background:  url("img/icon-slides.png") 0 0 no-repeat;
+            left:0;
+        }
+
+        .banner>i:nth-of-type(2){
+            display: block;
+            width: 40px;
+            height: 60px;
+            position: absolute;
+            bottom: 300px;
+            background:  url("img/icon-slides.png") -43px 0 no-repeat;
+            right: 0;
+        }
+
+        .main>li{
+            display: none;
+        }
+
+        .main>.main-li1{
+            display: block;
+        }
+
+        .nav-ol>li:hover{
+            background: #2a3b4b;
+        }
+
+        .nav-ol>li{
+            text-align: center;
+        }
+
+        .box{
+            width: 100%;
+            height: 600px;
+            background: #2a3b4b;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="wrapper">
+            <ul class="nav">
+                <li>探寻人工智能
+                    <ol class="nav-ol">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                    </ol>
+                </li>
+                <li>名侦探柯南</li>
+                <li>不良人</li>
+                <li>建国70周年</li>
+                <li>海贼王</li>
+                <li>遇见幸福</li>
+            </ul>
+            <div class="banner">
+                <ul class="main">
+                    <li class="main-li1"><img src="img/f136cff72c2e4b5b962f4637f2b8ec03.jpg" alt=""><p>探寻人工智能</p></li>
+                    <li><img src="img/7f274bff5c1844dfa55c1e8ded698600.jpg" alt=""><p>名侦探柯南</p></li>
+                    <li><img src="img/0.jpg" alt=""><p>不良人</p></li>
+                    <li><img src="img/0 (1).jpg" alt=""><p>建国70周年</p></li>
+                    <li><img src="img/d7029f9455e246869a70ff0ca3ec48a5.jpg" alt=""><p>海贼王</p></li>
+                    <li><img src="img/dc422fea316d4010aa6c6ff39ad12670.jpg" alt=""><p>遇见幸福</p></li>
+                </ul>
+                <ol class="yd">
+                    <li class="ol-li1"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+                <i></i>
+                <i></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    //移入切换
+    var index = 0;
+    var barr = ["#EEE","#C70F0F","#1a1a1a","#7f7f7f","#000","pink"]
+    $(".yd>li").mouseover(function(){
+        $(this).eq(index).addClass('ol-li1').siblings('li').removeClass('ol-li1')
+        index =$(this).index()
+        $(".main>li").eq(index).fadeIn('main-li1').siblings().fadeOut('main-li1')
+        $(".box").css("background",barr[index])
+    })
+//  点击左右轮播
+    $(".banner>i:eq(0)").click(function(){
+        left()
+    })
+
+    $(".banner>i:eq(1)").click(function(){
+        index--;
+        if(index<=-1){
+            index=6;
+        }
+        $(".yd>li").eq(index).addClass('ol-li1').siblings('li').removeClass('ol-li1')
+        $(".main>li").eq(index).fadeIn('main-li1').siblings().fadeOut('main-li1')
+        $(".box").css("background",barr[index])
+    })
+    //自动轮播
+    var timer = setInterval(left,1800)
+    function left(){
+        index++;
+        if(index>=6){
+            index=0;
+        }
+        $(".yd>li").eq(index).addClass('ol-li1').siblings('li').removeClass('ol-li1')
+        $(".main>li").eq(index).fadeIn('main-li1').siblings().fadeOut('main-li1')
+        $(".box").css("background",barr[index])
+    }
+    //二级菜单
+    $(".nav>li:eq(0)").click(function(){
+        $(".nav-ol").slideToggle()
+    })
+    //清除计时器
+    $(".banner").hover(function() {
+        clearInterval(timer);
+    },function() {
+        timer = setInterval(left,1800)
+    })
+
+//    / 清除自动轮播
+//    $("#lunbo").hover(function() {
+//        // 移入清除
+//        clearInterval(timer);
+//    },function() {
+//        // 移出继续
+//        timer = setInterval(move,1000);
+//    })
+</script>

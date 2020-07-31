@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .toBlue{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <span>❥(^_-)</span>
+    <span>点赞</span>
+    <span>666</span>
+</div>
+</body>
+<script type="text/javascript" src = "轮播图/js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    $("div>span:eq(1)").click(function(){
+        //1.找到判断点赞和取消点赞的临界条件
+        // hasClass():判断一个对象是否拥有指定类名，true:有
+        var bool = $(this).prev().hasClass('toBlue');
+        // console.log(bool);
+        if(bool){
+            //取消点赞
+            $(this).prev().removeClass('toBlue');
+            //获取点赞数量
+            var num = $(this).next().html()-0;
+            $(this).next().html(num-1);
+
+        }else{
+            //点赞
+            $(this).prev().addClass('toBlue');
+            //获取点赞数量
+            var num = $(this).next().html()-0;
+            $(this).next().html(num+1);
+        }
+    })
+</script>
+</html>

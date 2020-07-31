@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+        }
+
+        .lll-wrapper{
+            width: 100%;
+            height: 500px;
+            margin-top: 50px;
+            background: #e6e6e6;
+        }
+
+        .lll-banner{
+            width: 1200px;
+            height: 500px;
+            margin: 0 auto;
+            /*border: 1px solid #000;*/
+            position: relative;
+
+        }
+
+        .lunbo>li{
+            width: 1200px;
+            height: 500px;
+            border: 1px solid #000;
+            position: absolute;
+        }
+
+        .lunbo>li>img{
+            width: 1200px;
+            height: 500px;
+        }
+
+        .lunbo>li>p{
+            width: 1200px;
+            height: 20px;
+            background:rgba(0,0,0,0.5);
+            position: absolute;
+            color: #ffffff;
+            font-weight: bold;
+            bottom: 0;
+        }
+
+        i{
+            display: block;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ffffff;
+            position: absolute;
+        }
+
+        i:nth-of-type(1){
+            background:  url("img/icon-slides.png") 0 -15px no-repeat;
+            top:40%;
+        }
+
+        i:nth-of-type(2){
+            background:  url("img/icon-slides.png") -40px -15px no-repeat;
+            top:40%;
+            right:0;
+        }
+
+        .yd{
+            width: 200px;
+            height: 40px;
+            position: relative;
+            /*background: #85cd00;*/
+            top:360px;
+            left: 450px;
+        }
+
+        .yd>li{
+            width: 18px;
+            height: 18px;
+            border-radius:50%;
+            float: left;
+            margin-left: 10px;
+            background: #fdfdfd;
+        }
+
+        .yd>.yd-li{
+            background: cornflowerblue;
+        }
+
+        .lunbo>li{
+            display: none;
+        }
+
+        .lunbo>.lunbo-li{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="lll-wrapper">
+    <div class="lll-banner">
+        <ul class="lunbo">
+            <li class="lunbo-li"><img src="img/7c1723000b3a4a76b012725c7675f69b.jpg" alt="">
+            <p>我们建国70年</p>
+            </li>
+            <li><img src="img/9.jpg" alt="">
+            <p>诛仙青云</p>
+            </li>
+            <li><img src="img/d7029f9455e246869a70ff0ca3ec48a5.jpg" alt="">
+            <p>海贼王</p>
+            </li>
+            <li><img src="img/f136cff72c2e4b5b962f4637f2b8ec03.jpg" alt="">
+            <p>杨澜专访人工智能</p>
+            </li>
+            <li><img src="img/85375d424ef6475092bb123c3ed23331.jpg" alt="">
+            <p>中国好声音</p>
+            </li>
+            <li><img src="img/554442053e234b70850b624e61a1ba27.jpg" alt="">
+            <p>妖精的尾巴</p>
+            </li>
+        </ul>
+        <ol class="yd">
+            <li class="yd-li"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+        <i></i><i></i>
+    </div>
+</div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    //圆点图片移入切换淡入淡出
+    var index = 0;
+    var bgArr = ["pink","#000","#EEE","#FFF","red","purple"]
+    $(".yd>li").mouseover(function(){
+        $(this).addClass("yd-li").siblings().removeClass("yd-li");
+        index = $(this).index();
+        $(".lunbo>li").eq(index).fadeIn().siblings().fadeOut()
+        $(".lll-wrapper").css("background",bgArr[index])
+    })
+    //左右切换
+    $(".lll-banner>i:eq(1)").click(function(){
+        Left()
+    })
+
+    $(".lll-banner>i:eq(0)").click(function(){
+        index--;
+        if(index<=-1){
+            index=6;
+        }
+        $(".yd>li").eq(index).addClass("yd-li").siblings().removeClass("yd-li");
+        $(".lunbo>li").eq(index).fadeIn().siblings().fadeOut()
+        $(".lll-wrapper").css("background",bgArr[index])
+    })
+
+    //计时器
+    var time = setInterval(Left,1400)
+    function Left(){
+        index++;
+        if(index>=6){
+            index=0;
+        }
+        $(".yd>li").eq(index).addClass("yd-li").siblings().removeClass("yd-li");
+        $(".lunbo>li").eq(index).fadeIn().siblings().fadeOut()
+        $(".lll-wrapper").css("background",bgArr[index])
+    }
+    //停止继续
+        $(".lunbo").hover(function(){
+            clearInterval(time)
+        },function(){
+           time = setInterval(Left,1400)
+        })
+
+</script>

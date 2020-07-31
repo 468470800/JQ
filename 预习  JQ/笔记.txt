@@ -1,0 +1,12 @@
+js特效功能功能实现步骤:
+	1.分析涉及的事件
+	2.该事件影响该哪些元素？
+	3.影响这些元素的方式：
+	a.内容--js innerHTML  inerHTML  value
+			jq: html()     text()    val()
+
+	b.样式--js： style  className
+	        jq： css()	addClass()	reoveClass()
+       
+	c.属性--js:setAttribut()    getAttribute()
+			jq: attr()          prop()

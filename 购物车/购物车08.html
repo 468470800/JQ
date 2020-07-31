@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        table{
+            width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        img{
+            width: 60px;
+        }
+
+        tbody tr{
+            border-bottom:1px solid  palevioletred;
+        }
+
+        p{
+            width: 800px;
+            margin: 0 auto;
+            height: 40px;
+            background:#e6e6e6;
+            line-height: 40px;
+        }
+
+        p>span:nth-of-type(1){
+            float: left;
+            font-weight: bold;
+            font-size: 24px;
+            color:red;
+        }
+
+        p>span:nth-of-type(2){
+            float: right;
+            font-weight: bold;
+            font-size: 15px;
+            color:#f1ae00;
+        }
+
+        tbody tr td button{
+            padding: 0 2px;
+        }
+
+        tfoot tr td button{
+            padding: 2px 5px;
+        }
+
+        tfoot{
+            width: 800px;
+        }
+
+        tfoot tr td span{
+            float: right;
+            font-size: 20px;
+            color: #C70F0F;
+            font-weight: bold;
+        }
+
+        tfoot tr td span strong{
+            font-weight: bold;
+            font-size: 22px;
+            color: #f3a700;
+        }
+
+        p{
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <p><span>全部商品</span> <span>送至：旧金山斯坦福大学</span></p>
+<table>
+    <thead class="thead">
+    <tr>
+        <th><input type="checkbox">全选</th>
+        <th>商品</th>
+        <th>名称</th>
+        <th>单价</th>
+        <th>数量</th>
+        <th>小计</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody class="tbody">
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/11.jpg" alt=""></td>
+        <td>旅行包包</td>
+        <td>1897</td>
+        <td>
+            <button>+</button>
+            <input type="text" size="1" value="1">
+            <button>-</button></td>
+        <td>1897</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/55.jpg" alt=""></td>
+        <td>旅行包包</td>
+        <td>1897</td>
+        <td>
+            <button>+</button>
+            <input type="text" size="1" value="1">
+            <button>-</button></td>
+        <td>1897</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/22.png" alt=""></td>
+        <td>旅行包包</td>
+        <td>1897</td>
+        <td>
+            <button>+</button>
+            <input type="text" size="1" value="1">
+            <button>-</button></td>
+        <td>1897</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/22.png" alt=""></td>
+        <td>旅行包包</td>
+        <td>1897</td>
+        <td>
+            <button>+</button>
+            <input type="text" size="1" value="1">
+            <button>-</button></td>
+        <td>1897</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/44.png" alt=""></td>
+        <td>旅行包包</td>
+        <td>1897</td>
+        <td>
+            <button>+</button>
+            <input type="text" size="1" value="1">
+            <button>-</button></td>
+        <td>1897</td>
+        <td>删除</td>
+    </tr>
+    </tbody>
+    <tfoot class="tfoot">
+    <tr>
+        <td colspan="6">
+            <input type="checkbox">全选：
+            <button>清空购物车</button>
+            <button>删除所选</button>
+            <span>单价：<strong>0</strong></span>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        //删除
+        $(".tbody td:contains('删除')").click(function(){
+            $(this).parent().remove()//parent父级
+            zj();
+        })
+        //加加减减
+        $("tbody button:contains('+')").click(function(){
+          var jia =  $(this).nextAll().val()-0;//next匹配每一个元素中的后一个兄弟元素
+            if(jia>=6){
+                alert('上限')
+                return false;
+            }
+            $(this).nextAll().val(jia+1)
+            var q = $(this).parents('tr');
+            xj(q)
+            zj();
+        })
+
+        $("tbody button:contains('-')").click(function(){
+            var jia =  $(this).prev().val()-0;
+            if(jia<=1){
+                alert('上限')
+                return false;
+            }
+            $(this).prev().val(jia-1)//prev匹配每一个元素中的前一个兄弟元素
+            var q = $(this).parents('tr');
+            xj(q)
+            zj();
+        })
+
+        //清空购物车
+        $(".tfoot button:eq(0)").click(function(){
+            $("tbody").empty()//删除子元素
+            zj();
+        })
+        //全选
+        $(".tfoot :checkbox,.thead :checkbox").click(function(){//选中全选框的值为true
+            //获取全选框中checked的值
+           var bool = $(this).prop('checked');
+            console.log(bool)
+            //将结果再付给tbody中的复选框
+            $("table :checkbox").prop("checked",bool)
+            zj();
+        })
+        //反选
+        $(".tfoot button:eq(1)").click(function(){
+//            alert("袁天罡")
+            $(".tbody :checked").parents('tr').remove()
+            zj();
+        })
+
+        //小计7
+      function xj(q){
+          var num = q.find('[type=text]').val()-0;
+          var price = q.find('td').eq(3).html()-0;
+          var sum = num*price;
+          q.find('td').eq(5).html(sum);
+      }
+        var q = $('tbody tr').eq(0);
+        console.log(q);
+            xj(q);
+
+        //总计
+            function zj(){
+                var sum = 0;
+                $(".tbody input:checked").each(function(index,element){
+                    var xj =$(element).parent('td').nextAll().eq(4).html()-0;
+                    sum = sum+xj;
+                })
+                console.log(sum)
+                $(".tfoot span strong").html(sum)
+            }
+            zj();
+
+    </script>
+</body>
+</html>

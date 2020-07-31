@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 600px;
+            height: 600px;
+            background: pink;
+            position: relative;
+        }
+        .div1{
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="box">
+    <div id="div1" class="div1"></div>
+</div>
+<script src="插件/jquery-3.4.1.js"></script>
+<script>
+    $("#div1").mousedown(function(e){
+        //获取鼠标在div1上的坐标
+        // console.log($("#div1").css("left"),$("#div1").css("top"));
+        var disX = e.clientX - parseInt($("#div1").css("left"));
+        var disY = e.clientY - parseInt($("#div1").css("top"));
+
+        //移动div1
+        $(document).mousemove(function(e){
+            //获取div1位移在X/Y轴
+            var zhL = e.clientX-disX;
+            var zhT = e.clientY-disY;
+
+            //设置边界
+            var zhMaxL  = parseInt($("#box").css('width'))-parseInt($("#div1").css('width'));
+            var zhMaxT  = parseInt($("#box").css('height'))-parseInt($("#div1").css('height'));
+
+            if(zhL<=0){
+                zhL = 0;
+            }else if(zhL>=zhMaxL){
+                zhL =zhMaxL;
+            }
+
+            if(zhT<=0){
+                zhT = 0;
+            }else if(zhT>=zhMaxT){
+                zhT =zhMaxT;
+            }
+
+
+
+            //将上面的值赋给div1
+            $("#div1").css({left:zhL+"px",top:zhT+"px"});
+
+        })
+
+        //鼠标抬起时，取消移动事件和鼠标抬起事件绑定
+        $(document).mouseup(function(){
+            $(document).off('mousemove');
+            $(document).off('mouseup');
+        })
+
+
+
+    })
+
+</script>
+</body>
+</html>

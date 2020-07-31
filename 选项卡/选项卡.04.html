@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrapper{
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            margin: 20px auto;
+        }
+
+        .nav{
+            height: 40px;
+            background: #7f7f7f;
+        }
+
+        .nav>li{
+            float: left;
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+        }
+
+        .main>li{
+            width: 500px;
+            height: 460px;
+            border: 1px solid #000;
+            text-align: center;
+            display: none;
+            background: #C70F0F;
+        }
+
+        .main>li>img{
+            height: 400px;
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        .nav>.active{
+            background: #00a6e4;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .main>.current{
+            display: block;
+        }
+
+        span{
+            font-weight: bold;
+            font-size: 30px;
+            width: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <ul class="nav">
+        <li clas    s="active">杰夫贝佐斯</li>
+        <li>李彦宏</li>
+        <li>马云</li>
+        <li>李嘉诚</li>
+        <li>任正非</li>
+        <span><</span><span> ></span>
+    </ul>
+    <ul class="main">
+        <li class="current"><img src="img/u=2873144080,919803119&fm=26&gp=0.jpg" alt=""></li>
+        <li><img src="img/u=1217292239,2470120220&fm=26&gp=0.jpg" alt=""></li>
+        <li><img src="img/u=1676812226,47657340&fm=26&gp=0.jpg" alt=""></li>
+        <li><img src="img/u=2221830450,1807876017&fm=26&gp=0.jpg" alt=""></li>
+        <li><img src="img/u=3619889888,3815499154&fm=11&gp=0.jpg" alt=""></li>
+    </ul>
+
+</div>
+</body>
+</html>
+<script src="插件/jquery-3.4.1.js"></script>
+<script>
+        $(function(){
+            var index = 0;
+           $(".nav>li").click(function(){
+
+                $(this).addClass("active").siblings().removeClass("active");
+                index = $(this).index();
+                $(".main>li").eq(index).addClass("current").siblings().removeClass("current")
+            })
+            //左右切换
+            $(".nav span:eq(1)").click(function(){
+                index++;
+                if(index>=5){
+                    index=0;
+                }
+
+                $(this).addClass("active").siblings().removeClass("active");
+//                    index = $(this).index();
+                $(".main>li").eq(index).addClass("current").siblings().removeClass("current")
+            })
+
+            $(".nav span:eq(0)").click(function(){
+                move()
+            })
+
+            setInterval(move,1000);
+
+            function move() {
+                index--;
+                if(index<=-1){
+                    index=4;
+                }
+
+                $(this).addClass("active").siblings().removeClass("active");
+//                    index = $(this).index();
+                $(".main>li").eq(index).addClass("current").siblings().removeClass("current")
+            }
+        })
+
+
+</script>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .ll-warpper{
+            width: 100%;
+            height: 100%;
+            background: #F0F0F0;
+        }
+
+        .hot{
+            width: 200px;
+            height: 1000px;
+            background: #2f4151;
+            color: #ffffff;
+            float: left;
+            text-align: center;
+        }
+
+        .hot>li{
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .head{
+            width: 1600px;
+            height: 50px;
+            line-height: 40px;
+            background: #f0eb98;
+        }
+
+        .head>li{
+            float: left;
+            margin-right: 200px;
+            
+        }
+
+        .head>li>img{
+            width: 40px;
+            float: right;
+        }
+
+        .main{
+            width: 1600px;
+            height: 950px;
+            background: #f1eded;
+            margin-top: 50px;
+        }
+
+        .main>li:nth-of-type(1){
+            border-bottom: 1px solid #ffffff;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .main>li>span{
+            margin-right: 200px;
+        }
+
+        .hot>li>ol{
+            background: #00aae5;
+            margin-top: 10px;
+            color: #ffffff;
+            font-size: 18px;
+            text-align: center;
+            width: 150px;
+            margin-left: 20px;
+            display: none;
+        }
+
+        .hot>li>ol>li:nth-of-type(2){
+            color: #f0eb98;
+        }
+
+        .head>li>ol{
+            background: #2f4151;
+            display: none;
+        }
+
+        .main>li:hover{
+            background: #9cbfe1;
+        }
+
+        .main>li>ol{
+            background: #9cbfe1;
+            display: none;
+        }
+
+        .main>li>ol>li>span{
+            margin-right: 200px;
+            color: #ffffff;
+        }
+
+        .main>li>ol>li:hover{
+            background: #C70F0F;
+        }
+
+        .hot>li>ol>li:hover{
+            background: #8a060b;
+        }
+    </style>
+</head>
+<body>
+    <div class="ll-warpper">
+        <ul class="hot">
+            <li>首页</li>
+            <li>数据管理
+                <ol>
+                    <li>用户列表</li>
+                    <li>商家列表</li>
+                    <li>食品列表</li>
+                    <li>订单列表</li>
+                    <li>管理员列表</li>
+                </ol>
+            </li>
+            <li>添加数据</li>
+            <li>图表</li>
+            <li>编辑</li>
+            <li>设置</li>
+            <li>说明</li>
+        </ul>
+        <ul class="head">
+            <li>首页 /</li>
+            <li>数据管理 /</li>
+            <li>人力资源</li>
+            <li><img src="img/5.jpg" alt="">
+                <ol>
+                    <li>首页</li>
+                    <li>退出</li>
+                </ol>
+            </li>
+        </ul>
+        <ul class="main">
+            <li><span>姓名</span><span>性别</span><span>年龄</span><span>祖籍</span></li>
+            <li><span>萧芳</span><span>男</span><span>23</span><span>广东佛山南洪门副帮主</span>
+                <ol>
+                <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+            </ol>
+            </li>
+            <li><span>梅长苏</span><span>男</span><span>20</span><span>大梁金陵帝都</span>
+                <ol>
+                    <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                    <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                    <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                    <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                    <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                </ol>
+            </li>
+            <li><span>萧景琰</span><span>男</span><span>23</span><span>皇宫</span>
+                <ol>
+                    <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                    <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                    <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                    <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                    <li><span>陆寇</span><span>周挺</span><span>萧芳</span><span>向问天</span></li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    $(function(){//左侧菜单显示隐藏
+        $(".hot>li:eq(1)").click(function(){
+            $(".hot>li>ol").slideToggle()
+        })//导航栏显示隐藏
+        $(".head>li").click(function(){
+            $(".head>li>ol").slideToggle()
+        })//内容的导航
+        $(".main>li:nth-of-type(2)").click(function(){
+            $(".main>li>ol:eq(0)").slideToggle()
+        })
+        $(".main>li:nth-of-type(3)").click(function(){
+            $(".main>li>ol:eq(1)").slideToggle()
+        })
+        $(".main>li:nth-of-type(4)").click(function(){
+            $(".main>li>ol:eq(2)").slideToggle()
+        })
+
+    })
+</script>

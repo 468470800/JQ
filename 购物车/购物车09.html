@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table {
+            width: 800px;
+        }
+        
+        .p1 {
+            width: 800px;
+            background: #2a3b4b;
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 40px;
+            height: 40px;
+        }
+        
+        .p1>span:nth-of-type(2) {
+            float: right;
+            color: #ffffff;
+        }
+        
+        .p1>span:nth-of-type(1) {
+            float: left;
+            color: #ffffff;
+        }
+        
+        .lll-wrapper {
+            width: 800px;
+            height: 800px;
+            margin: 0 auto;
+        }
+        
+        img {
+            width: 50px;
+        }
+        
+        tbody {
+            text-align: center;
+        }
+        
+        .p2 {
+            width: 800px;
+            height: 40px;
+            background: #f6c88f;
+            line-height: 40px;
+        }
+        
+        .p2>span {
+            float: right;
+        }
+        
+        .p2>span>strong {
+            font-size: 24px;
+            color: #8a060b;
+        }
+        
+        tbody button {
+            padding: 0px 4px;
+        }
+        
+        .p2 button {
+            padding: 2px 5px;
+        }
+        
+        .p2 input {
+            margin-left: 44px;
+        }
+        
+        table>tbody>tr {
+            border-bottom: 1px solid #C70F0F;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lll-wrapper">
+        <p class="p1"><span>全部商品</span>
+            <span>送至：
+    <select name="" id="select">
+        <option value="硅谷">硅谷</option>
+        <option value="旧金山">旧金山</option>
+    </select>
+    </span>
+        </p>
+        <table class="table">
+            <thead class="thead">
+                <tr>
+                    <th><input type="checkbox">全选</th>
+                    <th>商品</th>
+                    <th>名称</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>价格</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><img src="img/55.jpg" alt=""></td>
+                    <td>箱包</td>
+                    <td>2967</td>
+                    <td> <button>+</button>
+                        <input type="text" value="1" size="1">
+                        <button>-</button></td>
+                    <td>2967</td>
+                    <td>删除</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><img src="img/33.png" alt=""></td>
+                    <td>箱包</td>
+                    <td>2967</td>
+                    <td> <button>+</button>
+                        <input type="text" value="1" size="1">
+                        <button>-</button></td>
+                    <td>2967</td>
+                    <td>删除</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><img src="img/11.jpg" alt=""></td>
+                    <td>箱包</td>
+                    <td>2967</td>
+                    <td> <button>+</button>
+                        <input type="text" value="1" size="1">
+                        <button>-</button></td>
+                    <td>2967</td>
+                    <td>删除</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="p2">
+            <input type="checkbox">全选
+            <button>清空购物车</button>
+            <button>删除所选</button>
+            <span>总计价格：<strong>0</strong></span></p>
+    </div>
+</body>
+
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    //删除
+    $("table td:contains('删除')").click(function() {
+            $(this).parent().remove()
+            zj()
+        })
+        //加加减减
+    $("button:contains('+')").click(function() {
+        var sum = $(this).next().val() - 0;
+        if (sum >= 5) {
+            alert('5')
+            return false;
+        }
+        $(this).next().val(sum + 1)
+        var q = $(this).parents("tr");
+        xiaoji(q)
+        zj()
+
+    })
+    $("button:contains('-')").click(function() {
+            var sum = $(this).prev().val() - 0;
+            if (sum <= 1) {
+                alert('至少1件商品')
+                return false;
+            }
+            $(this).prev().val(sum - 1)
+            var q = $(this).parents("tr");
+            xiaoji(q)
+            zj()
+        })
+        //    全选
+    $(".thead :checkbox,.p2 :checkbox").click(function() {
+            var bool = $(this).prop("checked")
+            console.log(bool)
+            $(".lll-wrapper :checkbox").prop("checked", bool)
+            zj()
+        })
+        //反选
+    $(".tbody :checkbox").click(function() {
+            var checkedNum = $(".tbody :checkbox").length;
+            var checkboxNum = $(".tbody :checked").length;
+            if (checkboxNum == checkedNum) {
+                $(".tbody:checkbox,.p2:checkbox,.thead:checkbox").prop("checked", true)
+            } else {
+                $(".tbody:checkbox,.p2:checkbox,.thead:checkbox").prop("checked", false)
+            }
+
+        })
+        //    选中删除
+    $(".p2 button:eq(1)").click(function() {
+            $("tbody :checked").parents('tr').remove()
+            zj()
+        })
+        //    清空购物车
+    $(".p2 button:eq(0)").click(function() {
+            $("tbody").empty()
+            zj()
+        })
+        //    总计
+    function zj() {
+        var sum = 0
+        $(".tbody input:checked").each(function(index, element) {
+            var xj = $(element).parent('td').nextAll().eq(4).html() - 0;
+            sum = sum + xj;
+        })
+        $(".p2 span strong").html(sum)
+    }
+    zj()
+        //    小计
+    function xiaoji(q) {
+        var num = q.find('[type=text]').val() - 0;
+        var jq = q.find("td").eq(3).html() - 0;
+        xj = num * jq;
+        q.children("td").eq(5).html(xj)
+    }
+    $(".tbody").each(function(index, element) {
+        xiaoji(element)
+    })
+</script>

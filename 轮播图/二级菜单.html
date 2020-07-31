@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .ll-warpper{
+            width: 100%;
+            height: 1000px;
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+
+        .ll-hot{
+            width: 300px;
+            height: 1000px;
+            background: #2e3d52;
+            float: left;
+        }
+
+        .ll-nav{
+            width: 1600px;
+            height: 40px;
+            background: #F0F0F0;
+            float: left;
+        }
+
+        .ll-nav>li{
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 200px;
+            line-height: 40px;
+            float: left;
+        }
+
+        .ll-nav>li:nth-of-type(4)>img{
+            width: 50px;
+            float: right;
+        }
+
+        .ll-warpper>.ll-nav>li:nth-of-type(4){
+            float: right;
+        }
+
+        .ll-main{
+            width: 1600px;
+            height: 964px;
+            background: #E0DEDE;
+            float: right;
+        }
+
+        .ll-main>dt>span{
+            margin-right:200px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .ll-main>dd>span{
+            margin-right:160px;
+            color: #ffffff;
+            font-size: 19px;
+        }
+
+        .ll-main>dd{
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .ll-main>dd:hover{
+            background: #e0bb00;
+            color: #ffffff;
+        }
+
+        .ll-hot>li{
+           color: #ffffff;
+            text-align: center;
+            line-height: 100px;
+            position: relative;
+            /*heigh96t: 50px;*/
+            width: 200px;
+        }
+
+        .ll-hot>li>ol{
+            width: 200px;
+            /*height: 360px;*/
+            background: pink;
+            /*position: absolute;/*/
+            color: #ffffff;
+            top:66px;
+            z-index: 2;
+            display: none;
+            /*left: 200px;*/
+        }
+
+        .ll-hot>li>ol>li{
+            width: 200px;
+            height: 70px;
+            line-height: 70px;
+        }
+
+        .ll-hot>li>ol>li:hover{
+            background: #e0bb00;
+        }
+        .ll-hot>ol>li:hover{
+            color: #e0bb00;
+        }
+
+        .ll-nav>li{
+            /*position: relative;*/
+        }
+
+        .ll-nav>li>ol{
+            /*position: relative;*/
+            top:20px;
+            width: 50px;
+            height: 100px;
+            background: #2f4151;
+            display: none;
+            text-align: center;
+            color: #ffffff;
+            font-weight: 100;
+        }
+
+        .ll-nav>li>ol>li:hover{
+            background: #e0bb00;
+        }
+    </style>
+</head>
+<body>
+        <div class="ll-warpper">
+            <ul class="ll-hot">
+                <li>首页</li>
+                <li>数据管理
+                    <ol>
+                        <li>用户列表</li>
+                        <li>商家列表</li>
+                        <li>食品列表</li>
+                        <li>订单列表</li>
+                        <li>管理员列表</li>
+                    </ol>
+                </li>
+                <li>添加数据</li>
+                <li>图表</li>
+                <li>设置</li>
+                <li>说明</li>
+            </ul>
+            <ul class="ll-nav">
+                <li>首页</li>
+                <li>数据管理</li>
+                <li>用户列表</li>
+                <li><img src="img/1.jpg" alt="">
+                    <ol>
+                        <li>首页</li>
+                        <li>退出</li>
+                    </ol>
+                </li>
+            </ul>
+            <dl class="ll-main">
+                <dt><span>#</span><span>注册日期</span><span>用户姓名</span><span>注册地址</span></dt>
+                <dd><span>1</span><span>2019-09-04 19:54</span><span>1766028790</span><span>保定</span></dd>
+                <dd><span>2</span><span>2019-09-04 19:54</span><span>1766028790</span><span>保定</span></dd>
+                <dd><span>3</span><span>2019-09-04 19:54</span><span>1766028790</span><span>保定</span></dd>
+                <dd><span>4</span><span>2019-09-04 19:54</span><span>1766028790</span><span>保定</span></dd>
+                <dd><span>5</span><span>2019-09-04 19:54</span><span>1766028790</span><span>保定</span></dd>
+                <dd><span>6</span><span>2019-09-04 19:54</span><span>1766028790</span><span>保定</span></dd>
+                <dd><span>7</span><span>2019-09-04 19:54</span><span>1766028790</span><span>保定</span></dd>
+                <dd><span>8</span><span>2019-09-04 19:54</span><span>1766028790</span><span>保定</span></dd>
+                <dd><span>9</span><span>2019-09-04 19:54</span><span>1766028790</span><span>保定</span></dd>
+            </dl>
+        </div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"> </script>
+<script>
+    $(function(){
+        $(".ll-hot>li").click(function(){
+            $(".ll-hot>li>ol").slideToggle()
+        })
+        $(".ll-nav>li:nth-of-type(4)").click(function(){
+            $(".ll-nav>li:nth-of-type(4)>ol").slideToggle()
+        })
+    })
+</script>

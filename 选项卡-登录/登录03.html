@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		.wrapper{
+			width: 400px;
+			height: 400px;
+			margin: 0 auto;
+			background: pink;
+			text-align: center;
+		    /*border: 1px solid pink;		*/
+		}
+
+		p{
+			padding-top: 20px;
+
+		}
+		
+		button{
+			padding:4px 15px;
+			color: #FFF;
+			margin-top: 20px;	
+		}
+
+		input{
+			width: 150px;
+		}
+
+		strong{
+			background: #000;
+			color:#fff;
+			position:fixed;
+			margin-left: 4px;
+		}
+
+		i{
+			/*display: block;*/
+			background: #fff;
+			color:red;
+			position:fixed;
+			font-weight: bold;
+			margin-left: 4px;
+		}
+
+		span{
+			font-weight: bold;
+			font-size: 10px;
+		}			
+
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<p>手机号：<input type="text" placeholder="账号"><br><span></span></p>
+		<p>密&nbsp;&nbsp;&nbsp;码：<input type="text" placeholder="密码"><i>显示/隐藏</i><br><span></span></p>
+		<p>验证码:<input type="text" placeholder="验证码："><strong>9588</strong><br><span></span></p>
+		<button>登录</button>
+	</div>
+</body>
+</html>
+<script src="插件/jquery-3.4.1.js"></script>
+<script>
+	// // 验证码 
+	// 	$(".wrapper strong").click(function(){
+	// 		var sjs = parseInt(Math.random()*(9999+1-1000)+1000);//目标随机数范围1000,999
+	// 		$(".wrapper strong").html(sjs)
+	// 	})
+	// // 生成验证码的函数
+
+	// // 切换验证码并修改
+			var pz = false;
+	// 1.验证码去切换功能页面加载修改验证码？
+		$(".wrapper strong").click(function(){
+		//点击验证码切换
+				sjsCode()
+			})
+			// 生成验证码的函数
+			function sjsCode(){
+				//随机数取值范围  变量名 取整 随机数 的 取值范围1000——1
+			 var sjs = parseInt(Math.random()*(9999+1-1000)+1000)	
+			 //修改验证码	wrapper 的 strong html （随机数）
+		 $(".wrapper strong").html(sjs)	
+		}
+
+		// 切换明文暗文输入框的文字
+		$(".wrapper i").click(function(){
+			var lllTtype = $(this).prev('input').prop('type')
+				if(lllTtype == "password"){
+					$(this).prev('input').prop('type',"text")
+				}else{
+					$(this).prev('input').prop('type',"password")
+				}
+		})
+
+		//用户名
+		$("input:eq(0)").blur(function(){
+			var yhm = $(this).val().trim();
+			var zz = /^0?1(3|4|5|6|7|8|9)[0-9]{9}$/;
+			var ym = zz.test(yhm)
+			console.log(ym);
+			if(ym){
+				$("input:eq(0)").nextAll().html("正确").css("color","red")
+				pz = true;
+			}else{
+				$("input:eq(0)").nextAll().html("手机号错误11位有数字组成的请重新输入").css("color","brown")
+				pz = false;
+			}
+		})
+
+		//密码
+		$("input:eq(1)").blur(function(){
+			var mim = $(this).val().trim();
+			var mm = /^\w{6,16}$/;
+			var mima = mm.test(mim)
+			console.log(mima);
+			if(mima){
+				$("input:eq(1)").nextAll('span').html("正确").css("color","green")
+				pz = true;
+			}else{
+				$("input:eq(1)").nextAll('span').html("密码号错误6位有数字组成的请重新输入").css("color","blur")
+				pz = false;
+			}
+		});
+		//验证码
+		$("input:eq(2)").blur(function(){
+			var yzm = $(this).val().trim();
+			var a = $(this).next().html();
+			console.log(yzm,a);
+			if(yzm == a){
+				$("input:eq(2)").nextAll('span').html("正确").css("color","green")
+				pz = true;
+			}else{
+				$("input:eq(2)").nextAll('span').html("验证码错误请重新输入").css("color","blur")
+				$(".wrapper strong").html(sjsCode())	
+				pz = false;
+			}
+
+		})
+		//提交
+		$("button").click(function(){
+			var a = $("input:eq(0)").val();
+			var b = $("input:eq(1)").val();
+			var c = $("input:eq(2)").val();
+			if(a&&b&&c){
+				window.location.href="https://www.baidu.com"		
+			}else{
+				alert("不正确请重新输入")
+			}
+
+		})
+
+
+
+
+
+
+
+</script>

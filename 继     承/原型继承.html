@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+		.wrapper{
+			width: 200px;
+			height: 400px;
+			background: #000;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper"></div>
+	<script>
+	function llFu(){
+		this.name = "巴菲特"
+		this.money = 10000000000;
+	}
+
+	llFu.prototype.work = function(){
+		alert(this.name+"会做生意"+"有"+this.money+"上亿资产")
+	}
+	//原型继承：子构造的原型指向父亲的构造的一个实例
+	llZi.prototype = new llFu();
+	function llzi(){
+
+	}
+	var llObj = new llZi()
+	console.log(llObj.money);//undefined
+	</script>
+</body>
+</html>

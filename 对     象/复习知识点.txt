@@ -1,0 +1,125 @@
+1、面向对象的概念
+	面向过程：关注点是每个细节
+	面向对象：关注点是结果，具体实现步骤不需要知道
+
+
+2、对象的两种创建方式
+	1.字面量
+	var obj = {};
+
+
+	2.实例化
+	var obj = new Object();
+	obj.name = "张三";
+	obj.work = function(){
+		this:obj
+	}
+
+	obj.work()
+	delete obj.name;
+
+	3.工厂模式
+    function createObj(){
+    	//this:window
+    	var obj = new Object();
+		obj.name = "张三";
+		obj.work = function(){
+			//this:obj
+		}
+		return obj;
+    }
+    var obj =  createObj();
+
+    //4.构造函数
+    function Boy(name){
+    	this.name=name;//this指向o
+    }
+    var o = new Boy("zhagnsan");
+
+
+3、工厂模式
+4、构造函数模式
+5、“.”和”[]”运算符的运用及区别对象的遍历(for ... In ...)
+对象.属性名
+对象[属性的变量]
+
+
+var obj = {name:"lisi",age:18,work:function(){}};
+for(var index in obj){
+	index:指的是属性名和方法名
+	打印所有对应的属性值
+	obj[index]
+}
+
+
+1、 原型的概念
+	每个函数对象都有一个prototype属性，这个属性就是原型
+2、Constructor、prototype、__proto__的作用
+3、原型、构造函数和实例三者之间的关系
+4、 hasOwnProperty()方法和 in 操作符的用法
+
+
+所有js内置对象：
+Number,String,Boolean,Null,Undefined,Object,Array,Date,Math,Regexp(正则对象)，Funciton
+
+
+1、原型链继承的方法
+		//优点：可以继承父亲的原型的方法和属性
+		//缺点：不可以传参
+		function Fu(){
+			this.name = "zhangsan";
+			console.log(this);//实例化对象
+		}
+		Fu.prototype.work=function(){
+			console.log(this.name);//实例化对象
+		}
+
+
+		//原型链继承实现方法
+		Zi.prototype = new Fu();
+
+
+		function Zi(){
+
+
+		}
+		var z = new Zi();
+		console.log(z.name);
+		z.work();
+2、借助构造函数继承的方法
+		//优点：可以传参
+		//缺点：不可以继承父亲的原型的方法和属性
+	function Fu(name){
+		this.name = name;
+	}
+	Fu.prototype.work=function(){
+		console.log(this.name);//实例化对象
+	}
+
+
+	function Zi(name){
+		Fu.call(this,name);
+	}
+	var z = new Zi('zhangsan');
+	console.log(z.name);
+	z.work();
+
+
+3、混合继承的方法
+	function Fu(name){
+		this.name = name;
+	}
+	Fu.prototype.work=function(){
+		console.log(this.name);//实例化对象
+	}
+	Zi.prototype = new Fu();
+	function Zi(name){
+		Fu.call(this,name);
+	}
+	var z = new Zi('zhangsan');
+	console.log(z.name);
+	z.work();
+	</script>
+4、混合继承的优缺点
+5、继承的概念
+一个对象直接使用另一个对象的属性和方法，就是继承

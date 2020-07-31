@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		
+		.ll-warpper{
+			width:900px;
+			height:600px;
+			margin:100px auto 0;
+			background:#EEE;
+		}
+
+		.main{
+			width: 400px;
+			height: 200px;
+			margin:0 auto;
+			padding:4px 0;
+		}
+
+		.main>span{
+			font-size: 15px;
+			color:red;
+		}		
+		.main>button{
+			padding:2px 15px;
+		}
+
+		a{
+			text-decoration:none;
+			font-weight: bold;
+			color: red;
+		}
+
+		.list{
+			width: 600px;
+			height: 200px;
+			margin:5px auto;
+		}
+
+		.list-left{
+			width: 200px;
+			height:100px;
+			float: left;
+		}
+
+		.list-left>img{
+			width: 100px;
+
+		}
+
+		.list-center{
+			float: left;
+			width: 200px;
+			height: 100px;
+		}
+
+		.list-right{
+			float: right;
+			width: 200px;
+			height: 100px;
+		}
+
+		.p1{
+			width: 100px;
+			font-size: 17px;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="ll-warpper" id="ll-warpper">
+		<div class="main" id="main"><textarea name="" id="text" cols="60" rows="8"></textarea>
+		<span>0</span>
+		<button>评论</button>
+		<button>清空评论</button></div>
+		<div class="list" id="list">
+			<div class="list-head" id="list-head">
+				<ul>
+					<li class="list-left"><img src="img/u=2873144080,919803119&fm=26&gp=0.jpg" alt=""></li>
+					<li class="list-center"><p class="p1">  归零</p>
+					<p class="p2">2019-09-06 15:26</p></li>
+					<li class="list-right"><span>|回复</span>
+					<span>|❤|</span>
+					<span>第一层|</span>
+					<a href="javscript:ovid(0);">删除</a></li>
+				</ul>
+			</div>
+		</div>			
+	</div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		//评论
+		$("#main>button:eq(0)").click(function(){//父级的按钮第一个
+			//获取内容输入框的内容
+			var str = $("#text").val().trim();//创建一个新的 变量名 = $("#文本域，里面内容").的值.的清楚空格
+			if(str==""){//判断内容的值=="是否为空"
+				alert('空空如也');
+				return false;//return结束 语句并且返回值 false
+			}
+			var day = new Date();
+			day = day.toLocaleString();
+			//创建ul>li
+					
+		    //创建li
+			var oLi = $("<li></li>").append(oli,oLic,oLiR)
+			$("#list-head>ul").append(oLi)
+			$("#text").val('')
+		})
+	})
+
+</script>

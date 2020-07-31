@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var obj = {
+        name:"李四",
+        sex:"非公",
+        age:38,
+        piao:function(){
+            console.log('小鲜肉')
+        }
+    }
+
+    // console.log(obj);//
+    for(var index in obj){
+        // console.log(index);//属性名或方法名，全局变量
+        // console.log(obj.index);//undefined???
+        //当属性名为变量时，不能通过点方式获取属性值
+        //获取动态属性名对应属性值的方式：obj[属性名变量]
+        console.log(obj[index]);
+    }
+    // console.log("外部"+index);
+
+</script>
+</body>
+</html>

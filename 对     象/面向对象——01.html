@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//字面量
+	var llObj = {
+		name:"随地",
+		age:18,
+		specialty:"开矿",
+		work:function(){
+			document.write(this.name+"挖煤<br>")
+		}
+	};
+
+	llObj.work();
+
+	//实例化
+	var llObj = new Object();
+	llObj.name = "欧典";
+	llObj.age = 23;
+	llObj.work = function(){
+		document.write(this.name+"挖煤<br>")
+	}
+	</script>
+</body>
+</html>

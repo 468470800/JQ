@@ -1,0 +1,183 @@
+10、常用的jq方法：
+	操作样式：
+	css({color:"red",fontSize:'20px'}) 
+	css("color","red")
+
+
+	animate(样式对象,动画时间) 动画函数
+
+
+	addClass() 添加类名
+	removeClass('active')删除类名
+	siblings() 获取兄弟元素
+	index() 获取当前操作对象的下标
+	eq(i) 获取该下标对应的元素
+	show() 显示
+	hide() 隐藏
+
+
+
+
+
+
+3、jq特效功能实现步骤：
+	1.分析涉及的事件
+	2.该事件影响的哪些元素？
+	3.影响这些元素的方式：
+			a.内容--js： innerHTML   innerText  value
+					jq:   html()      text()     val()
+
+
+			b.样式--js:  style    className
+					jq:   css()    addClass()  removeClass()  
+
+
+			c.属性--js:  .属性名   setAttribute()   getAttribute()      如oInp.type = "password";
+					jq:   attr()  prop()
+
+
+	4.功能实现：a.骨架 b.布局 c.实现功能
+
+
+
+
+
+
+1、jQ的高级选择器
+	find()	:匹配当前元素的后代
+	children() ：匹配元素的子元素
+	parent():匹配元素第一个父元素，不管能否匹配，都不会继续找
+	parents():匹配所有的父元素,可以传参
+	closest():匹配指定的父元素,必须传参
+
+
+	next():匹配被选元素的后一个兄弟元素
+	nextAll():匹配元素集合中每个元素所有跟随的兄弟元素
+	prev():匹配被选元素的前一个兄弟元素
+	prevAll()：匹配被选元素之前的所有兄弟元素
+	siblings():匹配被选元素的所有兄弟元素
+	eq():匹配元素集中指定的下标相应的元素
+	index():匹配指定元素相对于其他指定元素的下标
+	first():匹配被选元素的第一个元素
+	last():匹配被选元素的最后一个元素
+
+
+	html():设置或返回被选元素的内容（==innerHTML)
+	text():设置或返回被选元素的文本内容（==innerText)
+2、JQ遍历方法
+each(function(index,element){
+	
+})
+3、事件绑定和解绑
+	1、直接用事件名
+		$(“#btn”).click(function(){alert(1)})
+	2、on(event,function)
+		$(“#btn”).on(“click”,function(){alert(2)})
+	3、bind(event,function)
+		$(“#btn”).bind(“click”,function(){alert(3)})
+
+
+	Off():通常用于移除通过on方法绑定的事件
+		$(“p”).off(“click”)
+	unbind():移除被选元素的事件，用于bind方法添加
+		$(“p”).unbind(“click”)
+4、hover(function(){移入执行},function(){移出执行});
+5、键盘事件
+	keydown（） 键盘按下
+	keyup（）   键盘抬起
+	keycode 键码
+
+
+	keypress 事件与 keydown 事件类似。当按钮被按下时，会发生该事件。它发生在当前获得焦点的元素上。
+	不过，与 keydown 事件不同，每插入一个字符，就会发生 keypress 事件。
+6、鼠标事件
+	mouseover()   鼠标移入
+	mouseout()     鼠标移出
+	mouseenter()   鼠标进入
+	mouseleave()   鼠标离开
+		mouseover() 和mouseenter()区别
+
+
+7、事件委托
+
+
+例如: 张三在寝室不想去食堂吃饭,那么张三可以"委托"李四帮忙带一份饭
+例如: 张三先找房,但是对要找房的地点又不熟悉,那么张三可以"委托"中介帮忙找房
+所以得出结论:------->
+
+
+事件委托就是请其他人帮忙做我们想做的事
+做完之后最终的结果还是会反馈到我们这里
+js中事件委托的好处
+
+
+①减少监听数量
+添加到页面上的事件处理程序数量将直接关系到页面的整体运行性能，因为需要不断的与dom节点进行交互，访问dom的次数越多，引起浏览器重绘与重排的次数也就越多，就会延长整个页面的交互就绪时间
+每个监听的函数都是一个对象，是对象就会占用内存，对象越多，内存占用率就越大，自然性能就越差
+②新增元素自动有事件响应处理
+默认情况下新增的元素无法响应新增前添加的事件
+
+
+
+
+	js原生写法
+	OUI.onmouseover = function(ev){
+		var ev = ev || window.event;
+		var target = ev.target || ev.srcElement;
+		if(target.nodeName.toLowerCase() == "li"){
+			target.style.background = "red";
+		}
+	}
+
+
+	jq写法：
+	$("#a").delegate("li","click",function(){
+		alert($(this).html())；
+	}
+
+
+对象.on(事件 , "事件源" , function(){
+
+
+})
+
+
+8、自动触发事件和命名空间
+自动触发事件
+	通过代码控制事件, 不用人为点击/移入/移除等事件就能被触发
+	自动触发事件方式
+	① $(“selector”).trigger(“eventName”);
+	触发事件的同时会触发事件冒泡
+	触发事件的同时会触发事件默认行为
+	② $(“selector”).triggerHandler(“eventName”);
+	触发事件的同时不会触发事件冒泡
+	触发事件的同时不会触发事件默认行为
+
+
+命名空间
+	什么是事件命名空间?
+
+
+	众所周知一个元素可以绑定多个相同类型的事件.企业多人协同开发中,如果多人同时给某一个元素绑定了相同类型的事件,但是事件处理的方式不同,就可能引发事件混乱
+
+
+	为了解决这个问题jQuery提出了事件命名空间的概念
+
+
+	事件命名空间主要用于区分相同类型的事件,区分不同前提条件下到底应该触发哪个人编写的事件
+	格式: “eventName.命名空间”
+
+
+	添加事件命名空间的前提条件
+	1.事件是通过on来绑定的
+	2.通过trigger触发事件
+
+
+
+
+
+
+
+
+
+

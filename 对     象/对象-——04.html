@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+
+		ul ol li{
+			list-style:none;
+
+		}
+			
+	   a{
+	   	text-decoration: none;
+	   	display:block;
+	   	color: red;
+	   }		
+
+	   img{
+	   	border: none;
+	   }
+		
+		clearfloat{
+			clear:both;
+			height:0;
+
+		}
+
+		.table{
+			width: 700px;
+			text-align:center;
+			margin: 4px 0 4px 4px;
+
+		}
+
+		.thed{
+			font-size: 20px;
+			color:red;
+			font-weight: bold;
+		}
+
+		.tbody{
+			font-size: 18px;
+			font-weight: bold;
+			color: pink;
+		}
+
+		p{
+			margin: 4px 0 4px 4px;
+		}
+
+		button{
+			padding:3px 5px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="warpper">
+		<p>姓 名：<input type="text" id='ip1'/></p>
+		<p>年 龄：<input type="Number" id='ip2'/></p>
+		<p>性 别：<input type="text"/ id='ip3'></p>
+		<p>年 薪：<input type="Number" id='ip4'/></p>
+		<p>职 业：<input type="text" id='ip5'/></p>
+		<table class='table' id='table' border='1' cellspacing='0'>
+			<thed>
+				<tr>
+					<th><input type="checkbox" id='qx'/>全选</th>
+					<th>姓名</th>
+					<th>年龄</th>
+					<th>性别</th>
+					<th>年薪</th>
+					<th>岗位</th>
+					<th>时间</th>
+					<th>操作</th>
+				</tr>
+			</thed>
+			<tbody class='tbody' id='tbody'>
+				<tr>
+					<td><input type="checkbox" class="xz" /></td>
+					<td>梅长苏</td>
+					<td>20</td>
+					<td>男</td>
+					<td>99999999</td>
+					<td>某事</td>
+					<td>2020/8/24</td>
+					<td><a href="#" onclick="add(this)">删除</a></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td rowspan='8'><button id='qs'>全部删除</button><button id='dalSel'>删除所选</button><button id='tj'>添加</button></td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<script>
+			var tj = document.getElementById('tj');
+			tj.onclick = function(){
+				var ip1 = document.getElementById('ip1');
+				var ip2 = document.getElementById('ip2');
+				var ip3 = document.getElementById('ip3');
+				var ip4 = document.getElementById('ip4');
+				var ip5 = document.getElementById('ip5');
+				var tb = document.getElementById('tbody');
+
+				console.log(ip1)
+
+				var ip1 = ip1.value;
+				var ip2 = ip2.value;
+				var ip3 = ip3.value;
+				var ip4 = ip4.value;
+				var ip5 = ip5.value;
+
+			    if(ip1==""||ip2==""||ip3==""||ip4==""||ip5==""){
+			    	alert("空空如也")
+			    	return false;
+			    }		
+
+				var day = new Date();
+				day = day.toLocaleString();	
+
+				var tr = document.createElement('tr');
+				tr.innerHTML="<td><input type='checkbox'; name='xz' /></td>"
+				tr.innerHTML+="<td>"+ip1+"</td>"
+				tr.innerHTML+="<td>"+ip2+"</td>"
+				tr.innerHTML+="<td>"+ip3+"</td>"
+				tr.innerHTML+="<td>"+ip4+"</td>"
+				tr.innerHTML+="<td>"+ip5+"</td>"
+				tr.innerHTML+="<td>"+day+"</td>"
+				tr.innerHTML+="<td><a href='#' oncick='add(this)'>删除</a></td>"
+
+				tb.insertBefore(tr,tb.firstElementChild)
+			}
+
+			function add(obj){
+				obj.parentElement.parentElement.remove()
+				// console.log(obj)//this自己的意思
+			}
+
+			var qx = document.getElementById('qx')
+			var xz = document.getElementsByClassName('xz')
+			console.log(qx)
+			console.log(xz)
+			//绑定事件
+			qx.onclick = function(){//全选加点击事件 = 函数
+				var qx_val = qx.checked;//全选的默认被选中的checked
+				for(var a = 0; a<xz.length; a++){//循环 所有 遍历 a  a<多选框的长度 a++ 遍历
+					xz[a].checked = qx_val;//被选中的[a]下标 默认被选中 = 全选按钮
+				}
+			}
+//全部删除
+			var qs = document.getElementById('qs');
+			var tb = document.getElementById('tbody');
+			console.log(tb)
+			qs.onclick = function(){//点击事件
+			var tr = tb.children;// 子元素 = 父元素的所有的子元素
+			for(var a = 0; a<tr.length; a++){
+				tr[a].remove();//子元素的下标删除
+				a--;//删除第一个
+			}
+
+			}
+//选中删除
+			var dalSel = document.getElementById('dalSel');
+			dalSel.onclick = function(){//选中删除 加点击事件 = 函数
+				var  tr = tb.children;//子元素 = 父元素的所有的子元素
+				for(var a = 0; a<tr.length; a++){//循环遍历所有的子元素的长度
+					var oInp = tr[a].firstElementChild.firstElementChild//多选框 = 子元素 的 下标 的 父元素的 父元素
+					if(oInp.checked ){//判断 多选框 的 默认被选中的
+						tr[a].remove();//所有的子元素的下标的删除 
+						a--;//删除第一个
+					}
+				}
+			}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul ol li {
+            list-style:none;
+            display: block;
+        }
+
+        a{
+            text-decoration:none;
+            display:block;
+        }
+
+        .ll-box{
+            width: 600px;
+            height: 300px;
+            margin: 100px auto;
+            background:pink;
+        }
+
+        .ll-box>.active{
+            list-style: none;
+            width: 90px;
+            height: 300px;
+            /*border: 1px solid #000*/
+            background: #9da8b3;
+            color: #ffffff;
+            text-align: center;
+            float: left;
+        }
+
+        .ll-box>.active>li{
+            line-height: 43px;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .ll-box>.current>li{
+            float: right;
+            margin: 5px;
+            width: 500px;
+            height: 280px;
+            list-style: none;
+            display: none   ;
+            background: #931016;
+            font-size: 26px;
+            color: #ffffff;
+            line-height: 280px;
+            text-align: center;
+        }
+
+        .active>li:hover{
+            background: #00c4b0;
+        }
+
+        .li1{
+            background: #00c4b0;
+        }
+
+        .ll-box>.current>.li2{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="ll-box" id="ll-box">
+        <ul class="active">
+            <li class="li1">自助餐</li>
+            <li>旅游</li>
+            <li>火车</li>
+            <li>网购</li>
+            <li>迪士尼</li>
+            <li>电影院</li>
+            <li>签证</li>
+        </ul>
+        <ol class="current">
+            <li class="li2">王府金钱豹</li>
+            <li>桂林山水甲天下</li>
+            <li>高铁快客Z-K-Y</li>
+            <li>天猫 京东 苏宁 拼多多</li>
+            <li>唐老鸭</li>
+            <li>哪吒魔童降世传奇 战狼2 指环王</li>
+            <li>美国 澳大利亚 迪拜</li>
+        </ol>
+    </div>
+    <script type='text/javascript' src='插件/jquery-3.4.1.js'></script>
+    <script type="text/javascript">
+        $('#ll-box>.active>li').click(function(){
+            console.log($(this).index())//获取当前操作对象下标
+            console.log($(this).addClass('active').siblings());
+            $(this).addClass('li1').siblings().removeClass('li1');
+            //获取当前操作对象下标
+            var llIndex = $(this).index();
+            $("#ll-box>.current>li").eq(llIndex).show("li2").siblings().hide("li2");
+        })
+    </script>
+</body>
+</html>

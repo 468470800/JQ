@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /*全局内外边距为0*/
+
+        a{
+            display: block;
+            text-decoration: none;
+        }
+
+        /*a标签行转块去除下划线*/
+
+
+        ul{
+            list-style: none;
+        }
+        /*给无序列表区除远点*/
+
+        img{
+            border: none;
+        }
+
+        /*图片去除边框*/
+
+        .commonwidth{
+            width: px;
+            margin: 0 auto;
+        }
+
+        /*设置共同宽度块元素居中*/
+
+
+
+        .cls:after{
+            clear: both;
+            height: 0;
+            /*content: ;*/
+            display: block;
+            visibility: hidden;
+        }
+
+        /*清除浮动 高度0 内容为空 转换为块元素 隐藏*/
+
+        .fixed{
+            zoom: 1;
+            /*兼容性*/
+        }
+
+        .ll-warpper{
+            width: 1160px;
+            height: 664px;
+            margin: 50px auto;
+            border: 1px solid #000;
+        }
+
+        .nav{
+            width: 1160px;
+            height: 111px;
+            overflow: hidden;
+            /*border: 1px solid #000;*/
+        }
+
+        .nav>img{
+            margin-left: 110px;
+            margin-top: 22px;
+            float: left;
+        }
+
+        .nav>.navs>P:nth-of-type(1){
+            width: 396px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            float: left;
+            font-size: 14px;
+            border: 2px solid #fa2a83;
+            color: #ffffff;
+        }
+
+        .nav>.navs>P:nth-of-type(1)>input{
+            border: none;
+            outline: none;
+            font-size: 4px;
+            width: 200px;
+            color: #EEEEEE;
+        }
+
+        .nav>.navs>P:nth-of-type(1)>button{
+            background: #fa2a83;
+            width: 120px;
+            height: 30px;
+            border: none;
+            color: #ffffff;
+            float: right;
+        }
+
+        .nav>.navs>p:nth-of-type(2){
+            width: 400px;
+            height: 20px;
+            font-size: 12px;
+        }
+
+        .nav>.navs>p:nth-of-type(2)>span{
+            color: #E0DEDE;
+            padding-right:10px;
+            width: 340px;
+        }
+
+        .navs{
+            width: 400px;
+            height: 60px;
+            /*border: 1px solid #000;*/
+            float: right;
+            margin-top: 22px;
+            margin-right: 300px;
+        }
+
+        .text{
+            float: left;
+            width: 1000px;
+            height: 20px;
+            font-size: 17px;
+            /*border: 1px solid #000;*/
+            color: #E0DEDE;
+        }
+
+        .text>li{
+            float: left;
+            margin-left: 20px;
+
+        }
+
+        .active{
+            margin-left: 20px;
+            width: 220px;
+            height: 30px;
+            background: #000000;
+            color: #ffffff;
+            text-align: center;
+            line-height: 25px;
+            position: relative;
+        }
+
+        .active-ol{
+            position: absolute;
+            display: none;
+            z-index: 2;
+            width: 220px;
+            height: 300px;
+            background: pink;
+        }
+
+        .lunbo{
+            width: 1160px;
+            height: 500px;
+            border: 1px solid #000;
+            position: relative;
+            top: 25px;
+        }
+
+        .banner>li{
+            width: 1160px;
+            height: 500px;
+            display: none;
+            position: absolute;
+        }
+
+        .banner>.banner-li{
+            display: block;
+        }
+
+        .banner>li>img{
+            width: 1160px;
+            height: 500px;
+        }
+
+        .active>ol>li{
+            background: #fa2a83;
+            width: 220px;
+            height: 40px;
+            color: #ffffff;
+        }
+
+        .active>ol>li:hover{
+            background: #e0bb00;
+        }
+
+        .lunbo>ol{
+            width: 340px;
+            background: #e0bb00;
+            position: relative;
+            margin-top: 460px;
+            margin-left: 500px;
+        }
+
+        .lunbo>ol>li{
+            width: 14px;
+            height: 14px;
+            float: left;
+            margin-left: 14px;
+            border-radius: 50%;
+            background: #E0DEDE;
+        }
+
+        .lunbo>ol>.yd{
+            background: #e0bb00;
+        }
+
+        .lunbo>div{
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            bottom: 200px;
+            /*background: #e0bb00;*/
+        }
+
+        .lunbo>div>span:nth-of-type(1){
+            display: block;
+            width: 20px;
+            height: 50px;
+            float: left;
+        }
+
+        .lunbo>div>span:nth-of-type(2){
+            display: block;
+            width: 20px;
+            height: 50px;
+            float: right;
+        }
+
+        .active-ol>li>div{
+            width: 200px;
+            height: 200px;
+            background: #ffffff;
+            color: #000000;
+            position: absolute;
+            right: -200px;
+            display: none;
+            top:0px;
+        }
+
+        .active-ol>li{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+        <div class="ll-warpper">
+            <div class="nav"><img src="shashalogo.png" alt="">
+               <div class="navs">
+                   <p><input type="text"><button>搜索</button></p>
+                   <p>
+                       <span>洗面奶</span><span>|</span>
+                       <span>三冠</span><span>|</span>
+                       <span>防嗮</span><span>|</span>
+                       <span>口红</span><span>|</span>
+                       <span>科技</span><span>|</span>
+                       <span>音乐</span><span></span>
+                       <span>法兰空尘</span></p>
+               </div>
+            </div>
+            <ul class="text">
+                <li class="active">全部分类
+                    <ol class="active-ol">
+                        <li class="ol-li1">面部护理 <div>面部护理</div></li>
+                        <li>彩妆 <div>彩妆</div></li>
+                        <li>香水 <div>香水</div></li>
+                        <li>健康美肌 <div>健康美肌</div></li>
+                        <li>千体美妆 <div>千体美妆</div></li>
+                        <li>个人护理 <div>个人护理</div></li>
+                        <li>男士专区 <div>男士专区</div></li>
+                        <li>育婴护理 <div>育婴专区</div></li>
+                    </ol>
+                </li>
+                <li>香港特快直送</li>
+                <li>闪电保税仓</li>
+                <li>限时特卖</li>
+                <li>贵宾专享</li>
+                <li>莎莎Outlent</li>
+            </ul>
+
+            <div class="lunbo">
+                <ul class="banner">
+                    <li class="banner-li"><img src="ban1.jpg" alt=""></li>
+                    <li><img src="ban2.jpg" alt=""></li>
+                    <li><img src="ban3.jpg" alt=""></li>
+                    <li><img src="ban4.png" alt=""></li>
+                </ul>
+                <ol>
+                    <li class="yd"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+                <div><span><</span><span>></span></div>
+            </div>
+        </div>
+</body>
+</html>
+<script src="jquery-3.4.1.js"></script>
+<script>
+       $(function(){
+           var index = 0;//下标升级为全局变量可以访问
+           var bg = ["pink","#EEE","blue","red"]
+           $(".lunbo>ol>li").mouseenter(function(){
+               $(this).addClass('yd').siblings('li').removeClass('yd')
+                index = $(this).index();
+               $(".banner>li").eq(index).fadeIn().siblings('li').fadeOut()
+               $("body").css("background",bg[index])
+           })
+           //左右切换
+          $(".lunbo>div>span:eq(0)").click(function(){
+              index--;
+              if(index <=-1){
+                  index = 4;//四张图片下标从0开始的;
+              }
+              $(".lunbo>ol>li").eq(index).addClass('yd').siblings('li').removeClass('yd');
+              $(".lunbo>ul>li").eq(index).fadeIn().siblings('li').fadeOut();
+              $("body").css("background",bg[index])
+          })
+           $(".lunbo>div>span:eq(1)").click(function(){
+
+           })
+//            setInterval(function(){
+//                Left()
+//            },2000)
+            setInterval(Left,1500)
+
+           function Left(){
+               index++;
+               if(index >= 4){
+                   index = 0;//四张图片下标从0开始的;
+               }
+               $(".lunbo>ol>li").eq(index).addClass('yd').siblings('li').removeClass('yd');
+               $(".lunbo>ul>li").eq(index).fadeIn().siblings('li').fadeOut();
+               $("body").css("background",bg[index])
+           }
+
+           $(".active").mouseenter(function(){
+               $(".active-ol").show()
+           })
+           $(".active").mouseleave(function(){
+               $(".active-ol").hide()
+           })
+
+           $(".active-ol>li").mouseenter(function(){
+               $(".active-ol>li>div").show()
+           })
+
+
+       })
+</script>

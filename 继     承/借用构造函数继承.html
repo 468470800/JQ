@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	// 优点：可以给父类构造函数传参
+	// 缺点： 不能继承父类的原型
+	function Fu(m,n){
+		this.money = m;
+		this.age = n;
+
+	}
+	Fu.prototype.say = function(){
+		alert(2)
+	}
+	function Zi(m,n){
+		Fu.call(this,m,n)
+	}
+	var z = new Zi(100000,20);
+	console.log(z.money);
+	console.log(z.age)
+</script>

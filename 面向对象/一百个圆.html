@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			pading:0;
+		}
+
+		/*.box{
+			widht:100px;
+			height:100px;
+			background:blue;
+			position:absolute;
+			top:200px;
+			left:200px;
+		}*/
+	</style>
+</head>
+<body>
+	<!-- <div class="box"></div> -->
+</body>
+</html>
+<script>
+	// 声明函数的构造
+	function Circle(){
+		this.width = "100px"
+		this.height = "100px"
+		this.background = "red"
+		this.borderRadius = "50px"
+		this.postion = "absolute"
+		this.top = "100px"
+		this.left = "100px"
+
+
+	}
+	//随机大小
+	Circle.prototype.createSize = function(){
+			return parseInt(Math.random()*(600-10)+10)
+	}
+//   获取背景颜色
+	Circle.prototype.createBg = function(){
+		var r = parseInt(Math.random()*(255+1-0)+0)
+		var g = parseInt(Math.random()*(255+1-0)+0)
+		var b = parseInt(Math.random()*(255+1-0)+0)
+		return "rgb("+r+","+g+","+b+")"
+	}
+	// 获取随机位置
+	Circle.prototype.createBg=function(){
+		return parseInt(Math.random()*(1000-0)+0)
+	}
+	// 创建DIV圆的方式
+	Circle.prototype.createDiv=function(){
+		var oDiv = document.createElement('div');
+		oDiv.style.width = this.width+"px";
+		oDiv.style.height = this.height+"px";
+		oDiv.style.background = this.background;
+		oDiv.style.borderRadius = this.borderRaius;
+		oDiv.style.position = this.position;
+		oDiv.style.top = this.top +"px";
+		oDiv.style.left = this.left+"px";
+		return oDiv;
+			}
+
+	var obj = new Circle()
+	var oDiv = obj.createDiv();
+	console.log(oDiv)
+	document.body.appendChild(oDiv)
+</script>

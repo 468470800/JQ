@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//优点 传参 继承Fu原型链的方法和属性。
+	function Fu(){
+	  this.name = "name"
+	}
+	Fu.prototype.say = function(){
+		console.log(1);
+	}
+//	原型链继承	
+	Zi.prototype = new Fu();
+	function Zi(name){
+		//借用构造函数的继承
+		Fu.call(this,name)
+	}
+
+	var z = new Zi('王五')
+	z.say();
+	console.log(z.name)
+	
+	</script>
+</body>
+</html>

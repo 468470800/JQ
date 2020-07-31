@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//1.字面量
+	// var fn = function(){
+
+	// }
+	// //2.使用function关键字
+	// function fn(){
+
+	// }
+	// //3.实例化
+	// var fn = new Function();
+
+	//4.匿名函数：函数在自定义完成时自我调用，不用命名
+	// 语法：(function(){})(实参)
+	// ()()两个小括号 第一个小括号表示方法体 	第二个调用前面的方法(方法就是函数函数就是方法)
+	// 语法：(function(形参){}(实参))
+	// (function(){
+	// 	alert('岐王李茂贞')	
+	// })
+
+	(function(name){//传参数形参
+		alert("茶仙 陆羽 有云"+name)//内容 + 形参 
+	})("不羡黄金罍，不羡白玉杯不羡朝入省不羡暮登台")//实参
+//字面量
+// 	var fn2 = funnction(){
+
+// 	}
+//字面量
+// 		var fn2 = function(){}
+// 		//function
+// 		function hashm(){}
+// 		//实例化
+// 		var Fn = new Function(){}
+// //匿名函数
+//       	(function(形参){执行语句}(实参))
+
+// //function
+// 	function cj(){
+
+// 	}
+
+// //实例化
+// 	var fn = new Function();
+
+//匿名函数
+	// (function (形参){})(实参);	//在函数定义中完成的调用，不需要名字。语法(函数体)(函数调用)
+
+	// (function(ac){
+	// 	alert("函数执行语句函数调用"+ac)
+	// })("形参实参函数自执行调用")
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	// 1.正则表达式语法：/元字符{量词}/gi
+	//g:global全局
+	//i:ignore 不区分大小写
+	//只针对字符串使用
+	//在正则表达式中o表示元字符当量词为一的 时候可以省略！
+
+// case1.:将good moring中的o替换为o-;
+		// var str = 'good moring'
+		// var patt =/o/g;
+		// var res = str.replace(patt,'o-');//这里就是正则表达式
+		// console.log(res);
+// case2.
+		// var str = 'good moring'
+		// var res = str.replace(/o/g,'o-');//这里就是正则表达式
+		// console.log(res);
+// case3.将good mOring0中的o或者O替换为o-;
+		    // var str = 'good mOring0'
+		    // var patt = /o{1}/gi;//当元字符的量词为1的 时候可以省略
+		    // var res = str.replace(patt,'o-');
+		    // console.log(res);
+// case4.将gooD mOrning中非小写字母替换为*号
+			// var str = 'gooD mOring0'
+// case5.将gooD mOrning中 的小写字母替换为*
+			// var str = 'good mOring0'
+			// var patt = /[^a-z]/g;//匹配所有小写字母字符。
+			// var res = str.replace(patt,'*');
+			// console.log(res)	
+// case6.将"这是谁他妈的？你大爷！2B这帮孙子家伙！"
+				// var str = "这是谁他妈的？你大爷！2B这帮孙子家伙！"
+		  //       var patt = /(他妈的|你大爷|2B|孙子)/g; 	//写正则
+		  //       var res = str.replace(patt,"*");//把敏感词替换掉成为别的*
+		  //       console.log(res)
+		        			
+	</script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+            vertical-align: top;
+        }
+        .img1{
+            width: 120px;
+            height: 200px;
+        }
+        .lll-banner{
+            width: 1170px;
+            height: 280px;
+            margin: 100px auto 0px;
+            background: #eeeeee;
+            overflow: hidden;
+        }
+        /*倒计时*/
+        .ll_left{
+            width: 120px;
+            height: 251px;
+            background: red;
+            float: left;
+            padding: 29px 25px 0px;
+        }
+        .ll_left>span{
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #000000;
+            color: #ffffff;
+            text-align: center;
+            line-height: 30px;
+            margin-top: 10px;
+        }
+        .ll_left>span:nth-last-of-type(3){
+            margin-left: 10px;
+        }
+
+        /*轮播图*/
+        .lll-lunbo{
+            width: 800px;
+            height: 280px;
+            float: left;
+            position: relative;
+            overflow: hidden;
+        }
+        .lll-lunbo>ul{
+            height: 280px;
+
+        }
+        .lll-lunbo>ul>li{
+            position: absolute;
+            left: 800px;
+            top: 0;
+            background: #EEEEEE;
+            overflow: hidden;
+        }
+        .lll-lunbo>ul>li>div{
+            float: left;
+            width: 200px;
+            height: 240px;
+            text-align: center;
+            padding-top: 40px;
+        }
+        .lll-lunbo>div>span{
+            position: absolute;
+            top: 120px;
+            left: 0;
+            width: 20px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 20px;
+            background: #ffffff;
+        }
+        .lll-lunbo>div>span:nth-of-type(2){
+            left: 780px;
+        }
+
+        .right{
+            width: 200px;
+            height: 280px;
+            float: right;
+            overflow: hidden;
+            position: relative;
+        }
+        .right>ul>li{
+            position: absolute;
+            top: 0;
+            left: 200px;
+        }
+        .right>ul>li>img{
+            width: 200px;
+            height: 250px;
+        }
+        .right>ol{
+            position: absolute;
+            bottom: 4px;
+            left: 85px;
+            width: 100px;
+            height: 20px;
+        }
+        .right>ol>li{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 25px;
+            background: #0000FF;
+        }
+
+        .lll-lunbo>ul>li>div>p{
+            color: #f1ae00;
+        }
+
+        .lll-lunbo>ul>li>div>span{
+            color: #C70F0F;
+        }
+    </style>
+</head>
+<body>
+<div class="lll-banner">   <!--居中-->
+
+    <!--左边时间-->
+    <div class="ll_left" id="ll_left">
+        <div><img src="img/ms.png" alt="" class="img1"></div>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!--中间轮播图-->
+    <div class="lll-lunbo" id="lll-lunbo">
+        <ul>
+            <li style="left: 0px">
+                <div>
+                    <img src="img/1.jpg" alt="">
+                    <p>轮播1</p>
+                    <span>111</span>
+                    <span>111</span>
+                </div>
+                <div>
+                    <img src="img1/11.jpg" alt="">
+                    <p>轮播1</p>
+                    <span>111</span>
+                    <span>111</span>
+                </div>
+                <div>
+                    <img src="img1/22.png" alt="">
+                    <p>轮播1</p>
+                    <span>111</span>
+                    <span>111</span>
+                </div>
+                <div>
+                    <img src="img1/33.png" alt="">
+                    <p>轮播1</p>
+                    <span>111</span>
+                    <span>111</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="img1/55.jpg" alt="">
+                    <p>轮播2</p>
+                    <span>222</span>
+                    <span>222</span>
+                </div>
+                <div>
+                    <img src="img1/44.png" alt="">
+                    <p>轮播2</p>
+                    <span>222</span>
+                    <span>222</span>
+                </div>
+                <div>
+                    <img src="img1/33.png" alt="">
+                    <p>轮播2</p>
+                    <span>222</span>
+                    <span>222</span>
+                </div>
+                <div>
+                    <img src="img1/11.jpg" alt="">
+                    <p>轮播2</p>
+                    <span>222</span>
+                    <span>222</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="img1/22.png" alt="">
+                    <p>轮播3</p>
+                    <span>333</span>
+                    <span>333</span>
+                </div>
+                <div>
+                    <img src="img1/11.jpg" alt="">
+                    <p>轮播3</p>
+                    <span>333</span>
+                    <span>333</span>
+                </div>
+                <div>
+                    <img src="img1/33.png" alt="">
+                    <p>轮播3</p>
+                    <span>333</span>
+                    <span>333</span>
+                </div>
+                <div>
+                    <img src="img1/22.png" alt="">
+                    <p>轮播3</p>
+                    <span>333</span>
+                    <span>333</span>
+                </div>
+            </li>
+        </ul>
+        <div><span><</span><span>></span></div>
+    </div>
+
+    <!--右边小轮播图-->
+    <div class="right" id="right">
+        <ul>
+            <li style="left: 0;"><img src="img/f136cff72c2e4b5b962f4637f2b8ec03.jpg" alt=""></li>
+            <li><img src="img/7c1723000b3a4a76b012725c7675f69b.jpg" alt=""></li>
+        </ul>
+        <ol>
+            <li style="background: red"></li>
+            <li></li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    //倒计时
+    setInterval(function () {
+        var future_time = new Date("2019-10-18 19:00:00");
+        var future_time_ms =future_time.getTime();
+
+        var cur_time = new Date();
+        var cur_time_ms = cur_time.getTime();
+        var dif = future_time_ms - cur_time_ms;
+
+        var seconds = parseInt(dif/1000%60)<10?"0"+parseInt(dif/1000%60):parseInt(dif/1000%60);
+        var minutes = parseInt(dif/1000/60%60)<10?"0"+parseInt(dif/1000/60%60):parseInt(dif/1000/60%60);
+        var houses = parseInt(dif/1000/60/60/24)<10?"0"+parseInt(dif/1000/60/60%24):parseInt(dif/1000/60/60/24);
+
+        $("#ll_left>span:eq(0)").html(houses);
+        $("#ll_left>span:eq(1)").html(minutes);
+        $("#ll_left>span:eq(2)").html(seconds);
+
+    },1000);var index = 0;
+    //左右轮播
+    $("#lll-lunbo>div>span:eq(1)").click(function () {
+        index++;
+        if (index >= 3){
+            index = 0;
+            $("#lll-lunbo>ul>li").eq(index).animate({left:"0px"},500);
+            $("#lll-lunbo>ul>li").eq(2).animate({left:"-800px"},500,function () {
+                $(this).css("left","800px");
+            });
+            return false;
+        }
+        $("#lll-lunbo>ul>li").eq(index).animate({left:"0px"},500);
+        $("#lll-lunbo>ul>li").eq(index-1).animate({left:"-800px"},500,function () {
+            $(this).css("left","800px");
+        });
+    })
+
+        //左边按钮
+        $("#lll-lunbo>div>span:eq(0)").click(function(){
+            index--;
+            //如果当前li为第一组图片，上一组图片就是第三组图片
+            if(index <= -1){
+                index = 2;
+                //第三组图片先移动到最左边left=-800px位置，然后在让改组图片显示
+                $("#lll-lunbo>ul>li").eq(index).css("left","-800px").animate({left:"0px"},500);
+                //让第一组图片移走，移动到left:800px;位置即可
+                $("#lll-lunbo>ul>li").eq(0).animate({left:"800px"},500);
+                return false;
+            }
+            //让需要显示的图片先移动到最左边left=-800px位置，然后在让改组图片显示
+            $("#lll-lunbo>ul>li").eq(index).css("left","-800px").animate({left:"0px"},500);//移入
+            //让上一组图片移走，移动到left:800px;位置即可
+            $("#lll-lunbo>ul>li").eq(index+1).animate({left:"800px"},500);//移走
+
+        })
+
+    $.fn.right = function () {
+        var index = 0;
+        this.mouseover(function () {
+            index = $(this).index();
+            $(this).css('background','red').siblings().css("background",'#0000FF');
+            if (index == 0){
+                $("#right>ul>li").eq(0).css("left","0").animate({left:"0px"},1000);
+                $("#right>ul>li").eq(1).animate({left:"200px"},1000);
+            }else if (index == 1){
+                $("#right>ul>li").eq(0).animate({left:"-200px"},1000,function () {
+                    $(this).css("left","200px");
+                });
+                $("#right>ul>li").eq(1).animate({left:"0px"},500);
+            }
+        })
+    }
+    $("#right>ol>li").right();
+
+
+</script>

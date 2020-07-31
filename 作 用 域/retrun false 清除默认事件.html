@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<a href="file:///D:/%E4%BD%9C%E4%B8%9A1/%E4%B8%89%E6%9C%88JQ/%E4%BD%9C%20%E7%94%A8%20%E5%9F%9F/return%20false%E7%9A%84%E4%BD%9C%E7%94%A8.html">点击跳转</a>
+		<!-- href传入它的地址 -->
+		<form action="file:///D:/%E4%BD%9C%E4%B8%9A1/%E4%B8%89%E6%9C%88JQ/%E4%BD%9C%20%E7%94%A8%20%E5%9F%9F/return%20false%E7%9A%84%E4%BD%9C%E7%94%A8.html" value="提交按钮">
+			<input type="submit" value="提交按钮">
+		</form>
+	<script>
+//清除默认事件和退出函数
+	// var oA = document.getElementsByTagName('a')[0]
+	// oA.onclick = function(e){
+	// 	var e = e || wind	ow.event;
+	// 	alert('成功就是简单地事情重复做')
+	// 	 return false;//阻止默认事件
+	// 	e.preventDefault();//阻止默认事件
+	// }
+	//阻止默认事件
+	var  oSub = document.getElementsByTagName('input')[0]
+	oSub.onclick = function(e){
+		alert('不忘初心牢记使命， 坚持')
+		// return false;//阻止默认事件
+		e.preventDefault()//阻止默认事件 
+	}
+	</script>
+</body>
+</html>

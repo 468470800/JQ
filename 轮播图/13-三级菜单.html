@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,ul,li,a,div{padding:0;margin:0;list-style: none;}
+		a{text-decoration: none;color: #000;}
+		.nav{width: 100%;background: #eee;}
+		.core{
+			width: 1080px;
+			margin:100px auto;
+			background: pink;
+		}
+		.menu{clear: both;height: 40px;}
+		.menu li{
+			float: left;
+			width: 100px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			position: relative;
+		}
+		.menu li ul{
+			position: absolute;
+			top:0px;
+			left: 100px;
+			background: orange;
+			width: 100px;
+			display: none;
+		}
+		.menu>li>ul{top:40px;left: 0px;}
+		.menu li:hover{background: red;}
+		.box{
+			width: 200px;
+			height: 200px;
+			display: none;
+			border: 1px solid #000;
+			background: #C70F0F;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="nav"><!-- 通栏 -->
+		<div class="core"><!-- 居中 -->
+			<ul class="menu"><!-- 导航条 -->
+				<li>
+					<a href="javascript:void(1);">首页</a>
+					<ul class="one">
+						<li><a href="javascript:void(1);">首页1</a></li>
+						<li><a href="javascript:void(1);">首页2</a></li>
+						<li><a href="javascript:void(1);">首页3</a></li>
+						<li>
+							<a href="javascript:void(1);">首页4</a>
+							<ul class="two">
+								<li><a href="javascript:void(1);">首页4-1</a></li>
+								<li>
+									<a href="javascript:void(1);">首页4-2</a>
+									<ul class="three">
+										<li><a href="javascript:void(1);">首页4-2-1</a></li>
+										<li><a href="javascript:void(1);">首页4-2-2</a></li>
+									</ul>
+								</li>
+								<li><a href="javascript:void(1);">首页4-3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a href="">关于我们</a></li>
+				<li><a href="">招贤纳士</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="box">我是你大爷</div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>	
+<script>
+	$('.menu li').hover(function(){
+		$(this).children('ul').show();
+	},function(){
+		$(this).children('ul').hide();
+	})
+
+	// $(".box").mouseover(function(){
+	// 	$(this).css("display","block").show()
+	// })
+
+</script>

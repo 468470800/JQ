@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            /*font-family: \9ED1\4F53;*/
+            list-style: none;
+        }
+
+        b,i,em {
+            font-style: normal;
+        }
+        /*共同宽度*/
+        .commonwidth {
+            width: px;
+            margin: 0 auto;
+        }
+        /*清除浮动*/
+
+        .clearfloat:after {
+            display: table;
+            content: "";
+            clear: both;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        img {
+            border: none;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .ll-banner>ol>.ol-li{
+            background: pink;
+        }
+
+        .ll-warpper{
+            width: 100%;
+            height: 500px;
+            background: #000;
+        }
+
+        .ll-banner{
+            margin: 0 auto;
+            width: 1200px;
+            height: 500px;
+            position: relative;
+        }
+
+        .main{
+            width: 1200px;
+            height: 500px;
+        }
+
+        .main>li{
+            width: 1200px;
+            height: 500px;
+            position: absolute;
+            display: none;
+        }
+
+        .ll-banner>.main>.main-li{
+            display: block;
+        }
+
+        .main>li>img{
+            width: 1200px;
+            height: 500px;
+        }
+
+        .ll-banner>ol{
+            width: 500px;
+            height: 20px;
+            /*background: #C70F0F;*/
+            position: relative;
+            bottom:40px;
+            left: 400px;
+        }
+
+        .ll-banner>ol>li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-left: 30px;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+
+        .ll-banner>div{
+            width: 1200px;
+            height: 70px;
+            /*border: 1px solid #000;*/
+            position: absolute;
+            bottom: 300px;
+        }
+
+        .ll-banner>div>span:nth-of-type(1){
+            float: left;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .ll-banner>div>span:nth-of-type(2){
+            float: right;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+
+    </style>
+</head>
+<body>
+        <div class="ll-warpper">
+            <div class="ll-banner">
+                <ul class="main">
+                    <li class="main-li"><img src="img/7c1723000b3a4a76b012725c7675f69b.jpg" alt=""></li>
+                    <li><img src="img/85375d424ef6475092bb123c3ed23331.jpg" alt=""></li>
+                    <li><img src="img/dc422fea316d4010aa6c6ff39ad12670.jpg" alt=""></li>
+                    <li><img src="img/f136cff72c2e4b5b962f4637f2b8ec03.jpg" alt=""></li>
+                </ul>
+                <ol>
+                    <li class="ol-li"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+                <div><span><</span><span>></span></div>
+            </div>
+        </div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    $(function(){
+        var index = 0;
+        var bgArr = ["red","yellow","#000","#FFF"]
+        $(".ll-banner>ol>li").mouseover(function(){
+           $(this).addClass('ol-li').siblings('li').removeClass('ol-li');
+            //图片显示切换
+             index=$(this).index()//获取当前元素的下标
+            $(".main>li").eq(index).fadeIn().siblings("li").fadeOut();//淡入淡出动画效果fadeIn fadeOut 动画效果
+            $(".ll-warpper").css("background",bgArr[index]);
+        })
+        //按钮左右切换
+        $(".ll-banner>div>span:eq(0)").click(function(){//轮播图里面的.ll-banner>div>span>eq:(0)外面包裹的大盒子的包裹两个小按钮的第一个元素
+           index--;
+          if(index<= -1){
+            index = 4;
+           }
+          $(".ll-baner>ol>li").addClass('ol-li').siblings('li').removeClass('ol-li');
+          $(".main>li").eq(index).fadeIn().siblings("li").fadeOut();
+        })
+        $(".ll-banner>div>span:eq(1)").click(function(){
+            index++;
+            if(index>=4) {
+                index = 0;
+            }
+            $(".ll-baner>ol>li").addClass('ol-li').siblings('li').removeClass('ol-li');
+            $(".main>li").eq(index).fadeIn().siblings("li").fadeOut();
+        })
+        //自动轮播
+        var time = setInterval(Left,1500);
+//        自动轮播
+        function Left(){
+            index--;
+            if(index<= -1) {
+                index = 4;
+            }
+            $(".ll-baner>ol>li").addClass('ol-li').siblings('li').removeClass('ol-li');
+            $(".main>li").eq(index).fadeIn().siblings("li").fadeOut();
+        }
+        $(".ll-banner>div>span:eq(0)").click(function(){
+//            alert('朕即天下');
+            $(this).css({background:"#EEE"}).css({width:"40px"}).css({height:"50px"});
+        })
+
+        $(".ll-banner>div>span:eq(1)").click(function(){
+//            alert('朕即天下');
+            $(this).css({background:"#EEE"}).css({width:"40px"}).css({height:"50px"});
+        })
+    })
+</script>

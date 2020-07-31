@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .zjw-1{
+            width: 1000px;
+            height: 500px;
+            border: 1px solid black;
+            position: relative;
+        }
+        ul li{
+            position: absolute;
+            float: left;
+            height: 300px;
+        }
+        ul li img{
+            width: 1000px;
+            height: 500px;
+        }
+        ol{
+            float: left;
+            position: absolute;
+            top: 450px;
+            left: 450px;
+        }
+        ol li{
+            width: 20px;
+            height: 20px;
+            background: #000000;
+            float: left;
+            margin-right: 10px;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+        .zjw-ipt1{
+            width: 25px;
+            height: 40px;
+            position: absolute;
+            left: 0px;
+            top: 210px;
+            opacity: 0.7;
+        }
+        .zjw-ipt2{
+            width: 25px;
+            height: 40px;
+            position: absolute;
+            right: 0px;
+            top: 210px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+<div class="zjw-1" id="zjw-1">
+    <ul>
+        <li><img src="img/1.jpg"/></li>
+        <li><img src="img/2.jpg"/></li>
+        <li><img src="img/3.jpg"/></li>
+        <li><img src="img/4.jpg"/></li>
+        <li><img src="img/5.jpg"/></li>
+    </ul>
+    <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+    <input type="button" class="zjw-ipt1" id="zjw-ipt1" value="<" />
+    <input type="button" class="zjw-ipt2" id="zjw-ipt2" value=">" />
+</div>
+
+
+
+
+
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+
+    var index = 0;
+
+
+
+    var timer = window.setInterval(move,2000);
+
+    //清除定时器，自动轮播
+    $("#box").mouseover(function(){
+        clearInterval(timer);
+    });
+    $("#box").mouseout(function(){
+        timer = window.setInterval(move,2000);
+    })
+
+
+
+
+
+    //回调函数
+    function move(){
+        $("ul li").eq(index).show().siblings().hide();
+        $("ol li").eq(index).css({background:"red"}).siblings().css({background:"blue"});
+        index ++;
+        if(index>=5){
+            index=0;
+        }
+    }
+
+
+
+    //小圆点
+    $("ol li").mouseover(function(){
+        index=$(this).index();
+        $("ul li").eq(index).show().siblings().hide();
+        $("ol li").eq(index).css({background:"red"}).siblings().css({background:"blue"});
+    });
+
+
+
+    //< 按钮
+    $(":button:eq(0)").click(function(){
+        $("ul li").eq(index).show().siblings().hide();
+        $("ol li").eq(index).css({background:"red"}).siblings().css({background:"blue"});
+        index--;
+        if(index<=-1){
+            index=4;
+        }
+    });
+
+
+    //> 按钮
+    $(":button:eq(1)").click(function(){
+        $("ul li").eq(index).show().siblings().hide();
+        $("ol li").eq(index).css({background:"red"}).siblings().css({background:"blue"});
+        index++;
+        if(index>=5){
+            index=0;
+        }
+    });
+</script>
+</body>
+</html>

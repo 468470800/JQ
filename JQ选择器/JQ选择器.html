@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        p{
+            font-size: 20px;
+        }
+
+        ul>li{
+            font-size: 20px;
+        }
+
+        ul>li>ol>li{
+            font-size: 16px;
+        }
+
+        dl{
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <button>点击改变</button>
+        <p>萧芳</p>
+    <ul>
+        <li>百里玄策</li>
+        <li>百里屠苏</li>
+        <li>张小凡</li>
+        <li>林惊羽</li>
+        <li>陆雪琪</li>
+        <ol>
+            <li>李星云</li>
+            <li>李茂贞</li>
+            <li>李克用</li>
+            <li>袁天罡</li>
+            <li>李世民</li>
+        </ol>
+    </ul>
+    <dl>
+        <dt>唐三</dt>
+        <dd>唐晨</dd>
+        <dd>千道流</dd>
+        <dd>千仞雪</dd>
+    </dl>
+</body>
+</html>
+<script src="jquery-3.4.1.js"></script>
+<script>
+    $(function(){
+        $("button").click(function(){
+            $("ul>li").css({color:"red",fontSize:"12px"})
+        })
+    })
+</script>

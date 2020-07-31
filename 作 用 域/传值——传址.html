@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//全局作用域三种
+//    在函数外部使用var声明的变量
+//    怎样判断一个变量为全局变量只要window对象函数该函数该变量就可
+    var a = 1;
+    console.log(a)
+    var b = 2;
+    console.log(window);
+    
+//    在函数内部，使用var声明的变量
+    function test(){
+        a = 1;
+    }
+
+    test();
+    console.log(a);
+
+//    3.使用window.c声明的变量
+    window.c = 3;
+    console.log(window)
+
+</script>
+</body>
+</html>

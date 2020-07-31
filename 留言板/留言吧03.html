@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li{
+            list-style: none;
+        }
+
+        .lll-wrapper{
+            width: 800px;
+            height: 500px;
+            /*border: 1px solid #000;*/
+            background: #f0f3ef;
+            margin: 0 auto;
+        }
+
+        #text{
+            margin: 20px 0 0 150px;
+        }
+
+        button{
+            padding: 4px ;
+        }
+
+        button:nth-of-type(1){
+            margin-left: 150px;
+        }
+        
+        .main{
+            width: 800px;
+            height: 300px;
+            /*border: 1px solid #000;*/
+            margin-top: 4px;
+            background: #ffffff;
+        }
+        
+        .main>li{
+            margin-top: 2px;
+            width: 800px;
+            height: 100px;
+            /*border: 1px solid #000;*/
+            background: pink;
+        }
+
+        .lll-wrapper>span{
+            font-weight: bold;
+            color: darkred;
+        }
+
+        img{
+            width: 100px;
+            margin-left: 20px;
+        }
+
+        .left{
+            float: left;
+        }
+
+        .center{
+            width: 200px;
+            height: 100px;
+            float: left;
+            margin-left: 20px;
+        }
+
+        .center>p:nth-of-type(1){
+            width: 200px;
+            height: 30px;
+            margin-top:10px;
+        }
+
+        .center>p:nth-of-type(2){
+            width: 200px;
+            height: 30px;
+            margin-top:10px;
+        }
+
+        .right{
+            float: right;
+            width: 300px;
+            height: 100px;
+            line-height: 100px;
+        }
+
+        .right>span:nth-of-type(4){
+            font-weight: bold;
+            font-size: 17px;
+            color: #C70F0F;
+        }
+
+        .right>span:nth-of-type(4):hover{
+            color:#e6e6e6;
+        }
+
+        .tored{
+            color: #C70F0F;
+        }
+    </style>
+</head>
+<body>
+        <div class="lll-wrapper">
+            <textarea name="" id="text" cols="80" rows="10" placeholder="请输入留言内容" maxlength="10"></textarea>
+            <br>
+            <button>发表评论</button>
+            <button>清空评论</button>
+            <span class="sp1">0</span>
+            <ul class="main">
+                <li class="li-main">
+                    <div class="left">
+                        <img src="img/u=3475325004,1207579615&fm=26&gp=0%20-%20副本.jpg" alt="">
+                    </div>
+                    <div class="center">
+                        <p>下凡</p>
+                        <p>2019 10 08</p>
+                    </div>
+                    <div class="right">
+                        <span>回复</span>
+                        <span>❤</span>
+                        <span>$*赞</span>
+                        <span>1</span>
+                        <span>删除</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    //全删
+    $(".lll-wrapper button:eq(1)").click(function(){
+        $(".main").empty();//empty()内容
+    })
+//  单删
+    $(".right>span:contains('删除')").click(function(){
+        $(this).parents('.li-main').remove()//删除他的父级 的父级parent()  remove（）删除parents(传值)
+    })
+    //计数
+        $("#text").keyup(function(){
+          var zs = $(this).val().length;
+            console.log(zs)
+            if(zs.length>=10){
+                $('.sp1').html("10")
+                return false;
+            }
+            $('.sp1').html(zs)
+        })
+//      点赞
+        $("span:contains('$*赞')").click(function(){
+            var bool = $(this).prev("span").hasClass("tored")
+            $(this).prev("span").toggleClass("tored")
+            if(bool){
+                var num = $(this).next("span").html()-0;
+                $(this).next("span").html(num-1)
+            }else{
+                var num = $(this).next("span").html()-0;
+                $(this).next("span").html(num+1)
+            }
+        })
+    //创建
+
+
+
+
+</script>

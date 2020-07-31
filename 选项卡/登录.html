@@ -1,0 +1,110 @@
+$(function(){
+//页面加载之后，生成验证码
+var zhCode = zhCreateCode();
+$("#zh-login i").html(zhCode);
+
+
+
+//点击，生成验证码
+$("#zh-login i").click(function(){
+var zhCode = zhCreateCode();
+$("#zh-login i").html(zhCode);
+})
+
+//失去光标
+//用户名验证
+$("#zh-login input:eq(0)").blur(function(){
+zhUnameVal();
+})
+//密码验证
+$("#zh-login input:eq(1)").blur(function(){
+zhPassVal();
+})
+//验证码验证
+$("#zh-login input:eq(2)").blur(function(){
+zhCodeVal();
+})
+
+//登录验证
+$("button").click(function(){
+//获取用户输入内容
+var b1 = zhUnameVal();
+var b2 = zhPassVal();
+var b3= zhCodeVal();
+if(b1 && b2 && b3){
+//跳转
+
+window.location.href="www.baidu.com";
+}
+})
+
+//名文和密文切换
+$("#zh-login strong").click(function(){
+//获取当前密码输入框的type属性的属性值
+var zhType = $(this).prev('input').prop('type');
+if(zhType == "password"){
+$(this).prev('input').prop('type',"text");
+}else{
+$(this).prev('input').prop('type',"password");
+}
+})
+})
+
+// 生成验证码函数
+function zhCreateCode(){
+//1000-9999
+return parseInt(Math.random()*(9999-1000)+1000);
+}
+//用户名验证
+function zhUnameVal(){
+var str = $("#zh-login input:eq(0)").val().trim();
+var patt = /^0?1(3|4|5|6|7|8|9)[0-9]{9}$/;
+var bool = patt.test(str);
+if(bool){
+//正确
+$("#zh-login input:eq(0)").nextAll('span').html("");
+return true;
+}else{
+//错误
+$("#zh-login input:eq(0)").nextAll('span').html("手机号输入错误").css("color","red")
+return false;
+}
+}
+
+//密码验证
+function zhPassVal(){
+var str = $("#zh-login input:eq(1)").val().trim();
+var patt = /^.{6,}$/;
+var bool = patt.test(str);
+if(bool){
+//正确
+$("#zh-login input:eq(1)").nextAll('span').html("");
+return true;
+}else{
+//错误
+$("#zh-login input:eq(1)").nextAll('span').html("密码输入错误").css("color","red")
+return false;
+}
+}
+
+//验证码验证
+function zhCodeVal(){
+//获取用户输入内容
+var str = $("#zh-login input:eq(2)").val().trim();
+var code = $("#zh-login i").html();
+console.log(str,code)
+if(str == code){
+//正确
+$("#zh-login input:eq(2)").nextAll('span').html("");
+return true;
+}else{
+//错误
+$("#zh-login input:eq(2)").nextAll('span').html("验证码输入错误").css("color","red")
+return false;
+}
+}
+
+
+
+
+

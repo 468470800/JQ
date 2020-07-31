@@ -1,0 +1,244 @@
+ 1、面向对象的概念
+	面向过程：关注点是每个细节
+	面向对象：关注点是结果，具体实现步骤不需要知道
+
+
+2、对象的两种创建方式
+	1.字面量
+	var obj = {};
+
+
+	2.实例化
+	var obj = new Object();
+	obj.name = "张三";
+	obj.work = function(){
+		this:obj
+	}
+
+
+	obj.work()
+	delete obj.name;
+
+
+	3.工厂模式
+    function createObj(){
+    	//this:window
+    	var obj = new Object();
+		obj.name = "张三";
+		obj.work = function(){
+			//this:obj
+		}
+		return obj;
+    }
+    var obj =  createObj();
+
+
+    //4.构造函数
+    function Boy(name){
+    	this.name=name;//this指向o
+    }
+    var o = new Boy("zhagnsan");
+
+
+
+
+
+
+
+
+
+
+3、工厂模式
+4、构造函数模式
+5、“.”和”[]”运算符的运用及区别对象的遍历(for ... In ...)
+对象.属性名
+对象[属性的变量]
+
+
+var obj = {name:"lisi",age:18,work:function(){}};
+for(var index in obj){
+	index:指的是属性名和方法名
+	打印所有对应的属性值
+	obj[index]
+}
+
+
+1、 原型的概念
+	每个函数对象都有一个prototype属性，这个属性就是原型
+2、Constructor、prototype、__proto__的作用
+3、原型、构造函数和实例三者之间的关系
+4、 hasOwnProperty()方法和 in 操作符的用法
+
+
+所有js内置对象：
+Number,String,Boolean,Null,Undefined,Object,Array,Date,Math,Regexp(正则对象)，Funciton，window
+
+
+1、原型链继承的方法
+		//优点：可以继承父亲的原型的方法和属性
+		//缺点：不可以传参
+		function Fu(){
+			this.name = "zhangsan";
+			console.log(this);//实例化对象
+		}
+		Fu.prototype.work=function(){
+			console.log(this.name);//实例化对象
+		}
+
+
+		//原型链继承实现方法
+		Zi.prototype = new Fu();
+
+
+		function Zi(){
+
+
+		}
+		var z = new Zi();
+		console.log(z.name);
+		z.work();
+2、借助构造函数继承的方法
+		//优点：可以传参
+		//缺点：不可以继承父亲的原型的方法和属性
+	function Fu(name){
+		this.name = name;
+	}
+	Fu.prototype.work=function(){
+		console.log(this.name);//实例化对象
+	}
+
+
+	function Zi(name){
+		Fu.call(this,name);
+	}
+	var z = new Zi('zhangsan');
+	console.log(z.name);
+	z.work();
+
+
+3、混合继承的方法
+	function Fu(name){
+		this.name = name;
+	}
+	Fu.prototype.work=function(){
+		console.log(this.name);//实例化对象
+	}
+	Zi.prototype = new Fu();
+	function Zi(name){
+		Fu.call(this,name);
+	}
+	var z = new Zi('zhangsan');
+	console.log(z.name);
+	z.work();
+	</script>
+4、混合继承的优缺点
+5、继承的概念
+一个对象直接使用另一个对象的属性和方法，就是继承
+
+
+
+
+
+
+1、JQ基本语法
+	$("#box").click(function(){
+		alert(111);
+	})
+	JQ对象.事件名(function(){
+		引发事件处理程序
+	})
+
+
+	console.log(jQuery);//构造函数名
+	console.log(jQuery());//jq空对象
+	console.log($);//构造函数名
+	console.log($());//jq空对象
+
+
+2、对象转换
+	js对象和jq对象的转化
+
+
+
+
+1、dom与jquery的相互转换
+	js的dom对象转换为jquery对象：$(js对象)
+			$(oBox)
+
+
+	jq对象转换为js的dom对象 ：[下标], .get(下标)
+		$('#box')[0]
+		$('#box').get(0);
+
+
+
+
+2、基本选择器 5个
+	id选择器 $('#box')
+	类选择器 $('.box')
+	元素选择器  $('div')
+	全局选择器  $('*') 匹配的所有的元素（所有标签）
+	群组选择器  $('ul,ol')
+	
+3、层次选择器4个
+	后代选择器 空格  $('ul li')
+	子代选择器 >     $('ul>li')
+	相邻元素选择器 +   相邻的下一个 $('ul+ol')  <=等价于=> next('ol')
+	兄弟元素选择器 ~	下面的所有兄弟元素  $('input~div')  ==> nextAll('div')
+	
+4、基本过滤选择器
+	*:first 匹配第一组ul元素的第一个li   区别 :first-child：匹配所有ul元素的第一个li
+	:not   $("li:not(.c1)")
+	*:even  匹配下标是偶数
+	*:odd  匹配下标是奇数的
+	*:gt(下标)    Greater Than 大于
+	*:lt(下标)		less than 小于
+	*:eq(下标)
+	:last   最后一个
+	 :header  匹配所有的标题元素
+	 :focus  匹配获取焦点的元素
+	 :animated 匹配具有动画效果的元素
+	 :root //只能匹配html标签
+	
+5、内容过滤
+	:contains()  $("div:contains('hello')")  匹配自身或者其后代包含hello这个字符串div
+	:empty  $("div:empty") 匹配空的div 
+	:parent  $("div:parent") 匹配非空的div
+	:has()   $("div:has(p)") 匹配后代包含p的div
+	
+6、可见性过滤
+	:hidden 匹配隐藏元素  针对display属性
+	:visible  匹配可见元素
+7、属性选择器
+	[属性名]  $("[value]")
+	[属性名=属性值]  $("[type=button]")
+8、表单选择器
+	:input  匹配所有input框和button
+	:button 匹配所有按钮（input 按钮 button按钮）
+	:text 匹配文本框
+	:radio
+	:checkbox 
+9、表单对象属性
+	:checked	
+
+
+<input type="text"  placeholder="输入姓名4" autofocus="autofocus"/>
+		<!-- autofocus:自动获取焦点 -->	html()：操作内容
+
+
+10、常用的jq方法：
+	操作样式：
+	css({color:"red",fontSize:'20px'}) 
+	css("color","red")
+
+
+	animate(样式对象,动画时间) 动画函数
+
+
+	addClass() 添加类名
+	removeClass('active')删除类名
+	siblings() 获取兄弟元素
+	index() 获取当前操作对象的下标
+	eq(i) 获取该下标对应的元素
+	show() 显示
+	hide() 隐藏

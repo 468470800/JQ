@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /*全局内外边距为0*/
+
+        a{
+            display: block;
+            text-decoration: none;
+        }
+
+        /*a标签行转块去除下划线*/
+
+
+        ul{
+            list-style: none;
+        }
+        /*给无序列表区除远点*/
+
+        img{
+            border: none;
+        }
+
+        /*图片去除边框*/
+
+        .commonwidth{
+            width: px;
+            margin: 0 auto;
+        }
+
+        /*设置共同宽度块元素居中*/
+
+
+
+        .cls:after{
+            clear: both;
+            height: 0;
+            /*content: ;*/
+            display: block;
+            visibility: hidden;
+        }
+
+        /*清除浮动 高度0 内容为空 转换为块元素 隐藏*/
+
+        .fixed{
+            zoom: 1;
+            /*兼容性*/
+        }
+
+        .ll-warpper{
+            width: 1000px;
+            height: 400px;
+            margin: 10px auto;
+            border: 1px solid #000;
+        }
+
+        .nav{
+            width: 1000px;
+            height: 40px;
+            background: #1c0f0f;
+        }
+
+        .nav-ul{
+            width: 1000px;
+            height: 40px;
+        }
+
+        .nav>ul>li{
+            float: left;
+            font-size: 16px;
+            color: #ffffff;
+            line-height: 40px;
+            padding: 0 20px;
+        }
+
+        .nav>ul>li:nth-of-type(4){
+            margin-right: 80px;
+        }
+
+        .nav{
+            position: relative;
+        }
+
+        .nav-ul>li>ol{
+            width: 60px;
+            text-align: center;
+            position: absolute;
+            z-index: 10;
+            display:none;
+            background: #e0bb00;
+        }
+        .nav-ul>li>ol>li:hover{
+            background: #2f4151;
+        }
+
+        .lunbo{
+            width: 1000px;
+            height: 360px;
+            position: relative;
+        }
+
+        .lunbo>li:nth-of-type(1){
+            display: block;
+        }
+
+        .lunbo>li{
+            display: none;
+        }
+
+        .lun-ul>li{
+            width: 1000px;
+            height: 560px;
+            position: absolute;
+        }
+
+        .lun-ul>li>img{
+            width: 1000px;
+            height: 360px;
+        }
+
+        .lunbo>ol{
+            width: 300px;
+            height: 20px;
+            position: absolute;
+            left: 355px;
+            top:250px;
+        }
+
+        .lunbo>ol>li{
+            width: 16px;
+            height: 16px;
+            float: left;
+            border-radius: 50%;
+            background: #ffffff;
+            margin-left: 30px;
+        }
+
+        .nav-ul>li:hover{
+            background: #0c80dc;
+        }
+
+        .lunbo>div{
+            position: absolute;
+            width: 1000px;
+            height: 50px;
+            top: 200px;
+        }
+
+        .lunbo>div>span:nth-of-type(1){
+            display: block;
+            width: 20px;
+            height: 50px;
+            float: left;
+            background: #ffffff;
+        }
+
+        .lunbo>div>span:nth-of-type(2){
+            display: block;
+            width: 20px;
+            height: 50px;
+            float: right;
+            background: #ffffff;
+        }
+
+        .lunbo>ol>.ol-l{
+            background: #e0bb00;
+        }
+    </style>
+</head>
+<body>
+<div class="ll-warpper">
+    <div class="nav">
+        <ul class="nav-ul">
+            <li>首页</li>
+            <li>榜单</li>
+            <li>下载客户端</li>
+            <li>更多
+                <ol>
+                    <li>88888</li>
+                    <li>88888</li>
+                    <li>88888</li>
+                    <li>88888</li>
+                </ol>
+            </li>
+            <li>音乐直播</li>
+            <li>酷狗LIVE</li>
+            <li>音乐人</li>
+            <li>成为主播</li>
+            <li>商城</li>
+        </ul>
+    </div>
+    <div class="lunbo">
+        <ul class="lun-ul">
+            <li><img src="4.png" alt=""></li>
+            <li><img src="3.png" alt=""></li>
+            <li><img src="img1.png" alt=""></li>
+            <li><img src="img2.png" alt=""></li>
+        </ul>
+        <div><span></span><span></span></div>
+        <ol>
+            <li class="ol-l"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>
+<script src="jquery-3.4.1.js"></script>
+<script>
+        $(function(){
+            var index =0;
+            $(".nav-ul>li").mouseenter(function(){
+                $(".nav-ul>li>ol").show()
+            })
+            $(".nav-ul>li").mouseleave(function(){
+                $(".nav-ul>li>ol").hide()
+            })
+           $(".lunbo>ol>li").mouseenter(function(){
+               $(this).addClass('ol-l').siblings('li').removeClass('ol-l');
+               index = $(this).index;
+               $(".lun-ul>li").eq(index).fadeIn().siblings("li").fadeOut()
+           })
+        })
+</script>

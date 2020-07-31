@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .lllwrapper{
+            width: 500px;
+            height: 400px;
+            background: pink;
+            margin: 0 auto;
+        }
+
+        .lllnav{
+            float: left;
+            width: 20px;
+            height: 400px;
+            background: #00a6e4;
+        }
+
+        .lllnav>.nav1{
+         background: red;
+        }
+
+        .lllnav>li{
+            height: 40px;
+        }
+
+        .lllmain>li{
+            width: 400px;
+            float: right;
+            height: 400px;
+            display: none;
+            background: #7e7e7e;
+        }
+
+
+
+        .main1{
+            display: block;
+        }
+
+        .lllmain>.main1{
+            display: block;
+        }
+
+        .lllmain>li:nth-of-type(2){
+            background:pink;
+        }
+
+        .lllmain>li:nth-of-type(3){
+            background:red;
+        }
+
+        .lllmain>li:nth-of-type(4){
+            background:#F0F0F0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="lllwrapper">
+        <ul class="lllnav">
+            <li class="nav1">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <ul class="lllmain">
+            <li class="main1">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <script src="插件/jquery-3.4.1.js"></script>
+    <script>
+        var index = 0;
+        function add(){
+            $(".lllnav>li").click(function(){
+                $(this).addClass("nav1").siblings().removeClass("nav1");
+                 index = $(this).index();
+                $(".lllmain>li").eq(index).addClass("main1").siblings().removeClass("main1")
+            })
+            setInterval(move,1000)
+            function move() {
+                index--;
+                if (index <= -1) {
+                    index = 4;
+                }
+                $(".lllnav>li").click(function () {
+                    $(this).addClass("nav1").siblings().removeClass("nav1");
+//                    index = $(this).index();
+                    $(".lllmain>li").eq(index).addClass("main1").siblings().removeClass("main1")
+                })
+            }
+            }
+        new add()
+
+
+
+
+    </script>
+</body>
+</html>

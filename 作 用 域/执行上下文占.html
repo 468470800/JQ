@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+			var a = 1;
+			//全局作用域
+
+			function test(){
+				var b = 2;
+				console.log(b)
+			}
+			test()//函数划分作用域 
+
+			function test1(){
+				var b =2;
+				console.log(b);
+			}
+			test1()
+	</script>
+</body>
+</html>

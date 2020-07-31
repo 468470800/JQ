@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        /*全局内外边距为0*/
+
+        a{
+            display: block;
+            text-decoration: none;
+        }
+
+        /*a标签行转块去除下划线*/
+
+
+        ul{
+            list-style: none;
+        }
+        /*给无序列表区除远点*/
+
+        img{
+            border: none;
+        }
+
+        /*图片去除边框*/
+
+        .commonwidth{
+            width: px;
+            margin: 0 auto;
+        }
+
+        /*设置共同宽度块元素居中*/
+
+
+
+        .cls:after{
+            clear: both;
+            height: 0;
+            /*content: ;*/
+            display: block;
+            visibility: hidden;
+        }
+
+        /*清除浮动 高度0 内容为空 转换为块元素 隐藏*/
+
+        .fixed{
+            zoom: 1;
+            /*兼容性*/
+        }
+
+        .ll-warpper{
+            width: 1200px;
+            height: 800px;
+            margin: 0 auto;
+        }
+
+        .nav{
+            width: 1200px;
+            height: 60px;
+            /*background: #EEEEEE;*/
+            line-height: 60px;
+        }
+        
+        .nav>span:nth-of-type(1){
+            float: left;
+            font-weight: bold;
+            font-size: 25px;
+            color: red;
+        }
+
+        .nav>span:nth-of-type(2){
+            float: right;
+            font-size: 20px;
+            color: #e0bb00;
+        }
+
+        .p1{
+            width: 1200px;
+            height: 30px;
+            background: #EEEEEE;
+        }
+
+        .p1>input{
+            margin-left: 40px;
+        }
+
+        .p1>span{
+            font-size: 20px;
+            color: #000000;
+            margin-left: 170px;
+        }
+        
+        .main{
+            width: 1200px;
+            height: 140px;
+            border-bottom: 1px solid #f0eb98;
+        }
+
+        .main>li{
+            float: left;
+            width: 169px;
+            height: 140px;
+            text-align: center;
+            line-height: 140px;
+        }
+
+        .main>li>img{
+            width: 100px;
+            height: 120px;
+            margin-top: 20px;
+        }
+
+        button{
+            padding:0 2px;
+        }
+
+        .p2{
+            margin-top: 20px;
+        }
+
+        .p2>button{
+            margin-left: 200px;
+        }
+        
+        .p2>input{
+            margin-left: 50px;
+        }
+
+        .p2>span{
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+        <div class="ll-warpper">
+            <div class="nav">
+                <span>全部商品</span>
+                <span>配送至：<select name="" class="selectl" >
+                    <option value="华盛顿">旧金山斯坦福硅谷</option>
+                    <option value="北京">北京</option>
+                    <option value="迪拜">迪拜</option>
+                    <option value="东京">京都</option>
+                    <option value="伦敦">伦敦</option>
+                </select></span>
+            </div>
+            <p class="p1">
+                <input type="checkbox">全选
+                <span>商品</span>
+                <span>单价</span>
+                <span>数量</span>
+                <span>小计</span>
+                <span>操作</span>
+            </p>
+          <div class="main0">
+              <ul class="main">
+                  <li><input type="checkbox"></li>
+                  <li><img src="img/11.jpg" alt=""></li>
+                  <li>旅行包：</li>
+                  <li>10</li>
+                  <li>
+                      <button>+</button>
+                      <input type="text" value="1" size="1">
+                      <button>-</button></li>
+                  <li>10</li>
+                  <li>删除</li>
+              </ul>
+              <ul class="main">
+                  <li><input type="checkbox"></li>
+                  <li><img src="img/22.png" alt=""></li>
+                  <li>旅行包：</li>
+                  <li>10</li>
+                  <li>
+                      <button>+</button>
+                      <input type="text" value="1" size="1">
+                      <button>-</button></li>
+                  <li>10</li>
+                  <li>删除</li>
+              </ul>
+              <ul class="main">
+                  <li><input type="checkbox"></li>
+                  <li><img src="img/33.png" alt=""></li>
+                  <li>旅行包：</li>
+                  <li>10</li>
+                  <li>
+                      <button>+</button>
+                      <input type="text" value="1" size="1">
+                      <button>-</button></li>
+                  <li>10</li>
+                  <li>删除</li>
+              </ul>
+              <ul class="main">
+                  <li><input type="checkbox"></li>
+                  <li><img src="img/44.png" alt=""></li>
+                  <li>旅行包：</li>
+                  <li>10</li>
+                  <li>
+                      <button>+</button>
+                      <input type="text" value="1" size="1">
+                      <button>-</button></li>
+                  <li>10</li>
+                  <li>删除</li>
+              </ul>
+          </div>
+            <p class="p2">
+                <input type="checkbox">全选
+                <button>删除所选</button>
+                <button>清空购物车</button>
+                <span>0</span>总计：
+                <button>结算</button>
+            </p>
+        </div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/gwc.js"></script>
+<script>
+   $(function(){
+       //加减
+       $("button:contains('+')").click(function(){
+//        alert('朕即天下')
+           var num = $(this).next().val()-0;
+           if(num>=4){
+               alert('限制')
+               return false;
+           }
+           $(this).next().val(num+1)
+           var r = $(this).parents("ul")
+           aff(r)
+           Ji()
+       })
+       $("button:contains('-')").click(function(){
+//        alert('朕即天下')
+           var num = $(this).prev().val()-0;
+           if(num<1){
+               alert('限制')
+               return false;
+           }
+           $(this).prev().val(num-1)
+           var r = $(this).parents("ul")
+           aff(r)
+           Ji()
+       })
+       //删除
+       $("li:contains('删除')").click(function(){
+           $(this).parent('ul').remove()
+           Ji()
+       })
+
+//       删除所选
+       $(".p2 button:eq(0)").click(function(){//选中他的第几个按钮下标从0开始
+           alert("朕即天下")
+           $("main :checked").parents('main').remove()//身体里面的默认被选中的元素尿素的父级添加参数属性（）删除
+           Ji()
+       })
+        $("")
+       //清空购物车
+       $(".p2>button:eq(1)").click(function(){
+           $(".main0").empty()
+           Ji()
+       })
+       //全选
+       $(".p1 :checkbox,.p2 :checkbox").click(function(){
+           var bool = $(this).prop('checked')
+//           console.log(bool);
+           $(".main0 :checkbox").prop("checked",bool)
+           $(".p1 :checkbox").prop("checked",bool)
+           $(".p2 :checkbox").prop("checked",bool)
+           Ji()
+       })
+       //反选
+       $(".main0 :checkbox").click(function(){
+//           alert('朕即天下')
+           var checkboxNum = $(".main0 :checkbox").length;
+           var checkedNum = $(".main0 :checked").length;
+           console.log(checkboxNum,checkedNum)
+           if(checkboxNum == checkedNum){
+               console.log(checkboxNum,checkedNum)
+                $(".main:checkbox,.p1 :checkbox,.p2 :checkbox").prop("checked",true)
+            }else{
+                $(".main:checkbox,.p1 :checkbox,.p2 :checkbox").prop("checked",false)
+            }
+           Ji()
+
+       })
+//小计
+       $(".p2 button:eq(0)").click(function(){
+           $("li :checked").parent().parent().remove()
+           Ji()
+       })
+        function aff(q){
+            var num = q.find('[type=text]').val()-0;
+            var jg = q.find("li").eq(3).html()-0;
+            var xj =  num*jg;
+            console.log(xj);
+            q.find('li').eq(5).html(xj)
+        }
+//       $('.main').each(function(index,element){
+//           aff($(element))
+//       });
+       //总计8个事件影响总计
+       function ass(){
+
+       }
+
+       function Ji(){
+           var sum = 0;
+           $(".main input:checked").each(function(index,element){
+              var xj = $(element).parent('li').nextAll().eq(4).html()-0;
+               sum = sum+xj;
+//               console.log(xj);
+           });
+           console.log(sum);
+           $(".p2 span").html(sum);
+       }
+          Ji();
+   })
+</script>

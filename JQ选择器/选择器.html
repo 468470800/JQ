@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<button>点击</button>
+<ul>
+    <div>ul--div</div>
+    <li>ul--li1</li>
+    <li><a href="#">ul--li-a2</a></li>
+    <li>ul--li3****</li>
+    <ol>
+        <li><a href="#">ol--li-a1</a></li>
+        <li>ol--li2</li>
+        <li><a href="#">ol--li--a3</a></li>
+    </ol>
+    <div>ul-div2</div>
+    <div><a href="#">ul-div-a1</a></div>
+</ul>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    $(":button").click(function(){
+
+        // 现在我们在第一个ul中第一个li位置，让ol中的含有a标签的li字体变红
+        // $('ul>li:first').siblings('ol').children("li:has(a)").css('color',"red");
+        // $('ul>li:first').siblings('ol').find("a").css('color',"red");
+
+
+
+        // 让ul中所有的子元素li字体变红
+        $("ul>li").css('color','red');
+        var colr = $("ul>li:eq(0)").css('color');
+//        console.log(colr);
+        // $("ul").children("li").css('color','red');
+
+        // 在ol>li第一个li中的a位置,打印出父元素的内容
+        // var res = $("ol>li:eq(0)>a").parent().html();
+        // var res = $("ol>li:eq(0)>a").parents().html();//不传参时,===parent()
+        // var res = $("ol>li:eq(0)>a").parents('ol').html();//可以传参
+        // var res = $("ol>li:eq(0)>a").closest('li').html();//必须传参
+        // var res = $("ol>li:eq(0)>a").closest('ol').html();//必须传参
+        // console.log(res);
+
+        // var res = $("ol>li:eq(0)>a").parent().html();
+        // var res = $("ol>li:eq(0)>a").parent().text();//默认找第一父亲
+        // console.log(res);
+
+        // var res = $("ol>li:eq(0)>a").parents("ol").html();//可以传参
+        // var res = $("ol>li:eq(0)>a").closest("ol").html();//必须传参
+        // console.log(res);
+
+        // 我们在ul>li第三个li位置，让上面的所有li设置字体为30px;让下面所有的div字体为红色
+        // $("ul>li:eq(2)").prevAll('li').css({fontSize:"30px"});
+        // $("ul>li").eq(2).nextAll('div').css({color:"red"});
+
+
+
+
+
+
+
+        // $('ul>li:eq(2)').prevAll('li').css({fontSize:"30px"});
+        // $('ul>li:eq(2)').prev('li').css({fontSize:"30px"});
+        // $('ul>li:eq(2)').prev('div').css({fontSize:"30px"});//不可以
+        // $('ul>li:eq(2)').nextAll('div').css({color:"red"});
+        // $('ul>li:eq(2)').next('div').css({color:"red"});
+
+        // 获取ul最后一个div的内容
+        // var res = $("ul>div:last").html();
+        // var res = $("ul>div").last().html();
+        // console.log(res);
+        // var res = $("ul>div").last().text();
+        // console.log(res);
+        // $("ul>div").last().text("你究竟喜欢我什么，我改还不行吗？");
+
+    })
+
+//    3、jq特效功能实现步骤：
+//    1.分析涉及的事件 click
+//    2.该事件影响的哪些元素？ 2
+//    3.影响这些元素的方式：
+//    a.内容--js： innerHTML   innerText  value:文本框、文本域(textarea)
+//    jq:   html()      text()     val()
+//
+//    传参：设置内容   不传参：获取内容
+//
+//    b.样式--js:  style    className  id
+//    jq:   css()    addClass()  removeClass()  hasClass()
+//    css():一个字符串参数：获取样式
+//    两个字符串参数：设置样式
+//    一个对象参数：设置样式
+//
+//    c.属性--js:  js对象.属性名   setAttribute()   getAttribute()      如oInp.type = "password";
+//    jq:   attr()  prop()
+//
+//    4.功能实现：a.骨架--html标签 b.布局--css样式 c.实现功能--jq
+//
+//
+//
+//
+//
+//    1、jQ的高级选择器
+//    find()	:匹配当前元素的后代
+//    children() ：匹配元素的子元素
+//
+//    parent():匹配元素第一个父元素，不管能否匹配，都不会继续找
+//    parents():匹配所有的父元素,可以传参
+//    closest():匹配指定的父元素,必须传参
+//
+//    next():匹配被选元素的后一个兄弟元素
+//    nextAll():匹配元素集合中每个元素所有跟随的兄弟元素
+//    prev():匹配被选元素的前一个兄弟元素
+//    prevAll()：匹配被选元素之前的所有兄弟元素
+//    siblings():匹配被选元素的所有兄弟元素
+//    eq():匹配元素集中指定的下标相应的元素
+//    index():匹配指定元素相对于其他指定元素的下标
+//    first():匹配被选元素的第一个元素
+//    last():匹配被选元素的最后一个元素
+//
+//    html():设置或返回被选元素的内容（==innerHTML)
+//    text():设置或返回被选元素的文本内容（==innerText)
+
+</script>
+</body>
+</html>

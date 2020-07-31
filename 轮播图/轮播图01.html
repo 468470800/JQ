@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .ll-warpper{
+            width: 800px;
+            height: 420px;
+            /*border: 1px solid #000;*/
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .nav{
+            width: 799px;
+            height: 40px;
+            /*border: 1px solid #000;*/
+            background: #00a6e4;
+            line-height: 40px;
+            position: relative;
+        }
+
+        .nav>li{
+            font-size: 22px;
+            color: #ffffff;
+            padding: 0 48px;
+            float: left;
+        }
+
+        .nav>li:hover{
+            background: #e0bb00;
+        }
+
+        .ll-warpper>ol{
+            width: 244px;
+            z-index: 12;
+            height: 20px;
+            position: absolute;
+            top: 285px;
+            left:300px;
+        }
+
+        .ll-warpper>ol>li{
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            margin-right: 30px;
+            float: left;
+            border: 2px solid #C70F0F;
+        }
+
+        .main>li>img{
+            width: 799px;
+        }
+
+        .main>li{
+            position: absolute;
+        }
+
+        .main>li{
+            width: 799px;
+            height: 370px;
+            position: relative;
+            position: absolute;
+        }
+
+        .main>li>p{
+            width: 799px;
+            background: rgba(0,0,0,0.3);
+            position: absolute;
+            color: #ffffff;
+            bottom: 27px;
+        }
+
+        .ll-warpper>div{
+            position: absolute;
+            width: 799px;
+            height: 40px;
+            z-index: 10;
+            top:150px;
+        }
+
+        .ll-warpper>div>span{
+            display: block;
+        }
+
+        .ll-warpper>div>span:nth-of-type(1){
+            float: left;
+            width: 40px;
+            height: 40px;
+            background: #e0bb00;
+        }
+
+        .ll-warpper>div>span:nth-of-type(2){
+            float: right;
+            width: 40px;
+            height: 40px;
+            background: #e0bb00;
+        }
+
+        .nav>div{
+            width: 40px;
+            height: 40px;
+            background: #e0bb00;
+            position: absolute;
+            right: 0px;
+            z-index: 11;
+        }
+
+        .nav>div>ol{
+            height: 250px;
+            background: #00a7e1;
+            display: none;
+        }
+
+
+        .nav>.li1{
+            background: #00a6e4;
+        }
+
+        .main>.li2{
+            display: block;
+        }
+
+        .main>li{
+            display: none;
+        }
+
+        .zd{
+            width: 1200px;
+            height: 370px;
+            color: #3d536e;
+        }
+
+    </style>
+</head>
+<body>
+<div class="ll-warpper" id="ll-warpper">
+    <ul class="nav" id="nav">
+        <li class="li1">清风</li>
+        <li>明月</li>
+        <li>玉如意</li>
+        <li>风萧</li>
+        <li>绕指柔</li>
+        <div>
+            <h3>更多</h3>
+            <ol>
+                <li >1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ol>
+        </div>
+    </ul>
+
+    <ul class="main" id="main">
+        <li class="li2"><img src="img/1.jpg" alt="">
+        <p>清风</p>
+        </li>
+        <li><img src="img/2.jpg" alt="">
+        <p>明月</p>
+        </li>
+        <li><img src="img/3.jpg" alt="">
+        <p>玉如意</p>
+        </li>
+        <li><img src="img/4.jpg" alt="">
+        <p>风萧</p>
+        </li>
+        <li><img src="img/5.jpg" alt="">
+        <p>绕指柔</p>
+        </li>
+
+    </ul>
+
+    <div><span><< </span><span> >></span> </div>
+    <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+</div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+      var  index = 0;
+      //自动轮播
+      var timer = window.setInterval(move,2000);
+
+      //清除定时器，自动轮播
+      $("#box").mouseover(function(){
+          clearInterval(timer);
+      });
+      $("#box").mouseout(function(){
+          timer = window.setInterval(move,2000);
+      })
+
+      function move(){
+          $("#main>li").eq(index).show().siblings().hide()
+          $("#ll-warpper>ol>li").eq(index).css({background:"red"}).siblings().css({background:"blue"});
+          index ++;
+          if(index>=5){
+              index=0;
+          }
+      }
+
+    //图片一对一切换
+    $("#nav>li").click(function(){
+        console.log($(this))
+        $(this).addClass('li1').siblings().removeClass('li1')
+        var llIndex = $(this).index();
+        $("#main>li").eq(llIndex).addClass('li2').siblings().removeClass('li2')
+    })
+
+    $("#nav>div>ol").click(function(){
+
+    })
+//      小圆点
+    $(".ll-warpper>ol>li").mouseover(function(){
+        index = $(this).index();
+        $("#main>li").eq(index).show().siblings().hide();
+        $(".ll-warpper>ol>li").eq(index).css({background:"red"}).siblings().css({background:"blue"})
+    })
+
+//    左侧下标
+        $("#ll-warpper>div>span:eq(0)").click(function(){
+            console.log(index)
+            $("#main>li").eq(index).show().siblings().hide();
+            $("#ll-warpper>ol>li").eq(index).css({background:"red"}).siblings().css({background:"blue"})
+            index--;
+            if(index<=-1){
+                index = 5;
+            }
+        })
+
+    $("#ll-warpper>div>span:eq(1)").click(function(){
+        console.log(index)
+        $("#main>li").eq(index).show().siblings().hide();
+        $("#ll-warpper>ol>li").eq(index).css({background:"red"}).siblings().css({background:"blue"})
+        index++;
+        if(index>=5){
+            index = 0;
+        }
+    })
+
+
+
+    //显示隐藏
+    $("#nav>div").mouseover(function(){
+        $("#nav>div>ol").show();
+    })
+
+    $("#nav>div").mouseout(function(){
+        $("#nav>div>ol").hide();
+    })
+
+
+
+</script>

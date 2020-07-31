@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		.lll-wrapper{
+			width:400px;
+			height:400px;
+			margin: 100px auto;
+			background:pink;
+		}
+
+		.lll-wrapper>button{
+			padding:8px 29px;
+			float: left;
+			margin-left: 5px;
+		}
+
+		.lll-wrapper>div{
+			width: 400px;
+			height: 360px;
+			background:orange;
+			float: left;
+			margin-top: 10px;
+			text-align:center;
+			color:#fff;
+			font-weight: bold;
+			font-size: 30px;
+			line-height: 360px;  
+			display:none;
+		}
+
+		.lll-wrapper>.active{
+			display:block;
+		}
+
+		.lll-wrapper>.but1{
+			background: brown;
+		}
+
+		.lll-wrapper>span{
+			display:block;
+			float: left;
+			background:purple;
+		}
+
+	</style>
+</head>
+<body>
+		<div class="lll-wrapper" id="lll-wrapper">
+			<button class="but1">美国</button>
+			<button>俄国</button>
+			<button>日本</button>
+			<button>英国</button>
+			<span><</span><span>></span>
+			<div class="active">华盛顿</div>
+			<div>彼得大帝</div>
+			<div>明治天皇</div>
+			<div>伊丽莎白</div>
+		</div>
+</body>
+</html>
+<script src="插件/jquery-3.4.1.js"></script>
+<script>
+	function add(){
+			var index = 0;
+	$(".lll-wrapper>button").click(function(){
+		$(this).addClass("but1").siblings().removeClass("but1");
+		 index = $(this).index();
+		$(".lll-wrapper>div").eq(index).addClass("active").siblings().removeClass("active")
+	})
+
+	$(".lll-wrapper>span:eq(0)").click(function(){
+		index++;
+		if(index>=4){
+			index = 0;
+		}
+		$(this).addClass("but1").siblings().removeClass("but1");
+		 // index = $(this).index();
+		$(".lll-wrapper>div").eq(index).addClass("active").siblings().removeClass("active")
+	})
+
+	$(".lll-wrapper>span:eq(1)").click(function(){
+		move()
+	})
+
+	      setInterval(move,1000);
+
+		function move(){
+			index--;
+		if(index<=-1){
+			index = 4;
+		}
+		$(this).addClass("but1").siblings().removeClass("but1");
+		 // index = $(this).index();
+		$(".lll-wrapper>div").eq(index).addClass("active").siblings().removeClass("active")
+		}
+	}
+
+	new add()
+
+
+</script>

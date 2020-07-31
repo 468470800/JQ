@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.tab{
+			width: 300px;
+			margin:100px auto 0px;
+			border: 1px solid #000;
+		}
+		.tab>div{
+			height: 300px;
+			background: pink;
+			margin-bottom: 10px;
+			display: none;
+		}
+		.active{
+			background: red;
+		}
+		.tab>div.current{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="tab" id="tab">
+		<input type="button" value="张耀华" class="active">
+		<input type="button" value="韩坤">
+		<input type="button" value="高志">
+		<div class="current">张耀华张耀华张耀华张耀华张耀华</div>
+		<div>韩坤韩坤韩坤</div>
+		<div>高志高志高志高志高志高志</div>
+	</div>
+</body>
+</html>
+<script>
+// 当窗口加载完成之后，才执行
+// window.onload = function(){
+// 	//获取事件涉及到元素
+// 	var zhTab = document.getElementById('tab');
+// 	var zhInp = zhTab.getElementsByTagName('input');
+// 	var zhDiv = zhTab.getElementsByTagName('div');
+
+
+// 	//绑定事件
+// 	for(var i=0;i<zhInp.length;i++){
+// 		//保存下标
+// 		zhInp[i].index = i;
+// 		zhInp[i].onclick=function(){
+// 			//让所有的按钮和内容初始化
+// 			for(var m=0;m<zhInp.length;m++){
+// 				zhInp[m].className = "";
+// 				zhDiv[m].className = "";
+// 			}
+
+
+// 			//让当前的按钮加背景颜色，对应内容显示
+// 			this.className = 'active';
+// 			zhDiv[this.index].className = 'current';
+
+
+// 		}
+// 	}	
+// }
+
+
+
+
+//先变型:---定义函数
+//尽量不要出现函数嵌套函数
+//可以有全局变量
+//把onload中不是赋值的语句放到单独函数中
+var zhTab=null;
+var zhInp=null;
+var zhDiv=null;
+window.onload = function(){
+	//获取事件涉及到元素
+	zhTab = document.getElementById('tab');
+	zhInp = zhTab.getElementsByTagName('input');
+	zhDiv = zhTab.getElementsByTagName('div');
+	init();
+	
+}
+
+
+	function init(){
+		//绑定事件
+		for(var i=0;i<zhInp.length;i++){
+			//保存下标
+			zhInp[i].index = i;
+			zhInp[i].onclick=change;
+		}	
+	}
+
+
+	function change(){
+		//让所有的按钮和内容初始化
+		for(var m=0;m<zhInp.length;m++){
+			zhInp[m].className = "";
+			zhDiv[m].className = "";
+		}
+
+
+
+		//让当前的按钮加背景颜色，对应内容显示
+		this.className = 'active';
+		zhDiv[this.index].className = 'current';	
+	}
+
+
+</script>

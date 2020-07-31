@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .lll-warpper{
+            width: 200px;
+            height: 300px;
+            background: #EEE;
+            margin: 0 auto;
+            clear: both;
+        }
+
+        button{
+            padding:2px 25px;
+            float: left;
+            margin-left: 4px;
+        }
+
+        .lll-warpper>div{
+            width: 200px;
+            height: 270px;
+            background: pink;
+            display: none;
+            line-height: 270px;
+            text-align:center;
+            font-size: 20px;
+            font-weight: bold;
+            float: left;
+        }
+
+        .lll-warpper>.active{
+            display: block;
+
+        }
+
+        .lll-warpper>.curent{
+            background:blue;
+        }
+
+        .box{
+            width: 300px;
+            height: 400px;
+            background:#EEE;
+           margin: 0 auto;
+        }
+
+        .box>button{
+            padding: 2px 42px;
+        }
+
+        .box>div{
+            width: 300px;
+            height: 380px;
+            background:red;
+        }
+        
+        .box>.but1{
+            background: pink;
+        }    
+
+        .box>div{
+            display:none;
+            text-align: center;
+            line-height: 360px;
+            font-size: 24px;
+            color: #FFF;
+            margin-top: 10px;
+        }
+
+        .box>.box-div1{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <div class="lll-warpper" id="lll-warpper">
+        <button class="curent">1</button>
+        <button>2</button>
+        <button>3</button>
+        <div class="active">1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div class="box" id="box">
+        <button class="but1">1</button>
+        <button>2</button>
+        <button>3</button>
+        <div class="box-div1">1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>
+<script>
+    //点击事件设计6个事件元素：
+    // 1.获取事件元素
+        var aDiv = document.getElementById('lll-warpper');
+        var but = aDiv.getElementsByTagName('button');
+        var div = aDiv.getElementsByTagName('div');
+        //绑定事件
+        for(var a = 0; a<but.length; a++){
+            but[a].index = a;
+            but[a].onclick= function(){
+                for(var m=0; m<but.length; m++){
+                    but[m].className = '';
+                    div[m].className=''
+                }
+                this.className = 'curent';
+                div[this.index].className = 'active'
+            }
+        }
+//先获取所有需要的标签 元素
+         var oBox = document.getElementById('box');
+         var oBut = oBox.getElementsByTagName('button');
+         var oDiv = oBox.getElementsByTagName('div');
+//绑定事件
+          for(var g = 0; g<oBut.length; g++){
+            oBut[g].index = g;
+            oBut[g].onclick = function(){
+                for(var f = 0; f<oBut.length; f++){
+                    oBut[f].className ='';
+                    oDiv[f].className ='';
+                }
+                this.className ='but1';
+                oDiv[this.index].className = 'box-div1'
+            }
+          }
+
+  
+    //3.书写程序
+
+</script>

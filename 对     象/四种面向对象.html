@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//字面量
+	var obj = {
+		name:"姓名",
+		age:22,
+		specialty:"方法",
+		work:function(){
+			document.write(this.name+"授课<br/>")
+			// console.log(this)//指向当前对象
+			// cosnole.log(this.age)
+		}
+	};
+	obj.work();
+	//实例化
+	var obj = new Object();
+	obj.name = "姓名"
+	obj.age = 22;
+	obj.work = function(){
+		document.write(obj.name+"教课<br>")
+		console.log(this)
+	}
+	obj.work();
+
+	//工厂
+	function createTeacher(name,age){
+		var Obj = new Object();
+		Obj.name = "姓名"
+		Obj.age = age;
+		Obj.work = function(){
+			document.write(obj.name+"补课<br/>")
+		}
+		return Obj;
+	}
+	var Tea = createTeacher("凤姐",56);
+	Tea.work();
+
+	//构造函数
+	function Teacher(){
+		var Obj = new Object();
+		this.name = name;
+		this.age = age;
+		this.work = function(){
+			document.write(this.name+"下课")
+		}
+	}
+	var Obj = new Teacher();
+     Obj.work();//this的谁调用函数函数内部的this指向谁
+	</script>
+</body>
+</html>

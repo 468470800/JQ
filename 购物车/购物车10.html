@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li{
+            list-style: none;
+        }
+
+        ol li{
+            list-style: none;
+        }
+
+        .lll-warpper{
+            width: 900px;
+            height: 800px;
+            margin: 0 auto;
+        }
+
+        img{
+            width: 60px;
+        }
+
+        .p1{
+            width: 900px;
+            height: 50px;
+            background: #f6c88f;
+            line-height: 50px;
+        }
+
+        .p1>span:nth-of-type(1){
+            margin-left: 30px;
+            font-weight: bold;
+            font-size: 24px;
+            color: #8a060b;
+        }
+
+        .p1>span:nth-of-type(2){
+            margin-left: 30px;
+            font-weight: bold;
+            float: right;
+            font-size: 24px;
+            color: #8a060b;
+        }
+
+        .main-ul{
+            width: 900px;
+            height: 100px;
+            border-bottom: 1px solid red;
+        }
+
+        .main-ul>li{
+            float: left;
+            width: 126px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            /*border: 1px solid #000;*/
+        }
+
+        .p3{
+            width: 900px;
+            height: 50px;
+            line-height: 50px;
+            background: #f6c88f;
+        }
+
+        .p3>span{
+            float: right;
+            font-size: 17px;
+            color: #C70F0F;
+        }
+
+        .p3>span>strong{
+            font-size: 22px;
+            font-weight: bold;
+            color: #f1ae00;
+        }
+
+        .main-ul>li>button{
+            padding: 0 3px 0;
+        }
+
+        .p3>button{
+            padding: 2px 5px;
+        }
+
+        .p2{
+            width: 900px;
+            height: 20px;
+            line-height: 20px;
+            background: #f0f3ef;
+        }
+
+        .p2>span{
+            margin-left: 85px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="lll-warpper">
+    <p class="p1"><span>全部商品</span><span>送至：
+        <select name="" id="select">
+        <option value="硅谷">硅谷</option>
+        <option value="旧金山">旧金山</option>
+    </select></span></p>
+    <p class="p2"><span><input type="checkbox">全选</span><span>商品</span><span>名称</span><span>价格</span><span>数量</span><span>单价</span><span>操作</span></p>
+        <ul class="main-ul">
+            <li><input type="checkbox"></li>
+            <li><img src="img/55.jpg" alt=""></li>
+            <li>箱包</li>
+            <li>4288</li>
+            <li>
+                <button>+</button>
+                <input type="text" size="1" value="1">
+                <button>-</button></li>
+            <li>4288</li>
+            <li>删除</li>
+        </ul>
+            <ul class="main-ul">
+                <li><input type="checkbox"></li>
+                <li><img src="img/44.png" alt=""></li>
+                <li>箱包</li>
+                <li>4288</li>
+                <li>
+                    <button>+</button>
+                    <input type="text" size="1" value="1">
+                    <button>-</button></li>
+                <li>4288</li>
+                <li>删除</li>
+            </ul>
+            <ul class="main-ul">
+                <li><input type="checkbox"></li>
+                <li><img src="img/22.png" alt=""></li>
+                <li>箱包</li>
+                <li>4288</li>
+                <li>
+                    <button>+</button>
+                    <input type="text" size="1" value="1">
+                    <button>-</button></li>
+                <li>4288</li>
+                <li>删除</li>
+            </ul>
+                <ul class="main-ul">
+                    <li><input type="checkbox"></li>
+                    <li><img src="img/11.jpg" alt=""></li>
+                    <li>箱包</li>
+                    <li>4288</li>
+                    <li>
+                        <button>+</button>
+                        <input type="text" size="1" value="1">
+                        <button>-</button></li>
+                    <li>4288</li>
+                    <li>删除</li>
+                </ul>
+                <ul class="main-ul">
+                    <li><input type="checkbox"></li>
+                    <li><img src="img/55.jpg" alt=""></li>
+                    <li>箱包</li>
+                    <li>4288</li>
+                    <li>
+                        <button>+</button>
+                        <input type="text" size="1" value="1">
+                        <button>-</button></li>
+                    <li>4288</li>
+                    <li>删除</li>
+                </ul>
+    <p class="p3">
+        <input type="checkbox">全选
+        <button>删除所选</button>
+        <button>清空购物车 </button>
+        <span>总价：<strong>0</strong></span>
+        <button>结算</button>
+    </p>
+</div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"> </script>
+<script>
+    //单行删除
+    $(".main-ul>li:contains('删除')").click(function(){
+        $(this).parent().remove()
+        zj()
+    })
+    //数量加
+    $("button:contains('+')").click(function(){
+        var sum = $(this).next().val()-0;
+        if(sum>=5){
+            alert('朕即天下')
+            return false;
+        }
+        $(this).next().val(sum+1);
+       var w = $(this).parents('ul');
+        xj(w)
+        zj()
+    })
+    //数量减
+    $("button:contains('-')").click(function(){
+        var sum = $(this).prev().val()-0;
+        if(sum<=1){
+            alert('朕即天下')
+            return false;
+        }
+        $(this).prev().val(sum-1);
+        var w = $(this).parents('ul')
+        xj(w)
+        zj()
+    })
+    //全选
+    $(".p2 :checkbox,.p3 :checkbox").click(function(){
+        var bool = $(this).prop("checked")
+        console.log(bool)
+        $(".lll-warpper :checkbox").prop("checked",bool)
+        zj()
+    })
+    //反选
+    $(".main-ul :checkbox").click(function(){
+        var checkboxNum = $(".main-ul :checkbox").length;
+        var checkedNum = $(".main-ul :checked").length;
+        if(checkboxNum == checkedNum){
+            $(".p3 :checkbox,.p2 :checkbox").prop("checked",true)
+        }else{
+            $(".p3 :checkbox,.p2 :checkbox").prop("checked",false)
+        }
+
+    })
+    //删除所选
+    $("button:contains('删除所选')").click(function(){
+        $(".main-ul :checked").parent().parent().remove()
+        zj()
+    })
+    //清空购物车
+    $("button:contains('清空购物车')").click(function(){
+        $(".main-ul").remove();
+        zj()
+    })
+    //小计
+    function xj(w){
+        var num = w.find('[type=text]').val()-0;
+        var jg = w.find('li').eq(3).html()-0;
+        var sum = num*jg;
+        console.log(num,jg,sum)
+        w.find('li').eq(5).html(sum)
+    }
+    //总计
+    function zj(){
+        var sum =0
+        $(".main-ul input:checked").each(function(index,element){
+            var xj = $(element).parent('li').nextAll().eq(4).html()-0;
+            sum = sum+xj;
+        })
+        $(".p3 span strong").html(sum)
+    }
+    zj()
+
+
+</script>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		ul li{
+			list-style:none;
+		}
+
+
+		ol li{
+			list-style:none;
+		}
+
+		.lll-box{
+			width:300px;
+			height:300px;
+			margin: 0 auto;
+			background:brown;
+		}
+
+		.box>button{
+			float: left;
+			padding:20px 55px;
+			margin-left: 4px;	
+
+		}
+
+		.lll-box>div{
+			width: 300px;
+			height: 280px;
+			background:red;
+			line-height: 280px;	
+			color:#fff;
+			text-align:center;
+			margin-top: 20px;
+			float: left;
+			font-size: 20px;
+			font-weight: bold;
+			display:none;
+
+		}
+
+		.lll-box>.curet{
+			display:block;
+		}
+
+		.lll-box>.aivte{
+			background: orange;
+		}
+	</style>
+</head>
+<body>
+	<div class="lll-box" id="box">
+		<button class="aivte">普通会员注册</button>
+		<button>企业会员注册</button>
+		<div class="curet">普通会员注册</div>
+		<div>  <p>座机号:<input type="text"><span></span></p>
+			<p>密码：<input type="text"><span></span></p>
+			<p>确认密码：<input type="text"><span></span></p>
+			<p>EMALi:<input type="text"><span></span></p>
+		</div>
+	</div>  
+</body>
+</html>
+<script src="插件/jquery-3.4.1.js"></script>
+<script>
+		$(".nav>li").click(function(){
+			$(this).addClass("nav-li1").siblings().removeClass("nav-li1");
+			var index = $(this).index();
+			$(".main>li").eq(index).addClass("main-li").siblings().removeClass("main-li")
+		})
+
+			
+
+		function add(){
+			this.Btn = $(".lll-box>button")
+			console.log(this)
+		}
+		add.prototype.Fn=function(){//
+			console.log(this)
+			this.Btn.click(function(){
+			console.log(this)
+			$(this).addClass("aivte").siblings().removeClass("aivte")
+			var index = $(this).index();
+			$(".box>div").eq(index).addClass("curet").siblings().removeClass("curet")
+		})		
+		}
+
+		 var add = new add();
+		 add.Fn()	
+		 
+
+		
+</script>

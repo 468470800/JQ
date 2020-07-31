@@ -1,0 +1,40 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+		//函数的定义方法
+		// 补充 函数三要素：函数 作用 参数 返回值
+		// push();	
+		//1 自定义函数
+		function fn1(a,b){
+			var c = a + b;
+			return c;
+		}	
+		var res = fn1(1,2);
+		console.log(res)
+
+		//2 字面量的方式
+		var fn2 = function(x1,x2){//声明 函数名 = function(形参)
+			return x1+x2;.//返回值 函数体
+		}
+		var res2 = fn2(3,4);// 变量名 = 函数名(实参)
+		console.log(res2)打印
+		//3 实例化
+		var fn3 = Function("a","b","c","console.log(a+b+c)")//函数首字母大写Function 声明几个变量名 console.log(变量名)
+		fn3(6,4,1);//调用实参参数的值,逗号隔开
+		// 匿名函数
+		//4 语法:(function(形参){函数体}(实参))
+		(function(){
+			console.log('敢闯敢拼搏有勇有谋')
+		})();
+
+		(function(str){//形参
+			console.log(str+" "+'努力奋斗将来月薪两万')//字符串拼接+
+		})('萧芳');//函数调用
+		</script>
+	</body>
+	</html>

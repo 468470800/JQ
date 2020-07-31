@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		a{
+			color: red;
+			font-weight: bold;
+			font-size: 18px;
+		}
+
+		ul li{
+			list-style: none;
+			width: 600px;
+			height: 60px;
+		}
+
+		a{
+			display: block;
+			text-decoration: none;
+			float: right;
+			margin-right: 180px;
+		}
+
+		ol li{
+			list-style: none;
+			width: 600px;
+			height: 60px;
+		}
+
+		.lll-wrapper{
+			width: 600px;
+			height: 500px;
+			margin: 0 auto;
+		}
+
+		.p1{
+			width: 600px;
+			height: 40px;	
+			background: pink;
+			line-height: 40px;
+			color:#fff;
+		}
+
+		.p1>span{
+			margin:0 20px 0 66px;
+			font-weight: bold;
+			font-size: 24px;
+		}
+
+		.p2{
+			width: 600px;
+			height: 40px;
+			margin-left: 66px;
+		}
+
+		.p3{
+			width: 600px;
+			height: 40px;
+			margin-left: 66px;
+		}
+		</style>
+</head>
+<body>
+	<div class="lll-wrapper">
+		<p class="p1"><span>ToDoList</span><input type="text"></p>
+		<div class="main">
+			<p class="p2">未完成：————————————————<span>0</span></p>
+			<ul>
+				<li>
+					<input type="checkbox">
+					<span>好好学习天天向上</span>
+					<a href="#">删除</a>
+				</li>
+			</ul>
+			<p class="p3">已完成：————————————————<span>1</span></p>
+			<ol>
+				<li>
+					<input type="checkbox">
+					<span>每天落实知识点好好背理论</span>
+					<a href="javascript:void(0);">删除</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	// 单删
+	$("a:contains('删除')").click(function(){
+		$(this).parent().remove()
+	})
+	//事件委托
+	$(".main>ul,.main>ol").on('click','a',function(){
+		$(this).parent().remove()
+	})
+	//创建添加
+	$(".p1 input").keyup(function(w){
+		//获取事件对象
+		if(w.keyCode == 13){
+			//获取提交表单内容
+			var str = $(this).val().trim();
+			if(str == ''){
+				alert("空空如也")
+				return false;
+			}
+			//创建事件
+			var oIp = $('<input type="checkbox">');
+			var oSpan = $('<span></span>').html(str);
+			var oA = $('<a href="javascript:void(0);">删除</a>')
+			// 添加事件
+			var oLi = $("<li></li>")	
+			oLi.append(oIp,oSpan,oA)
+			$(".main>ul").append(oLi)
+			// 清空内容
+			$(this).val("");	
+		}
+	})
+	// 切换完成/未完成
+	$(".main>ul,.main>ol").on('click','input',function(){
+		if($(this).prop("checked")){
+			//移动ul>li先克隆一份input>li
+			// clone(参数)默认false只克隆标签和事件 深克隆
+			 var oLi = $(this).parent('li').clone();
+			 $(this).parent('li').remove();
+			 $(".main>ol").append(oLi)
+			 count()
+		}else{
+			//移动ul>li先克隆一份input>li
+			// clone(参数)默认false只克隆标签和事件 深克隆
+			 var oLi = $(this).parent('li').clone();
+			 $(this).parent('li').remove();
+			 $(".main>ul").append(oLi)	
+		}	
+		count()
+	})
+	// 切换完成/未完成
+	// $(".main>ul,.main>ol").on("click","[type='checkbox']",function(){
+	// 	var a = $(this).prop("checked");
+	// 	var b = $(this).parent()
+	// 	if(a == true){
+	// 		$(".main>ol").append(b)
+	// 	}else{
+	// 		$(".main>ul").append(b)
+	// 	}
+		// count()
+	// })
+	// 计数
+	// 计数功能涉及事件,新增，修改，删除，页面加载影响计数功能于是我们需要多次调用所以需要封装函数
+	// 作用计数，计算ul>li和ol>li数量修改对span的内容
+	 // 参数,参数无参
+	  // 返回值，无
+	  function count(){
+	  	// 计算ul>li和ol>li数量修改对span的内容
+	  	var ulNum = $(".main>ul>li").length;
+	  	var olNum = $(".main>ol>li").length;
+	  	$(".p2>span").html(ulNum)-0;
+	  	$(".p3>span").html(olNum)-0;
+	  }//计数
+	  	count()
+	
+
+</script>

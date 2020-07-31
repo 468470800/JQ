@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .warpper>p:nth-of-type(1){
+            font-weight: bold;
+            font-size: 20px;
+            width: 600px;
+            height: 60px;
+            background: #EEEEEE;
+        }
+
+        .warpper{
+            width: 600px;
+            height: 200px;
+            margin: 50px auto;
+        }
+
+        p>input{
+            margin: 20px;
+        }
+
+        ul li{
+            font-family: 楷体;
+            font-weight: bold;
+        }
+
+        ul>li{
+            width: 600px;
+            height: 40px;
+            /*border: 1px solid #000;*/
+        }
+
+        ol>li{
+            width: 600px;
+            height: 40px;
+            /*border: 1px solid #000;*/
+        }
+
+        p>span{
+            float: right;
+        }
+
+        a{
+            text-decoration: none;
+            font-size: 20px;
+            color: #e0bb00;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+        <div class="warpper">
+            <p>ToDoList
+                <input type="text"></p>
+            <ul>
+                <p id="p1">没有完成 <span>1</span></p>
+                <li>
+                    <input type="checkbox">
+                   <span>马云 我想换个儿江湖 </span><a href="javascript:viod(0);">删除</a>
+                </li>
+            </ul>
+            <ol>
+                <p id="p2">已经完成 <span>1</span></p>
+                <li>
+                    <input type="checkbox" checked>
+                    <span>大侠金庸   江湖再见</span> <a href="javascript:viod(0);">删除</a>
+                </li>
+            </ol>
+
+
+        </div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    $(function(){
+        //添加
+        $("p input").keyup(function(e){
+            if(e.keyCode == 13){
+                var str = $(this).val().trim();
+                if(str ==''){
+                    return false;
+                }
+                var oInp = $("<input type='checkbox'>")
+                var oSpan = $("<span> </span>").html(str)
+                var oA = $('<a href="javascript:void(0)">删除</a>')
+                var oLi = $("<li></li>")
+                oLi.append(oInp,oSpan,oA)
+                $("ul").append(oLi)
+                //清空输
+                $(this).val('')
+            }
+            //计数
+            sum();
+        })
+//        $("a").click(function(){
+//            alert('萧芳')
+//            $(this).parent('li').remove()
+//        })
+
+        $(".warpper>ul").on('click','a',function(){//委托事件给ul 删除 a 标签的父级元素删除新创建的元素
+            alert('陆寇')
+            $(this).parent('li').remove()
+        })
+        $(".warpper>ol").on('click','a',function(){
+            alert('萧芳')
+            $(this).parent('li').remove()
+        })
+        //计数 多次调用 封装函数 /函数：作用：计算ul>li ol>li的数量 参数 无参 函数值 无/
+        function sum(){
+            //获取ul>li ol>li的数量
+            var ulNum = (".warpper>ul>li").length;
+            var olNum = (".warpper>ol>li").length;
+            //找到span
+            $("#p1 span").html(ulNum)
+            $("#p2 span").html(olNum)
+
+        }
+
+
+    })
+</script>

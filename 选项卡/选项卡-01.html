@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+
+		ul,ol,li{
+			list-style:none;
+		}
+
+		a{
+			text-decoration:none;
+			display:block;
+		}
+
+		.ll-warpper{
+			width: 1000px;
+			height: 200px;
+			/*border: 1px solid #000;*/
+			background:pink;
+			margin:100px auto;
+		}
+
+		.ll-warpper>ul{
+			height: 40px;
+			border-bottom: 1px solid #fff;
+			background:orange;
+
+		}
+
+		.ll-warpper>ul>li{
+			float:left;
+			font-size: 16px;
+			font-weight:bold;
+			padding:0 48px;
+			line-height:40px;
+			color:red;
+		}
+
+		ol>li{
+			display:none;
+			float:left;
+			width:140px;
+			border: 1px solid #000;
+			height:109px;
+			margin:5px 0 0 20px;
+
+		}
+
+		.active{
+			background:#00a6e4;
+		}
+
+		ul>li:hover{
+			background:#00c4b0;
+		}
+
+		.current{
+			display:block;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="ll-warpper" id="ll-warpper">
+		<ul>
+			<li class="active">人气配件</li>
+			<li>鼠标</li>
+			<li>键盘</li>
+			<li >电脑耳麦</li>
+			<li>电脑支架</li>
+			<li>音响</li>
+			<li>更多</li>
+		</ul>
+		<ol>
+			<li  class="current">人气配件</li>
+			<li>鼠标</li>
+			<li>键盘</li>
+			<li>电脑耳麦</li>
+			<li>电脑支架</li>
+			<li>音响</li>
+		</ol>
+	</div>
+	<script type='text/javascript' src='插件/jquery-3.4.1.js'></script>
+	<script>
+	$("#ll-warpper>ul>li").click(function(){
+		$(this).addClass('active').siblings().removeClass('active');
+		var llIndex = $(this).index();
+		$("#ll-warpper>ol>li").eq(llIndex).addClass("current").siblings().removeClass('current')
+	})
+
+	</script>
+</body>
+</html>

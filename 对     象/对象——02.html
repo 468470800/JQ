@@ -1,0 +1,34 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //
+    function createGirl(name,height){
+        var obj = new Object();
+        obj.name = name;
+        obj.height=height;
+
+        obj.say = function(){
+            console.log('快来造作哈');
+        }
+        return obj;
+    }
+
+    var obj = createGirl('凤姐','155');
+    console.log(obj);
+    console.log(obj.name);
+
+    var obj1 = createGirl('冰冰','170');
+    console.log(obj1);
+    console.log(obj1.name);
+
+    var obj2 = createGirl('翠花','168');
+    console.log(obj2);
+    console.log(obj2.name);
+</script>
+</body>
+</html>

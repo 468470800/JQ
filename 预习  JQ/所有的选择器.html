@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>前面的div</div>
+		<input type="button" value = "这是一个按钮" id="btn" />
+		<p>这是一个段落</p>
+		<div class ="c1">c1</div>
+		<div class ="c1">c1</div>
+		<div class ="c1">c1</div>
+		<div class ="c1">c1</div>
+		<div class ="c2"> 	c2</div>
+		<div class ="c2"> 	c2</div>
+		<div class ="c2"> 	c2</div>
+		<ul>
+			<li>hello,li</li>
+			<li>hello,li</li>
+			<li>hello,li</li> 
+			<li>hello,li</li>
+			<ol>
+				<li>hello,Ol--li</li>
+				<li>hello,Ol--li</li>
+				<li>hello,Ol--li</li>
+				<li>hello,Ol--li</li>
+			</ol>
+		</ul>
+	</body>
+	<script type="text/javascript" src ="插件/jquery-3.4.1.js"></script>
+
+
+
+
+	<script type="text/javascript">
+
+
+	// $("#btn").click(function(){
+	// 	// alert(111);
+
+
+	// })
+	// $("#btn").click(function(){
+		// $(".c1").css({color:"red",fontSize:"20px"});
+		// $(".c1").css("color","red").css("fontSize","20px");	
+	// })
+
+
+	// $("#btn").click(function(){
+			// $("input~div").css({color:"pink",fontSize:"20px"});
+			// console.log(typeof $("input~div"));
+			// $("input").nextAll('div').css({"color":"pink"});
+	// });
+
+
+	// $("#btn").click(function(){
+		// $("input+div").css({color:"red"});
+		// $("input").next('div').css({color:"red"});
+	// })
+	
+
+
+		/*$("#btn").click(function(){
+			$("input~div").css({"color":"pink"});
+		});
+		
+		
+		$("#btn").click(function(){
+			$("input+div").css({color:"red"});
+			$("input").next("p").css({color:"red"});
+		})
+		$("#btn").click(function(){
+			
+			$("ul>li").css({color:"blue"});
+		});
+		$("#btn").click(function(){
+			
+			$("ul li").css({color:"blue"});
+		});
+		$("#btn").click(function(){
+			$("li,.c1").css({color:"red"});
+		})
+		
+		$("#btn").click(function(){
+			$("*").css({padding:"0px",margin:"0px"});
+		})
+		$("#btn").click(function(){
+			$("li").css({color:"red"});
+		});
+		$("#btn").click(function(){
+			$(".c1").css({color:"blue"});
+		});
+		
+		$("#btn").click(function(){
+			console.log("hellobaby! ");
+		});
+		
+		*/
+		$("#btn").click(function(){
+			// $("input~div").css({"color":"pink"});
+			// $("input").nextAll("p").css({"color":"pink"});
+			// $("input").nextAll("div").css({"color":"pink"});
+			$("input").nextAll().css({"color":"pink"});
+
+
+		});
+		
+	
+	</script>
+</html>

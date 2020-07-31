@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .box{
+            width: 600px;
+            height: 600px;
+            background: #f7afaf;
+            position: relative;
+        }
+
+        .div1{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: #EEEEEE;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box" id="box">
+    <div class="div1" id="div1"></div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="插件/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+        $("#div1").mousedown(function(e){
+            var disX = e.clientX - parseInt($("div1").css("left"));
+            var disY = e.clientY - parseInt($("div1").css("top"));
+            $(document).mousemove(function(e){
+                var zhX = e.clientX-disX;
+                var zhY = e.clientY - disY;
+                //设置边界
+                var zhMaxL = parseInt($("#box").css("width"))-parseInt($("#div1").css("width"))
+                var zhMaxT = parseInt($("#box").css("height"))-parseInt($("#div1").css("height"))
+                if(zhL<=0){
+                    zhL=0;
+                }else if(zhL>=zhMaxL){
+                    zhL = zhMaxL;
+                }
+
+                if(zhT<=0){
+                    zhT = 0;
+                }else if(zhT>=zhMaxT){
+                    zhT = zhMaxT;
+                }
+                $("#div1").css({left:zhL+"px",top:zhT+"px"})
+            })
+
+            //将上面的值付给div1
+                $(document).mouseup(function(){
+                    $(document).off("mousemove")
+                    $(document).off("mouseup")
+            })
+        })
+</script>

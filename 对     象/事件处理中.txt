@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box">dafs</div>
+	<script>
+	var oDiv = document.getElementById("box");
+//case1
+	// oDiv.onclick=function(){
+	// 	console.log(this)//oDiv
+	// }
+//case2
+	// oDiv.onclick=change;
+	// function change(){
+	// 	console.log(this)//oDiv
+	// 	// console.log(typeof this)//oDiv
+	// }
+
+
+//case3:
+	oDiv.onclick=function(){
+		console.log(this);//oDiv
+		window.change();
+	};
+
+	function change(){
+		console.log(this)//window
+		// console.log(typeof this)//oDiv
+	}
+	</script>
+</body>
+</html>

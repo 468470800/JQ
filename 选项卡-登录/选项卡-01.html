@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+        }
+        
+        ul ol li{
+            list-style: none;
+        }
+        
+        .div1{
+            width: 600px;
+            height: 400px;
+            background:pink;
+            margin: 50px auto;
+        }
+
+        .div1>ul{
+            height: 40px;
+            background: #EEEEEE;
+            border-bottom: 1px solid#00a6e4;
+        }
+        
+        .div1>ul>li{
+            float: left;
+            line-height: 40px;
+            padding: 0  20px;
+        }
+
+        .div1>ul>div{
+            float: right;
+            width: 60px;
+            height: 90px;
+            margin-top: 8px;
+
+        }
+
+        .div1>ul>div>ol{
+            background: #f0c14b;
+            display: none;
+        }
+
+
+        .div1>ol>li{
+            width: 600px;
+            height: 342px;
+            background: #f0c14b;
+            text-align: center;
+            color: #ffffff;
+            font-weight: bold;
+            margin-top: 5px;
+            line-height: 350px;
+            font-size: 60px;
+            display: none;
+        }
+
+        .div1>ul>li:hover{
+            background: #00a7e1;
+        }
+
+        .current{
+            background: #00a7e1;
+        }
+
+        .div1>ol>.active{
+            display: block;
+        }
+
+        .div1>ul>div>ol>li:hover{
+            background: #f7afaf;
+        }
+    </style>
+</head>
+<body>
+<div class="div1" id="div1">
+    <ul>
+        <li class="current">第一</li>
+        <li>第二</li>
+        <li>第三</li>
+        <li>第四</li><q></q>
+        <li>第五</li>
+        <li>第六</li>
+        <li>第七</li>
+        <div>
+            <h3>更多</h3>
+            <ol>
+                <li>更多1</li>
+                <li>更多2</li>
+                <li>更多3</li>
+                <li>更多4</li>
+                <li>更多5</li>
+                <li>更多6</li>
+                <li>更多7</li>
+            </ol>
+        </div>
+
+    </ul>
+    <ol>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ol>
+</div>
+<script type="text/javascript" src="插件/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+//    选项卡
+    $("#div1>ul>li").click(function(){
+        $(this).addClass('current').siblings("li").removeClass('current')
+        $("#div1>ol>li").eq($(this).index()).addClass('active').siblings("li").
+            removeClass('active')
+    })
+    //更多
+    $("#div1>ul>div").mouseover(function(){
+    $(this).children('ol').show();
+   })
+   $("#div1>ul>div").mouseout(function(){
+    $(this).children('ol').hide();
+   })
+</script>
+</body>
+</html>

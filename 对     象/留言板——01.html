@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+
+		a{
+			text-decoration:none;
+			display:block;
+			float: left;
+			color：#000;
+			font-weight: bold;
+		}
+
+		ul ol li{
+			list-style:none;
+		}
+
+		img{
+			border:none;
+		}
+
+		.cls:after{
+			height:0;
+			content:"";
+			display:block;
+			clear:both;
+		}
+
+		conmetwidth{
+			width:800px;
+		}
+
+		.warpper{
+			width:800px;
+			height:1200px;
+			border: 1px solid #000;
+			margin: 0 auto;
+		}
+		
+		.ip1{
+			width: 500px;
+			height: 26px;
+			margin-left: 148px;
+		}
+
+		p{
+			margin:5px;
+		}
+
+		.text{
+			width:500px;
+			margin-left: 153px;
+			height:400px;
+		}
+
+		.but{
+			margin-left: 500px;
+			padding: 5px 8px;	
+		}
+
+		.left{
+			width: 190px;
+			height: 150px;
+			/*border: 1px solid #000;*/
+			float: left;
+		}
+
+		.right{
+			width: 300px;
+			height: 150px;
+			/*border: 1px solid #000;*/
+			float: right;
+		}
+
+		.main{
+			width: 500px;
+			height: 150px;
+			border: 1px solid #EEEEEE;
+			margin: 10px auto;
+		}
+
+		.p1{
+			width: 100px;
+			height: 20px;
+			/*border: 1px solid #000;*/
+			font-size: 18px;
+			color:red;
+			font-weight:bold;
+			font-family:楷体; 
+			margin:20px 5px ;
+		}
+
+		.p2{
+			width: 240px;
+			height: 60px;
+			/*border: 1px solid #000;*/
+			font-size: 12px;
+			color:blue;
+			font-weight:bold;
+			font-family:楷体; 
+			margin:30px auto;
+		}
+
+		.p3{
+			float: left;
+			font-weight: bold;
+			color:pink;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="warpper">
+			<p><input type="emali" class='ip1' id='ip1' placeholder='尊姓大名'></p>
+			<textarea name="" class='text' id="text" cols="30" rows="10" placeholder='阁下请输入内容'></textarea>
+			<br>
+			<button id='but' class='but'>提交留言！</button>
+	
+	<div class="bod"  id='bod'>
+	<div class="main">
+		<div class="left">
+			<p class="p1">好了歌</p>
+		</div>
+		<div class="right">
+			<p class="p2">世人都晓神仙好，唯有功名忘不了。古今将相在何方，荒冢一堆草末了世人都晓神仙好，唯有金银忘不了终朝只恨聚无多, 及到多时眼闭了。世人都晓神仙好，只有娇妻忘不了。</p>
+			<p class="p3">2018-8-24下午许17:08</p><a href='#' onclick='agg(this)'>删除</a>
+
+		</div>
+	</div>
+	</div>
+	</div>
+</body>
+</html>
+	<script>
+			var but = document.getElementById('but')
+			console.log(but)
+			but.onclick = function(){
+			var r = /^\w{1,}@[A-z0-9]{2,3}\.[A-z]{2,4}$/
+			var ip1 = document.getElementById('ip1');
+			var text = document.getElementById('text');
+			console.log(ip1)
+			console.log(text)
+
+			var ip1 = ip1.value;
+			var text = text.value;
+
+			
+
+			if(ip1==""||text==""){
+				alert('空空如也')
+				return false;
+			}
+
+			var day = new Date();	
+			day = day.toLocaleString();
+
+			var hot = document.createElement('div')
+			hot.innerHTML="<div class='main'><div class='left'><p class='p1'>"+ip1+"</p></div><div class='right'><p class='p2'>"+text+"</p><p class='p3'>"+day+"</p><a href='#' onclick='agg(this)'>删除</a></div></div>"
+
+			var bod = document.getElementById('bod')
+			bod.appendChild(hot)
+
+					ip1.value ="";
+					text.value="";	
+			}
+
+			function agg(obj){
+				obj.parentElement.parentElement.remove()	
+				// obj.parentElement.parentElement.remove()
+
+			}
+
+	</script>

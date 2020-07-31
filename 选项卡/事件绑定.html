@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>\
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+<textarea name="" id="text" cols="30" rows="10" placeholder="输入内容键盘计数事件"></textarea>
+<br>
+<span>0</span>
+
+<script type="text/javascript" src="插件/jquery-3.4.1.js"></script>
+<script>
+//    事件名
+   $("ul>li:eq(0)").click(function(){
+       alert($(this).html())
+   });
+    $("ul>li:eq(1)").click(function(){
+        alert($(this).html())
+    })
+    $("ul>li:eq(3)").mouseover(function(){//鼠标移入事件
+        alert(1)
+    })
+//    on()
+    $("ul>li").eq(4).on("click",function(){
+        alert($(this).text())
+    })
+//    bind() 点击事件
+    $("ul>li:eq(5)").bind("click",function(){
+        alert($(this).html())
+    })
+    //解绑事件
+    $("ul>li:eq(0)").off("click")
+
+//键盘事件按下计数
+    $("#text").keyup(function(e){
+        //事件对象
+//        console.log(e)
+//        console.log(e.keyCode)
+//        if(e.keyCode==13 || e.keyCode==32){
+            //获取输入内容的长度
+            var sum = $(this).val().length;
+            console.log(sum)
+            //将内容长度写出span
+            $("span").html(sum);
+            $("ul>li:eq(3)").off('mouseover')
+            $("ul>li:eq(4)").unbind("click")
+//        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .div1{
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            top:0;
+            left: 0;
+            cursor: pointer;
+        }
+        .div2{
+            width: 50px;
+            height: 50px;
+            background: green;
+            position: absolute;
+            top:100px;
+            left:200px;
+        }
+    </style>
+</head>
+<body>
+<div class="div1" id="div1">div1</div>
+<div class="div2" id="div2">div2</div>
+</body>
+</html>
+<script src="插件/jquery-3.4.1.js"></script>
+<script>
+    $("#div1").mousedown(function(e){
+        //获取鼠标在div1上的坐标
+        var disX = e.clientX-parseInt($(this).css("left"));
+        var disY = e.clientY-parseInt($(this).css("top"));
+
+        $(document).mousemove(function(e){
+            //获取div1移动的距离
+            var div1L = e.clientX-disX;
+            var div1T = e.clientY-disY;
+
+            //碰撞检测
+            var t1 = parseInt($('#div1').css("top"));
+            var l1 = parseInt($('#div1').css("left"));
+            var r1 = l1+parseInt($('#div1').css("width"));
+            var b1 = t1+parseInt($('#div1').css("height"));
+
+            var t2 = parseInt($('#div2').css("top"));
+            var l2 = parseInt($('#div2').css("left"));
+            var r2 = l2+parseInt($('#div2').css("width"));
+            var b2 = t2+parseInt($('#div2').css("height"));
+            console.log(t1,r1,b1,l1);
+            console.log(t2,r2,b2,l2);
+// || l1<r2 || t1<b2 || r1>l2
+            //找不碰撞的条件
+            if(b1<t2 || l1>r2 || t1>b2 || r1<l2){
+                $('#div2').css("background",'green');
+            }else{
+                $('#div2').css("background",'blue');
+            }
+
+
+
+
+
+            $("#div1").css({left:div1L+"px",top:div1T+"px"});
+
+        })
+        //解除事件绑定
+        $(document).mouseup(function(){
+            $(document).off("mousemove");
+            $(document).off("mouseup");
+        })
+
+        return false;
+    })
+
+
+
+</script>

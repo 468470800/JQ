@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//继承 创建 两个objcte 父级 子级 子级继承父级的某些
+	// function Fu(){
+	// 	this.money = 100000;
+	// }
+	// //子级继承和访问的时地址
+	// Zi.prototype = new Fu();
+	// //子级 的 给 赋值 创建 父级
+	// function Zi(){
+	// 	// 子级
+	// }
+
+	// var z = new Zi();//创建子级元素
+	// alert(z.money);
+
+	function FU(){
+		this,mout = "芳华已经逝去"
+	}
+
+	function Zi(){
+		FU.call(this)
+	}
+
+	var z = new Zi();
+	console.log(z.mout)
+
+	function Fu(){
+		this.fhs = "父函数"
+	}
+
+	function Zi(){
+
+	} 
+
+	var z = new Zi();
+
+</script>

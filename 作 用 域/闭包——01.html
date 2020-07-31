@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div1{
+            width:100px;
+            height:100px;
+            background:#EEE;
+        }
+    </style>
+</head>
+<body>
+    <!-- 类上样式CSSid上行为JQ -->
+    <div class="div1" id="div1"></div>
+<script>
+//case1.
+       // var oDiv = document.getElementById('div1');
+       // oDiv.onclick = function(){
+       //  console.log(this)//oDiv谁调用this就指向谁oDiv
+       // } 
+//case2.       
+       var oDiv = document.getElementById('div1')
+//      获取div1的名字 用ID选择器获取启类名 oDiv o表示对象
+       oDiv.onclick = show;
+//      oDiv点击事件 = show
+       function show(){
+//      函数 函数名
+        console.log(this)//oDiv1
+//  调用 this 指向 自己————————this代表对象谁调用this就指向谁
+       }
+
+
+
+//case3.
+        function test(){
+            console.log(this);//window————————this代表对象谁调用this就指向谁
+        }      
+        window.test() 
+//    函数嵌套函数 内部函数 可以访问外部函数的变量就形成一个 闭包
+        //case1.传值：就是复制，将a的复制一份给 b
+
+    var a = 1;//1
+    var b = a;//1
+    b = 2;//在赋值2给 b 在打印
+    console.log(a);
+    console.log(b);
+
+//    case:2 传地址：就是将数组的地址赋给b
+
+    var a = [1,2,3];
+    var b = a;
+    b[3]="4";
+    console.log(a);
+    console.log(b);
+
+
+
+</script>
+
+
+</body>
+</html>

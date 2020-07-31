@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+			*{
+    margin: 0;
+    padding: 0;
+    list-style:none;
+}
+
+/*全局内外边距为0*/
+
+a{
+    display: block;
+    text-decoration: none;
+}
+
+    /*a标签行转块去除下划线*/
+
+
+ul{
+    list-style: none;
+}
+    /*给无序列表区除远点*/
+
+img{
+    border: none;
+}
+
+    /*图片去除边框*/
+
+.commonwidth{
+    width: px;
+    margin: 0 auto;
+}
+
+    /*设置共同宽度块元素居中*/
+
+
+
+.cls:after{
+    clear: both;
+    height: 0;
+    /*content: ;*/
+    display: block;
+    visibility: hidden;
+}
+
+/*清除浮动 高度0 内容为空 转换为块元素 隐藏*/
+
+.fixed{
+    zoom: 1;
+    /*兼容性*/
+}
+
+	.ll-warpper{
+		width: 100%;
+		height: 370px;
+		border: 1px solid #000;
+	}
+
+	.banner{
+		width: 1000px;
+		height: 370px ;
+		margin: 0 auto;
+		border: 1px solid #000;
+		position:relative;
+	}
+
+	.banner>ul{
+			width: 1000px;
+		height: 370px ;
+		margin: 0 auto;
+		border: 1px solid #000;
+	}
+
+	.banner>ul>li{
+		width: 1000px;
+		height: 370px ;
+		position:absolute;
+		display: none;
+	}
+
+
+	.banner>ul>li>img{
+		width: 1000px;
+		height: 370px ;
+	}
+
+	.banner>ol{
+		width: 200px;
+		height: 20px;
+		/*border: 1px solid #000;*/
+		position:absolute;
+	    bottom:100px;
+		left:400px;
+	}
+
+	.banner>ol>li{
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		background: #EEE;
+		float: left;
+		margin-right: 20px;	
+	}
+
+	.banner>div{
+		width: 1000px;
+		height: 60px;
+		/*border: 1px solid #000;*/
+		position:absolute;
+	    bottom:150px;
+
+	}
+
+	.banner>div>span:nth-of-type(1){
+		display: block;
+		width: 20px;
+		height: 40px;
+		float: left;
+	}
+
+	.banner>div>span:nth-of-type(2){
+		display: block;
+		width: 20px;
+		height: 40px;
+		float: right;
+	}
+
+	.banner>ul>.active{
+		display: block;
+	}
+
+	.banner>ol>.ol-li{
+		background: pink;
+	}
+    </style>
+</head>
+<body>
+        <div class="ll-warpper">
+            <div class="banner">
+            	<ul>
+            		<li class="active"><img src="ban1.jpg" alt=""></li>
+            		<li><img src="ban2.jpg" alt=""></li>
+            		<li><img src="ban3.jpg" alt=""></li>
+            		<li><img src="ban4.png" alt=""></li>
+            	</ul>
+            	<div><span><</span><span>></span></div>
+            	<ol>
+            		<li class="ol-li"></li>
+            		<li></li>
+            		<li></li>
+            		<li></li>
+            	</ol>
+            </div>
+        </div>
+</body>
+</html>
+<script src="jquery-3.4.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+		$(function(){
+            var bg =["#EEE","pink","#000","blue"]
+            var index =0 ;
+			$(".banner>ol>li").mouseenter(function(){
+				// alert('朕即天下')
+				$(this).addClass('ol-li').siblings('li').removeClass('ol-li')
+                index = $(this).index();
+                $(".banner>ul>li").eq(index).fadeIn().siblings('li').fadeOut()
+                $(".ll-warpper").css("background",bg[index])
+			})
+            //左右v
+            $(".banner>div>span:eq(0)").click(function(){
+                index--;
+                if(index<=-1){
+                    index = 4;
+                }
+               $(".banner>ol>li").eq(index).addClass('ol-li').siblings('li').removeClass('ol-li')
+                $(".banner>ul>li").eq(index).fadeIn().siblings('li').fadeOut()
+                $(".ll-warpper").css("background",bg[index])
+            })
+
+            $(".banner>div>span:eq(1)").click(function(){
+                index++;
+                if(index>=4){
+                    index = 0;
+                }
+                $(".banner>ol>li").eq(index).addClass('ol-li').siblings('li').removeClass('ol-li')
+                $(".banner>ul>li").eq(index).fadeIn().siblings('li').fadeOut()
+                $(".ll-warpper").css("background",bg[index])
+            })
+            //自动轮播
+            setInterval(Left,3000);
+            function Left(){
+                index++;
+                if(index>=4){
+                    index = 0;
+                }
+                $(".banner>ol>li").eq(index).addClass('ol-li').siblings('li').removeClass('ol-li')
+                $(".banner>ul>li").eq(index).fadeIn().siblings('li').fadeOut()
+                $(".ll-warpper").css("background",bg[index])
+            }
+
+		})
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//函数模式
+	// function test(){
+	// 	console.log(this)//window
+	// }
+	// window.test();
+	// //方法模式
+	// var obj = {
+	// 	name:"lisi",
+	// 	work:function(){
+	// 		console.log(this)//obj
+	// 	}
+	// }
+	// obj.work();
+	//构造函数模式
+	// function Boy(){
+	// 	console.log(this)//实例化对象b
+	// 	this.work=function(){
+	// 		console.log(this)//实例化对象b
+	// 	}
+	// }
+	// Boy.prototype.say=function(){
+	// 	console.log(this)//实例化对象b
+	// }
+	// var b = new Boy();
+	// b.work();
+	//上下文模式
+
+
+	function demo(){
+		// console.log(this.age);
+		console.log(this.age);//this指向obj
+	}
+	
+	var obj = {age:18};
+
+
+	// demo.call(obj);//改变demo里this指向
+	demo.apply(obj);//改变demo里this指向
+	</script>
+</body>
+</html>

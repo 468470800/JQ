@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//has
+	// ows自己的
+	// prototype:属性
+	// 使用面向对象的注意事项：
+	// 1.将属性添加构造函数 2.将方法添加给原型方法
+	function Person(name){
+		this.name = name;
+	}
+	Person.prototype.country ="中共";
+	var p1 = new Person("毛泽东");
+	//如何判断属性属于构造还是原型
+	//console.log(p1.hasOwnProperty('name')) :判断一个属性自身 返回true
+	console.log(p1.hasOwnProperty('name'))//true
+	console.log(p1.hasOwnProperty('country'))//false	
+	// in:判断实例化对象是否拥有该属性？ true 拥有
+	// console.log("name" in p1)//true
+	// console.log("country" in p1)//true
+	// console.log("age" in p1)//
+
+	delete p1.name;
+	delete p1.country;
+	console.log("name" in p1)//true
+	console.log("country" in p1)//true
+	console.log("age" in p1)//false
+
+</script>
+</body>
+</html>

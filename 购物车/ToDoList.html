@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .div1{
+            width: 550px;
+            height: 70px;
+            background: #3d536e;
+            margin-top: 10px ;
+        }
+
+        .div2{
+            width: 550px;
+            height: 220px;
+            background: #7c7c7c;
+            margin-top: 10px;
+        }
+
+        .div0{
+            margin: 0 auto;
+            width: 400px;
+        }
+
+        .div2>ul{
+            width: 550px;
+            height: 60px;
+            background: pink;
+        }
+
+
+        .div2>ol{
+            width: 550px;
+            height: 60px;
+            background: pink;
+        }
+
+        .div2>ol>li>a{
+          font-size: 16px;
+          color:red;
+          font-weight: bold;
+          text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="div0">
+        <div class="div1" id="div1">
+            <h3>ToDoList</h3>
+            <input type="text">
+        </div>
+        <div class="div2"  id="div2">
+            <p>未完成 <span>0</span></p>
+            <ul>
+                <li>
+                    <input type="checkbox">
+                    <span>ul-li-span</span>
+                    <a href="javascript:void(0)">-</a>
+                </li>
+            </ul>
+            <p>已完成 <span>0</span></p>
+            <ol>
+                <li>
+                    <input type="checkbox" checked>
+                    <span>ul-li-span</span>
+                    <a href="javascript:void(0)">-</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+   $(function(){
+       //新增
+       $("#div1>input").keyup(function(e){
+           if(e.keyCode == 13){
+               var str = $(this).val().trim();
+               if(str ==''){
+                   return false;
+               }
+               //创建2
+               var oInp = $("<input type='checkbox'>");
+               var oSpan = $("<span></span>").html(str);
+               var oA = $('<a href="javascript:void(0)">x</a>');
+
+               var oLi = $("<li></li>");
+               oLi.append(oInp,oSpan,oA);
+               $("#div2>ul").append(oLi);
+               //清空输入框
+               $(this).val('')
+           }
+       })
+       //单行删除
+//       $("a").click(function(){
+////        alert('朕即天下')
+//           $(this).parent('li').remove();//自己的上一个父级元素（''）.删除;
+//       })
+       $("#div2>ul").on('click','a',function(){
+           $(this).parent('li').remove()
+       })
+   })
+</script>

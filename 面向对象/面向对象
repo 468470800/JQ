@@ -1,0 +1,41 @@
+1.面向对象的概念
+        面向对象的概念：关注点是每个细节
+        面向对象:关注点是结束，具体实现步骤不需要知道。
+2.对象的两种创建方式
+        1.字面量
+        var obj = {}
+
+        2.实例化
+        var obj = new object();
+        obj.name ="添加属性";
+        obj.work = "function(){
+            this:obj
+        }"
+        3.工厂模式
+         function createObj(){
+                 var obj = new object();
+                 obj.name ="添加属性";
+                 obj.work = "function(){
+                     this:obj
+                 }
+                 return obj;
+         }
+        var obj = createObj();
+         4.构造函数
+         function Boy(zhangsan){
+         this.name = name;//this指向O
+         }
+         var o = new Boy("zhangsan");
+
+        工厂模式
+        构造函数模式
+       "." [] 运算符的运用及区别 对象的遍历(for....In....);
+
+        var obj = (name:"list",age:19,work:function(){}};
+
+        for(var index in obj){
+        index:属性名和方法名
+        获取对应的属性值
+        obj.[index]
+
+        }

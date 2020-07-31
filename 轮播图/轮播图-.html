@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*样式清空*/
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			/*图片三像素*/
+			img{
+				vertical-align: top;
+			}
+			/*lll_banner布局*/
+			.lll_banner{
+				width: 1190px;
+				height: 280px;
+				margin: 100px auto 0px;
+				background: #ccc;
+				overflow: hidden;
+			}
+			.lll_left{
+				float: left;
+				width: 140px;
+				height: 230px;
+				background: red;
+				padding: 50px 20px 0px;
+			}
+			.lll_left>div{
+				margin-bottom: 20px;
+			}
+			.lll_left>span{
+				display: inline-block;
+				width: 40px;
+				height: 40px;
+				background: #000;
+				line-height: 40px;
+				text-align: center;
+				color: #fff;
+				font-size: 20px;
+				font-weight: 900;
+			}
+			.lll_lunbo{
+				float: left;
+				width: 800px;
+				height: 280px;
+				position: relative;
+				overflow: hidden;
+			}
+			.lll_lunbo>ul{
+				height: 280px;
+			}
+			.lll_lunbo>ul>li{
+				position: absolute;
+				left: 800px;
+				top: 0;
+				overflow: hidden;
+			}
+			.lll_lunbo>ul>li>div{
+				float: left;
+				width: 200px;
+				height: 240px;
+				text-align: center;
+				padding-top: 40px;
+			}
+			.lll_lunbo>ul>li>div>img{
+				width: 130px;
+				height: 130px;
+			}
+			.lll_lunbo>div>span{
+				position: absolute;
+				top: 120px;
+				left: 0px;
+				width: 20px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				background: #eee;
+				font-size: 20px;
+			}
+			.lll_lunbo>div>span:nth-of-type(2){
+				left: 780px;
+			}
+			.lll_right{
+				float: left;
+				width: 200px;
+				height: 280px;
+				background: pink;
+				position: relative;
+				overflow: hidden;
+			}
+			.lll_right>ul>li{
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			.lll_right>ul>.lll_li{
+				display: block;
+			}
+			.lll_right>ul>li>img{
+				width: 200px;
+				height: 240px;
+			}
+			.lll_right>ol{
+				position: absolute;
+				bottom: 10px;
+				left: 85px;
+				width: 100px;
+				height: 20px;
+				overflow: hidden;
+			}
+			.lll_right>ol>li{
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				float: left;
+				margin-right: 10px;
+				border: 1px solid orange;
+			}
+			.lll_right>ol>.lll_current{
+				background: red;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<!--负责居中-->
+		<div class="lll_banner">
+			<!--负责倒计时-->
+			<div class="lll_left" id="lll_left">
+				<div><img src="img/ms.png" /></div>
+				<span>00</span>
+				<span>50</span>
+				<span>43</span>
+			</div>
+			<!--轮播-->
+			<div class="lll_lunbo" id="lll_lunbo">
+				<ul>
+					<li style="left: 0px;">
+						<div>
+							<img src="img/01.gif" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+						<div>
+							<img src="img/01.gif" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+						<div>
+							<img src="img/01.gif" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+						<div>
+							<img src="img/01.gif" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+					</li>
+					<li>
+						<div>
+							<img src="img/03.jpg" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+						<div>
+							<img src="img/03.jpg" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+						<div>
+							<img src="img/03.jpg" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+						<div>
+							<img src="img/03.jpg" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+					</li>
+					<li>
+						<div>
+							<img src="img/02.jpg" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+						<div>
+							<img src="img/02.jpg" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+						<div>
+							<img src="img/02.jpg" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+						<div>
+							<img src="img/02.jpg" />
+							<p>法西斯</p>
+							<span>100</span>
+							<span>9.9</span>
+						</div>
+					</li>
+				</ul>
+				<div>
+					<span><</span>
+					<span>></span>
+				</div>
+			</div>
+			<!--选项卡-->
+			<div class="lll_right">
+				<!--图片-->
+				<ul>
+					<li class="lll_li"><img src="img/03.jpg" /></li>
+					<li><img src="img/04.jpg" /></li>
+				</ul>
+				<!--小圆点-->
+				<ol>
+					<li class="lll_current"></li>
+					<li></li>
+				</ol>
+			</div>
+		</div>
+		<script src="js/jquery-3.4.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/lunbo.js"></script>
+	</body>
+</html>

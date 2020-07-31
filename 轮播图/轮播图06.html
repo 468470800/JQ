@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /*全局内外边距为0*/
+
+        a{
+            display: block;
+            text-decoration: none;
+        }
+
+        /*a标签行转块去除下划线*/
+
+
+        ul{
+            list-style: none;
+        }
+        /*给无序列表区除远点*/
+
+        img{
+            border: none;
+        }
+
+        /*图片去除边框*/
+
+        .commonwidth{
+            width: px;
+            margin: 0 auto;
+        }
+
+        /*设置共同宽度块元素居中*/
+
+
+
+        .cls:after{
+            clear: both;
+            height: 0;
+            /*content: ;*/
+            display: block;
+            visibility: hidden;
+        }
+
+        /*清除浮动 高度0 内容为空 转换为块元素 隐藏*/
+
+        .fixed{
+            zoom: 1;
+            /*兼容性*/
+        }
+
+
+        .lll-warpper{
+            width: 1600px;
+            height: 600px;
+            /*border: 1px solid #000;*/
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .box{
+            width: 100%;
+            height: 600px;
+            background: #000000;
+        }
+
+        .nav{
+            width: 1600px;
+            height: 50px;
+            /*border: 1px solid #000;*/
+            background: #f6c88f;
+        }
+
+        .nav>li{
+            float: left;
+            padding: 0 98px;
+            line-height: 50px;
+            color: #C70F0F;
+            position: relative;
+            font-weight: bold;
+        }
+
+        .nav>li:hover{
+            background: #00a7e1;
+            color: #ffffff;
+        }
+
+        .banner{
+            width: 1600px;
+            height: 550px;
+            /*border: 1px solid #000;*/
+        }
+
+        .banner>li{
+            width: 1600px;
+            height: 550px;
+            /*border: 1px solid #000;*/
+            position: absolute;
+            display: none;
+        }
+
+        .banner>.banner-li{
+            display: block;
+        }
+
+        .banner>li>img{
+            width: 1600px;
+            height: 550px;
+            /*border: 1px solid #000;*/
+        }
+
+        .yd{
+            width: 400px;
+            height: 20px;
+            /*background: #000000;*/
+            position: absolute;
+            left: 600px;
+            bottom: 80px;
+        }
+
+
+        .yd>li{
+            width: 18px;
+            height: 18px;
+            float: left;
+            border-radius: 50%;
+            background: #ffffff;
+            margin-left: 20px;
+        }
+
+        .lll-warpper>div{
+            width: 1600px;
+            height: 50px;
+            /*border: 1px solid #000;*/
+            position: absolute;
+            bottom: 220px;
+        }
+
+        .yd>.ol1{
+            background:pink;
+        }
+
+        .lll-warpper>div>i:nth-of-type(1){
+            width: 50px;
+            height: 50px;
+            display: block;
+            float: left;
+            background:  url('img/icon-slides.png') 0 -11px no-repeat;
+        }
+
+        .lll-warpper>div>i:nth-of-type(2){
+            width: 50px;
+            height: 50px;
+            display: block;
+            float: right;
+            background:  url('img/icon-slides.png') -35px -11px no-repeat;
+        }
+
+        .nav>li>ol{
+            background: #C70F0F;
+            position: absolute;
+            left: 1px;
+            display: none;
+            z-index: 7;
+            text-align: center;
+            width: 240px;
+        }
+
+        .nav>li>ol>li:hover{
+            color: #ffffff;
+            background: #000000;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="lll-warpper">
+        <ul class="nav">
+            <li>诛仙
+                <ol class="nav-li-ol1">
+                    <li>张小凡</li>
+                    <li>林惊羽</li>
+                    <li>陆雪琪</li>
+                </ol>
+            </li>
+            <li>名侦探柯南</li>
+            <li>妖精的尾巴</li>
+            <li>海贼王
+                <ol class="nav-li-ol2">
+                    <li>路飞</li>
+                    <li>索隆</li>
+                    <li>山治</li>
+                    <li>娜美</li>
+                </ol>
+            </li>
+            <li>不良人</li>
+            <li>国庆建国七十周年</li>
+        </ul>
+        <ul class="banner">
+            <li class="banner-li"><img src="img/0.jpg" alt=""></li>
+            <li><img src="img/7c1723000b3a4a76b012725c7675f69b.jpg" alt=""></li>
+            <li><img src="img/7f274bff5c1844dfa55c1e8ded698600.jpg" alt=""></li>
+            <li><img src="img/554442053e234b70850b624e61a1ba27.jpg" alt=""></li>
+            <li><img src="img/9.jpg" alt=""></li>
+            <li><img src="img/d7029f9455e246869a70ff0ca3ec48a5.jpg" alt=""></li>
+        </ul>
+        <ol class="yd">
+            <li class="ol1"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+        <div><i></i><i></i></div>
+    </div>
+</div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+        $(function(){
+            var index = 0;
+            var bgArr = ["#EEE","#C70F0F","#1a1a1a","#7f7f7f","#000","pink"]
+            $(".yd>li").mouseover(function(){
+                $(this).addClass('ol1').siblings('li').removeClass('ol1');
+                index =$(this).index();
+                $(".banner>li").eq(index).fadeIn().siblings("li").fadeOut();
+                $(".box").css("background",bgArr[index])
+            })
+            //左右切换
+            $(".lll-warpper>div>i:eq(0)").click(function(){
+                index--;
+                if(index<=-1){
+                    index=6;
+                }
+                $(".lll-warpper>.yd>li").eq(index).addClass('ol1').siblings('li').removeClass('ol1');
+                $(".banner>li").eq(index).fadeIn().siblings("li").fadeOut();
+            })
+            $(".lll-warpper>div>i:eq(1)").click(function(){
+                Left()
+            })
+            var timer = setInterval(Left,1000);
+            //自动轮播
+//            $(".banner").mouseover(function(){
+//                clearInterval(timer)//清除计时器
+//            })
+//            $(".banner").mouseout(function(){
+//                timer()
+//            })
+             function Left(){
+                index++;
+                if(index>=6){
+                    index=0;
+                }
+                $(".lll-warpper>.yd>li").eq(index).addClass('ol1').siblings('li').removeClass('ol1');
+//                index = $(this).index()
+                $(".banner>li").eq(index).fadeIn().siblings("li").fadeOut();
+                $(".box").css("background",bgArr[index])
+            }
+            //二级菜单
+            $(".nav>li:eq(0)").click(function(){
+                $(".nav-li-ol1").slideToggle()
+            })
+            $(".nav>li:eq(3)").click(function(){
+                $(".nav-li-ol2").slideToggle()
+            })
+            //鼠标移入
+
+
+        })
+</script>

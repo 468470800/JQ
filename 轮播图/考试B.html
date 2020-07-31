@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        /*全局内外边距为0*/
+
+        a{
+            display: block;
+            text-decoration: none;
+        }
+
+        /*a标签行转块去除下划线*/
+
+
+        ul{
+            list-style: none;
+        }
+        /*给无序列表区除远点*/
+
+        img{
+            border: none;
+        }
+
+        /*图片去除边框*/
+
+        .commonwidth{
+            width:100%;
+            margin: 0 auto;
+        }
+
+        /*设置共同宽度块元素居中*/
+
+
+
+        .cls:after{
+            clear: both;
+            height: 0;
+            /*content: ;*/
+            display: block;
+            visibility: hidden;
+        }
+
+        /*清除浮动 高度0 内容为空 转换为块元素 隐藏*/
+
+        .fixed{
+            zoom: 1;
+            /*兼容性*/
+        }
+
+        .lll-warpper{
+            width: 100%;
+            height: 800px;
+           list-style: none;
+        }
+
+        .lll-hot{
+            width: 180px;
+            height: 100%;
+            color: #ffffff;
+            text-align: center;
+            float: left;
+            font-size: 20px;
+            background: #2f4151;
+        }
+
+        .lll-hot>li{
+            width: 180px;
+            line-height: 50px;
+            margin-top: 20px;
+        }
+
+        .lll-hot>li>span{
+            padding-left: 40px;
+        }
+
+        .ll-nav{
+            width: 1600px;
+            height: 50px;
+            background: #f0efef;
+            float: left;
+            line-height: 50px;
+        }
+
+        .ll-nav>li{
+            font-size: 14px;
+            margin-right: 200px;
+            margin-left: 20px;
+            float: left;
+        }
+
+        .ll-nav>li:nth-of-type(4){
+            float: right;
+            width: 50px;
+        }
+
+        .ll-nav>li:nth-of-type(4)>img{
+            /*float: right;*/
+            width: 50px;
+        }
+        
+        .lll-mian{
+            width: 1600px;
+            height: 750px;
+            float: left;
+            background: #F0F0F0;
+        }
+
+        .lll-mian>li{
+            /*height: 40px;*/
+            /*line-height: 40px;*/
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .lll-mian>li:nth-of-type(1){
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .lll-mian>li>span{
+            margin-right: 200px;
+            margin-left: 20px;
+        }
+
+        .lll-mian>li:hover{
+            background: #f3a700;
+        }
+
+        .lll-hot>li>ol{
+            background: pink;
+            display: none;
+        }
+
+        .lll-mian>li>ol{
+            background: #b2f3f3;
+            /*width: 1600px;*/
+            /*height: 250px;*/
+            display: none;
+            list-style: none;
+        }
+
+        .lll-mian>li>ol>li>span{
+            margin-left: 400px;
+        }
+
+        .lll-hot>li>img{
+            transform: rotate(180deg);
+            transition:all 2s;
+            margin-left: 10px;
+        }
+
+        .lll-hot>li>img{
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+<div class="lll-warpper">
+    <ul class="lll-hot">
+        <li>首页 <img src="img/未标题-1.jpg" alt=""></li>
+        <li>数据管理 <img src="img/未标题-1.jpg" alt=""><ol>
+            <li>用户列表</li>
+            <li>商家列表</li>
+            <li>食品列表</li>
+            <li>订单列表</li>
+            <li>管理员列表</li>
+        </ol></li>
+        <li>添加数据 <img src="img/未标题-1.jpg" alt=""></li>
+        <li>图表 <img src="img/未标题-1.jpg" alt=""></li>
+        <li>编辑 <img src="img/未标题-1.jpg" alt=""></li>
+        <li>设置 <img src="img/未标题-1.jpg" alt=""></li>
+        <li>说明 <img src="img/未标题-1.jpg" alt=""></li>
+    </ul>
+    <ul class="ll-nav">
+        <li>首页</li>
+        <li>数据管理</li>
+        <li>食品列表</li>
+        <li><img src="img/2.jpg" alt=""></li>
+    </ul>
+    <ul class="lll-mian">
+        <li><img src="img/未标题-1.jpg" alt=""><span>食品名称</span><span>食品介绍</span><span>评分</span><span>操作</span></li>
+        <li><img src="img/未标题-1.jpg" alt=""><span>dv</span><span>dsv</span><span>dw</span><span>s </span>
+            <button>删除</button>
+            <button>编辑</button>
+            <ol>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+            </ol>
+        </li>
+        <li><img src="img/未标题-1.jpg" alt=""><span>dv</span><span>dsv</span><span>dw</span><span>s</span>
+            <button>删除</button>
+            <button>编辑</button>
+            <ol>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+            </ol>
+        </li>
+        <li><img src="img/未标题-1.jpg" alt=""><span>dv</span><span>dsv</span><span>dw</span><span>s </span>
+            <button>删除</button>
+            <button>编辑</button>
+            <ol>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+            </ol>
+        </li>
+        <li><img src="img/未标题-1.jpg" alt=""><span>dv</span><span>dsv</span><span>dw</span><span>s </span>
+            <button>删除</button>
+            <button>编辑</button>
+            <ol>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+                <li><span>食品安全</span><span>date</span><span>餐馆名称</span></li>
+            </ol>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+        $(function(){
+            //显示隐藏
+            $(".lll-hot>li").click(function(){
+                $(".lll-hot>li>ol").slideToggle()
+            })
+            $(".lll-mian>li:nth-of-type(2)").click(function(){
+                $(".lll-mian>li>ol:eq(0)").slideToggle()
+            })
+            $(".lll-mian>li:nth-of-type(3)").click(function(){
+                $(".lll-mian>li>ol:eq(1)").slideToggle()
+            })
+            $(".lll-mian>li:nth-of-type(4)").click(function(){
+                $(".lll-mian>li>ol:eq(2)").slideToggle()
+            })
+            $(".lll-mian>li:nth-of-type(5)").click(function(){
+                $(".lll-mian>li>ol:eq(3)").slideToggle()
+            })
+
+        })
+
+</script>

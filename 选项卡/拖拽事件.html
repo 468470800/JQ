@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+		.wrapper{
+			width: 800px;
+			height: 800px;
+			background: #000;
+			margin: 0 auto;
+			position: relative;
+		}
+
+		.head{
+			width: 80px;
+			height: 80px;
+			background:red;
+			position: absolute;
+		}
+
+		.main{
+			width: 100px;
+			height: 100px;
+			background:#fff;
+			float: left;
+			margin-left: 200px;
+			margin-top: 200px;	
+		}
+
+	</style>
+</head>
+<body>
+	<div class="wrapper" id="wrapper">
+		<div class="head" id="head"></div>
+		<div class="main" id="main"></div>
+	</div>
+</body>
+</html>
+<script>
+	//事件涉及元素
+	// var oDiv = document.getElementById('wrapper')
+	// var oHead = document.getElementById('head')
+	// var oMain = document.getElementById('main')
+	// console.log(oMain)
+		var oDiv = document.getElementById('wrapper');
+		var oHead = oDiv.getElementsByClassName('head')[0];
+		console.log(oHead)
+	//绑定事件
+		oHead.onmousedown=function(evt){
+			var e = evt || window.event;//事件对象
+			//1.鼠标在小盒子中的坐标
+			var difX = e.clientX - oHead.offsetLeft;
+			var difY = e.clientY - oHead.offsetTop;
+			console.log(difX,difY)
+
+			//当鼠标移动的时，设置小盒子的位置
+			document.onmousemove = function(evt){
+				//2.获取小盒子移动 的LEFT 和 TOP 值
+				var e = evt || window.event;//事件对象
+				var oHeadL = e.clientX - difX;
+				var oHeadT = e.clientY - difY;
+				//设置小盒子的 位置
+				oHead.style.left = oHeadL+"px"
+				oHead.style.top = oHeadT+"px"
+
+			}
+			// 给小盒子设边界
+			vac   
+			if(oHead<=0){
+
+			}
+
+
+			//当鼠标解绑事件
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+		}
+
+</script>

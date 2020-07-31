@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        /*清除默认样式*/
+
+        .ll-main{
+            width: 600px;
+            height: 200px;
+            margin: 10px auto;
+            background: pink;
+            border: 1px solid #ffffff;
+            clear: both;
+        }
+        /*最大div*/
+
+        ul>li{
+            padding: 0 34px;
+            float: left;
+            background: #5c7897;
+            margin-left: 15px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        /*选项卡标题*/
+
+        ul>li:hover{
+            background: #00a6e4;
+        }
+
+        ol>li{
+            width: 600px;
+            height: 160px;
+            background: #C70F0F;
+            margin-top: 27px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 160px;
+            display: none;
+            font-weight: bold;
+            color: #ffffff;
+            font-family: 新宋体;
+        }
+        /*选项卡内容*/
+
+        .ll-main>ul>.li1{
+            background: #00c0a5;
+        }
+
+            .ll-main>ol>.li2{
+                display: block;
+            }
+    </style>
+</head>
+<body>
+    <div class="ll-main" id="ll-main">
+        <ul>
+            <li class="li1">第一</li>
+            <li>第二</li>
+            <li>第三</li>
+            <li>第四</li>
+            <li>第五</li>
+        </ul>
+        <ol>
+            <li class="li2">选项卡1</li>
+            <li>选项卡2</li>
+            <li>选项卡3</li>
+            <li>选项卡4</li>
+            <li>选项卡5</li>
+        </ol>
+    </div>
+    <script src="插件/jquery-3.4.1.js" type="text/javascript"></script>
+
+    <script>
+    $(function(){
+        var mff = add()
+        new mff;
+    })
+    function add(){
+
+    }
+        $("#ll-main>ul>li").click(function(){
+            $(this).addClass('li1').siblings("li").removeClass('li1')
+            $("#ll-main>ol>li").eq($(this).index()).addClass('li2').siblings("li").
+                    removeClass('li2')
+        })
+
+
+    </script>
+</body>
+</html>

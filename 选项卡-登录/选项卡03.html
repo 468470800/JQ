@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+
+
+        .ll-warpper{
+            width: 600px;
+            height: 400px;
+            background: #9a5f15;
+            margin: 0 auto;
+        }
+
+        .ll-warpper>ul>li:hover{
+            background: #9a5f15;
+        }
+
+        ul{
+            height: 40px;
+            background: #5c7897;
+        }
+
+        ul>li{
+            float: left;
+            line-height: 40px;
+            padding: 0  24px;
+        }
+
+        ul>div{
+            float: right;
+            margin-top: 3px;
+            width: 40px;
+            height: 200px;
+        }
+
+        ul>div>ol{
+            display: none;
+            background: #5c7897;
+        }
+
+        .ll-warpper>ol>li{
+            text-align: center;
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 300px;
+            width: 600px;
+            height: 400px;
+            margin-top: 5px;
+            display: none;
+            background: #e9bcd6;
+        }
+
+        .li1{
+            background: #ffffff;
+        }
+
+        .ll-warpper>ol>.li2{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="ll-warpper" id="ll-warpper">
+    <ul>
+        <li class="li1">第一</li>
+        <li>第二</li>
+        <li>第三</li>
+        <li>第四</li>
+        <li>第五</li>
+        <li>第六</li>
+        <li>第七</li>
+        <div>
+            <h3>更多</h3>
+            <ol>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ol>
+        </div>
+    </ul>
+    <ol>
+        <li class="li2">一页</li>
+        <li>二页</li>
+        <li>三页</li>
+        <li>四页</li>
+        <li>五页</li>
+        <li>六页</li>
+        <li>七页</li>
+    </ol>
+</div>
+</body>
+</html>
+<script src="插件/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    //选项卡
+    $("#ll-warpper>ul>li").click(function(){
+        $(this).addClass('li1').siblings("li").removeClass('li1')
+        $('#ll-warpper>ol>li').eq($(this).index()).addClass('li2').siblings("li").
+                removeClass('li2')
+    })
+    //更多
+    $("#ll-warpper>ul>div").mouseover(function(){
+        $(this).children('ol').show();
+    })
+    $("#ll-warpper>ul>div").mouseout(function(){
+        $(this).children('ol').hide();
+    })
+
+
+</script>

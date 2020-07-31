@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<button>操作内容</button>
+<div id="bol">周恩来</div>
+<script type="text/javascript" src="插件/jquery-3.4.1.js"></script>
+<script>
+    //当DOM树加载完成之后才执行函数体
+    $(document).ready(function(){
+        //获取box的内容
+        $("button").on('click',function(){
+            console.log($("box").html())
+        })
+    })
+
+    $(function(){
+        //获取box的内容
+        //        简写
+        $("button").on('click',function(){
+            console.log($("#box").html())
+        })
+    })
+
+
+
+    //
+    $("button").on("click.zs",function(){
+        $('#bol').html("张三");
+    })
+
+    $("button").on("click.ls",function(){
+        $('#bol').html("李四");
+    })
+    //自动触发：
+    setTimeout(function(){
+        //自动触发函数
+        $('button').trigger('click.ls');
+    },2000);
+
+</script>
+
+    <button>操作内容</button>
+    <div id="box">周恩来</div>
+</body>
+</html>

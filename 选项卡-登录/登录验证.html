@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .lll-wrapper{
+            width: 500px;
+            height: 500px;
+            margin: 50PX auto;
+            background:#efefef;
+            border: 1px solid #F0F0F0;
+        }
+
+        button{
+            padding: 5px 15px;
+            margin-top: 20px;
+        }
+
+        .nav{
+            background: pink;
+        }
+
+        .lll-wrapper>.lll-div1{
+            text-align: center;
+            /*line-height: 400px;*/
+            /*font-weight: bold;*/
+            /*font-size: 40px;*/
+            display: block;
+        }
+
+        .lll-wrapper>div{
+            width: 500px;
+            height: 450px;
+            background:#efefef;
+            margin-top: 20px;
+            display:none;
+        }
+
+        .lll-wrapper>div>p{
+            margin-top: 6px;
+        }
+
+        .lll-wrapper>div>p>span{
+            position: fixed;
+
+            font-size: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="lll-wrapper">
+    <button class="nav">普通会员注册</button>
+    <button>企业会员注册</button>
+    <HR>
+    <div class="lll-div1">普通会员注册</div>
+    <div>
+        <p>座机号:<input type="text"><span></span></p>
+        <p>密码：<input type="text"  id="mim"><span></span></p>
+        <p>确认密码：<input type="text"><span></span></p>
+        <p>EMALi:<input type="text"><span></span></p>
+        <button>登录注册</button>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="插件/jquery-3.4.1.js"></script>
+<script>
+    function add(){
+        $(".lll-wrapper>button").click(function(){
+            $(this).addClass("nav").siblings().removeClass("nav")
+            var index = $(this).index()
+            $(".lll-wrapper>div").eq(index).addClass("lll-div1").siblings().removeClass("lll-div1")
+        })
+
+        $("input:eq(0)").blur(function(){
+            var str = $(this).val().trim();
+            var patt =  /^([0-9]{3,4}-)?[0-9]{7,8}$/;
+            var res = patt.test(str)
+            console.log(res)
+            if(res){
+                flag = true;
+                $(this).nextAll('span').html('正确').css('color','green')
+            }else{
+                flag = false;
+                $(this).nextAll('span').html('由8位数字中横线组成').css('color','red')
+            }
+        })
+        $("input:eq(3)").blur(function(){
+            var str = $(this).val().trim();
+            var patt = /^[A-z0-9_\u4e00-\u9fa5]+@[A-z0-9_-]+(\.[A-z0-9_-]+)$/;
+            var res = patt.test(str)
+            console.log(res)
+            if(res){
+                flag = true;
+                $(this).nextAll('span').html('正确').css('color','green')
+            }else{
+                flag = false;
+                $(this).nextAll('span').html('不服和邮箱格式').css('color','red')
+            }
+        })
+        $("input:eq(1)").blur(function(){
+            var str = $(this).val().trim();
+            var patt = /^\w{6,16}$/;
+            var res = patt.test(str)
+            console.log(res)
+            if(res){
+                flag = true;
+                $(this).nextAll('span').html('正确').css('color','green')
+            }else{
+                flag = false;
+                $(this).nextAll('span').html('6——16数字字母下划线组成').css('color','red')
+            }
+        })
+
+        $("input:eq(2)").blur(function(){
+            var str2 = $(this).val().trim();
+            var str1 = $("#mim").val().trim();
+            // var res = patt.test(str)
+            if(str1 == str2){
+                $(this).nextAll('span').html('正确').css('color','green')
+            }else{
+                $(this).nextAll('span').html('两次密码不一致重新输入').css('color','red')
+            }
+        })
+
+        $("button:eq(2)").click(function(e){
+            e.preventDefault();
+            if(flag){
+                alert('跳转')
+                window.location.href="https://daohang.qq.com/?fr=hmpage"
+            }else{
+                alert("请重新输入")
+            }
+        })
+
+    }
+
+    new add()
+
+
+</script>

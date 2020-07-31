@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        /*全局内外边距为0*/
+
+        a{
+            display: block;
+            text-decoration: none;
+        }
+
+        /*a标签行转块去除下划线*/
+
+
+        ul{
+            list-style: none;
+        }
+        /*给无序列表区除远点*/
+
+        img{
+            border: none;
+        }
+
+        /*图片去除边框*/
+
+        .commonwidth{
+            width:100%;
+            margin: 0 auto;
+        }
+
+        /*设置共同宽度块元素居中*/
+
+
+
+        .cls:after{
+            clear: both;
+            height: 0;
+            /*content: ;*/
+            display: block;
+            visibility: hidden;
+        }
+
+        /*清除浮动 高度0 内容为空 转换为块元素 隐藏*/
+
+        .fixed{
+            zoom: 1;
+            /*兼容性*/
+        }
+
+        .lll-warpper{
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body>
+        <div class="lll-warpper">
+            <ul class="lll-hot">
+                <li>首页 <span>﹀</span></li>
+                <li>添加数据 <span>﹀</span></li>
+                <li>图表 <span>﹀</span></li>
+                <li>编辑 <span>﹀</span></li>
+                <li>设置 <span>﹀</span></li>
+                <li>说明 <span>﹀</span></li>
+            </ul>
+            <ul class="ll-nav">
+                <li>首页</li>
+                <li>数据管理</li>
+                <li>食品列表</li>
+                <li><img src="img/" alt=""></li>
+            </ul>
+        </div>
+</body>
+</html>

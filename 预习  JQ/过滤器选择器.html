@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value ="测试" id="btn" />
+		<input type="text" />
+		<div>11</div>
+		<div>22</div>
+		<div>33</div>
+		<div>44</div>
+		<input type="hidden" />
+</body>
+</html>
+<script type='text/javascript' src='插件/jquery-3.4.1.js'></script>
+<script type='text/javascript'>
+	console.log($)//jq函数名
+	console.log($())//返回值jq对象
+
+	$("#btn").click(function(){
+		$("div:hidden").css({display:"block"})
+	})
+</script>

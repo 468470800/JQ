@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	// 正则表达式简写形式 
+	// replace 替换
+	var str ="helloheata,helloho#t,hellohi23t";//字符串
+	var patt = /h.{2,3}t/g;
+	var patt = /h.{2,}t/g;//匹配h和t之间的字符至少有2个
+	var patt = /h.{2,7}t/g;//h和t之间的任意字符只要是2-7个
+	var patt = /h.{7}t/g;//匹配h和t之间的字符至少有7个
+	var res = str.replace(patt,"*")//查找替换
+	console.log(patt,res)//以前字符 替换字符
+	
+</script>
+	
+</body>
+</html>

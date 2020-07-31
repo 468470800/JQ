@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    字面量方式：
+    var obj ={//创建对象以一个人的方式创建出来——对象属性和方法组成的
+        name:'萧景琰姓名',
+        sex:'男性别',
+        height:'身高190',
+        say:function(){
+            alert('方法')
+        }
+    };//通过字面量的方式来创建一个对象————在获取它的
+//获取 如何 获取
+    var sex = obj.sex;//对象.属性名
+    console.log(sex);
+
+    obj.say();//再获取它的方法名
+    //对象.上方法名（）;
+    //实例化
+    var obj = new Object();
+    //属性操作： 获取设置属性
+    //获取： 对象。属性名
+    //设置
+    obj.name = '李隆基'
+    console.log(obj)
+    obj.say = function(){
+        alert('函数就是方法属性var 属性名 = 对象.属性')
+    }
+    obj.say()
+
+</script>
+</body>
+</html>

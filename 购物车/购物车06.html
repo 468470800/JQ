@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        table{
+            width: 1000px;
+            margin: 40px auto;
+        }
+
+        table>tbody>tr>td>img{
+            width: 80px;
+        }
+
+        .tfoot>tr>td>span{
+            margin-left: 600px;
+            color: #C70F0F;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        button{
+            padding: 2px 5px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead class="thead">
+    <tr>
+        <th><input type="checkbox">全选</th>
+        <th>商品</th>
+        <th>名称</th>
+        <th>价格</th>
+        <th>商品详情</th>
+        <th>小计</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody class="tbody">
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/55.jpg" alt=""></td>
+        <td>千年名品百世香包</td>
+        <td>8699</td>
+        <td>
+            <button>+</button>
+            <input type="text" size="1" value="1">
+            <button>-</button></td>
+        <td>8699</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/22.png" alt=""></td>
+        <td>千年名品百世香包</td>
+        <td>8699</td>
+        <td><button>+</button>
+            <input type="text" size="1" value="1">
+            <button>-</button></td>
+        <td>8699</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/33.png" alt=""></td>
+        <td>千年名品百世香包</td>
+        <td>8699</td>
+        <td><button>+</button>
+            <input type="text" size="1" value="1">
+            <button>-</button></td>
+        <td>8699</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/44.png" alt=""></td>
+        <td>千年名品百世香包</td>
+        <td>8699</td>
+        <td><button>+</button>
+            <input type="text" size="1" value="1">
+            <button>-</button></td>
+        <td>8699</td>
+        <td>删除</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td><img src="img/11.jpg" alt=""></td>
+        <td>千年名品百世香包</td>
+        <td>8699</td>
+        <td><button>+</button>
+            <input type="text" size="1" value="1">
+            <button>-</button></td>
+        <td>8699</td>
+        <td>删除</td>
+    </tr>
+    </tbody>
+    <tfoot class="tfoot">
+    <tr>
+        <td colspan="6">
+            <input type="checkbox">全选
+            <button>删除所选</button>
+            <button>清空购物车</button>
+        <span>0</span>总计
+        </td>
+    </tr>
+    </tfoot>
+</table>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+    $(function(){
+        //左右加减
+        $("button:contains('+')").click(function(){
+          var num = $(this).next().val()-0;
+            if(num>=5){
+                alert('朕即天下');
+                return false;
+            }
+            $(this).next().val(num+1);
+            // 小计
+            var oTr = $(this).parents('tr');
+            xiaoji(oTr);
+            zongji();
+        });
+        $("button:contains('-')").click(function(){
+            var num = $(this).prev().val()-0;
+            if(num<=1){
+                alert('朕即天下');
+                return false;
+            }
+            $(this).prev().val(num-1);
+             var oTr = $(this).parents('tr');
+            xiaoji(oTr);
+            zongji()
+        });
+        //单删
+        $(".tbody>tr>td:contains('删除')").click(function(){
+            $(this).parent('tr').remove();
+    zongji()
+           });
+ //删除所有
+        $(".tfoot>tr>td>button:eq(1)").click(function(){
+            $(".tbody").remove();
+        zongji()
+        });
+        //全选
+        $(".thead :checkbox,.tfoot :checkbox").click(function(){
+            var bool =$(this).prop('checked');
+            $(".tbody :checkbox").prop("checked",bool);
+            $(".thead :checkbox").prop("checked",bool);
+            $(".tfoot :checkbox").prop("checked",bool);
+            zongji()
+        });
+        //反选
+        $(".tbody :checkbox").click(function(){
+            var checkboxNum = $(".tbody :checkbox").length;
+            var checkedNum = $(".tbody :checked").length;
+            if (checkboxNum == checkedNum) {
+                $(".thead :checkbox,.tfoot :checkbox").prop("checked", true)
+            } else {
+                $(".thead :checkbox,.tfoot :checkbox").prop("checked", false)
+            }
+        });
+            //删除所选
+            $(".tfoot>tr>td>button:eq(0)").click(function(){
+                $(".tbody :checked").parents('tr').remove();
+            zongji()
+        });
+        //小计
+        //由三个事件影响小计,所有需要的多次被调用，于是封装小计函数
+        // 函数：作用,小计对应内容。参数一个参数tbody中tr,返回值！无
+        function xiaoji(oTr){//封装一个函数 传参数
+            var num = oTr.find('td [type=text]').val()-0;// num = oTr.find找到('td 的子元素').val(它的 val值)
+            var dj = oTr.find('td').eq(3).html()-0;//dj = oTr.find这个单词直接找到他的元素的第三个.获取它里面的元素转Number数字类型
+            var xj = dj*num; //xj = 两个数相乘等于x=j
+            oTr.find('td').eq(5).html(xj);//参数的find('td')的第五个元素里html(xj)
+        }
+        var oTr = $(".tbody>tr").eq(0);//声明 的参数 jq对象(".tbody>tr")的第eq(0)
+            xiaoji(oTr);//个元素
+        //总计
+        // 1-多 / 封装总计函数
+        //由于8个事件影响总计，所以需要封装函数作用：计算总计修改对应的总计内容
+        // 参数：一个参数，tbody中tr  返回值无！
+        function zongji(){
+            var sum = 0;
+            $(".tbody tr input:checked").each(function(index,element){
+                var xj = $(element).parents('td').nextAll().eq(4).html()-0;
+                sum = sum+xj;
+            });
+            $(".tfoot span").html(sum);
+        }
+        zongji();
+
+    })
+</script>

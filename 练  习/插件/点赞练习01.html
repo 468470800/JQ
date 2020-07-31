@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .toY{
+            color: #e0bb00;
+        }
+    </style>
+</head>
+<body>
+<span >★★★★★</span>
+<span>点赞</span>
+<span>0</span>
+</body>
+</html>
+<script src="jquery-3.4.1.js"></script>
+<script>
+    $("span:eq(1)").click(function(){
+        //找到判断点赞取消点赞的灵界条件
+//        hasClass();判断一个对象拥有指定类名
+        var bool = $(this).prev().hasClass('toY')
+        $("span:eq(0)").prev().hasClass('toY')
+        console.log(bool)
+        if(bool){
+            //取消点赞
+            $(this).prev().removeClass('toY');
+            //获取点赞数量
+            var num = $(this).next().html()-0;
+            $(this).next().html(num-1)
+        }else{
+            $(this).prev().addClass('toY')
+            //获取点赞数量
+            var num = $(this).next().html()-0;
+            $(this).next().html(num+1)
+        }
+    })
+
+
+</script>

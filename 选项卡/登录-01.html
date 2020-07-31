@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .ll-warpper{
+
+            width: 350px;
+            height: 350px;
+            background: #EEEEEE;
+            margin: 50px auto;
+        }
+
+        p{
+            padding-top: 20px;
+            padding-left: 50px;
+        }
+
+        strong{
+            display: block;
+            float: right;
+            background:#00a6e4;
+            color: #ffffff;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ll-warpper" >
+        <h3>登录</h3>
+        <p>用户名：<input type="text">
+            <br><span></span>
+        </p>
+        <p>邮&nbsp;&nbsp;&nbsp;箱：<input type="text">
+            <br><span></span>
+        </p>
+        <p>密&nbsp;&nbsp;&nbsp;码：<input type="text">
+            <br><span></span>
+        </p>
+        <p>验&nbsp;&nbsp;&nbsp;证：<input type="text"><strong>3495</strong>
+            <br><span></span>
+        </p>
+        <p><button>登录</button></p>
+    </div>
+</body>
+</html>
+<script src="插件/jquery-3.4.1.js"></script>
+<script>
+        $(function(){
+            $(".ll-warpper input:eq(0)").blur(function(){
+              var a = $(this).val();
+              var yfhm = /^0?1(3|4|5|6|7|8|9)[0-9]{9}$/;//手机号  18301195699
+              var yh = yfhm.test(a)
+                console.log(yh)
+                if(yh){
+                    $(".ll-warpper input:eq(0)").nextAll("span").html("正确").css("color","green").css("fontSize","8px")
+                }else{
+                    $(".ll-warpper input:eq(0)").nextAll("span").html("错误").css("color","red").css("fontSize","8px")
+                }
+            })
+
+        })
+
+
+
+
+</script>

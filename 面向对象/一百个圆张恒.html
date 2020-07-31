@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background: pink;
+			border-radius: 50%;
+			position: absolute;
+			top:100px;
+			left: 200px;
+		}
+
+		body{
+			background:#000;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
+<script>
+	//声明构造函数
+	function Circle(){
+		this.width = this.height = this.createSize();
+		this.background = this.createBg();
+		this.top = this.createPos();
+		this.left = this.createPos();
+
+	}
+
+
+	Circle.prototype.borderRadius = "50%";
+	Circle.prototype.position = "absolute";
+	//获取随机大小
+	Circle.prototype.createSize=function(){
+		return parseInt(Math.random()*(100-10)+10);
+	}
+	//获取随机背景颜色
+	Circle.prototype.createBg=function(){
+		var r = parseInt(Math.random()*(255+1-0)+0);
+		var g = parseInt(Math.random()*(255+1-0)+0);
+		var b = parseInt(Math.random()*(255+1-0)+0);
+		return "rgb("+r+","+g+","+b+")";
+	}
+	//获取随机位置
+	Circle.prototype.createPos=function(){
+		return parseInt(Math.random()*(800-0)+0);
+	}
+	//创建div
+	Circle.prototype.createDiv=function(){
+		var oDiv = document.createElement('div');
+		oDiv.style.width = this.width+"px";
+		oDiv.style.height = this.height+"px";
+		oDiv.style.background = this.background;
+		oDiv.style.borderRadius = this.borderRadius;
+		oDiv.style.position = this.position;
+		oDiv.style.top = this.top+"px";
+		oDiv.style.left = this.left+"px";
+		oDiv.style.margin:0 auto;
+		return oDiv;
+	}	
+
+
+	for (var i = 0; i < 100; i++) {
+		var obj = new Circle();
+		var oDiv = obj.createDiv();
+		// console.log(oDiv);
+		document.body.appendChild(oDiv);
+	};
+
+
+
+
+
+
+</script>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	/*清除默认样式开始*/
+	body,div,ul,ol,li{
+		padding:0;
+		margin:0;
+		list-style:none;
+	}
+	/*清除默认样式*/
+	/*选项卡布局开始*/
+
+	.ll-tab{
+		width:425px;
+		margin:100px auto;
+		background:pink;
+	}
+
+	.ll-tab>ul>li{
+		float:left;
+		width:100px;
+		height:40px;
+		line-height:40px;
+		text-align:center;
+		background:orange;
+		font-weight: bold;
+		font-family:楷体;
+		color:red;
+	}
+
+	.ll-tab>ul>span{
+		float:left;
+		background:orange;
+		color:#fff;
+		font-weight:blod;
+		height:40px;
+		line-height: 40px;
+	}
+
+	.ll-tab>ul{
+		 overflow:hidden; 
+	}
+
+	.ll-tab>ol{
+		paddig:10px;
+	}
+
+	.ll-tab>ol>li{
+		height: 200px;
+		display:none;
+	}
+
+	.ll-tab>ol>li.current{
+		display:block;
+	}
+
+	.ll-tab>ul>li.active{
+		background:#eee;
+	}
+	</style>
+</head>
+<body>
+	<div class="ll-tab" id="ll-tab">
+		<ul>
+			<li class='active'>恒哥</li>
+			<li>恒少</li>
+			<li>恒老师</li>
+			<li>恒哥哥</li>
+			<span><</span><span>></span>
+		</ul>
+		<ol>
+			<li class='current'>小泽</li>
+			<li>小波</li>
+			<li>吸毒</li>
+			<li>授课</li>
+		</ol>
+	</div>
+	<script type='text/javascript' src='插件/jquery-3.4.1.js'></script>
+	<script>
+	$("#ll-tab>ul>li").click(function(){
+		// console.log($(this).index())//获取当前对象的下标
+		// console.log($(this).addClass("active").sibilings())
+		$(this).addClass('active').siblings().removeClass('active')
+		//获取当前操作对象的下标
+		var llIndex = $(this).index();
+		$("#ll-tab>ol>li").eq(llIndex).addClass("current").siblings().removeClass('current')
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		table{
+			width: 550px;
+			border-collapse: collapse;
+			margin: 60px auto;
+			border: none;
+							}
+
+		button{
+			padding:1px 4px;
+		}
+
+		.tbody{
+			text-align: center;
+			border: none;
+		}
+
+		tr{
+			border-bottom: salmon 1px;
+		}
+
+		tr>td>span{
+			float: right;
+		}
+
+		tr>td>span>strong{
+			color:red;
+		}
+
+	</style>
+</head>
+<body>
+<table border="1" cellspacing="0">
+	<thead  class="thead"  id="thead">
+		<tr>
+			<th>全选<input type="checkbox"></th>
+			<th>名称</th>
+			<th>价格</th>
+			<th>数量</th>
+			<th>小计</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+
+	<tbody class="tbody" id="tbody">
+	<tr>
+		<td><input type="checkbox"></td>
+		<td>AK47</td>
+		<td>100</td>
+		<td>
+			<button>+</button>
+			<input type="text" value="1" size="1">
+			<button>-</button></td>
+		<td>1</td>
+		<td>删除</td>
+	</tr>
+	<tr>
+		<td><input type="checkbox"></td>
+		<td>三棱军刺</td>
+		<td>946</td>
+		<td>
+			<button>+</button>
+			<input type="text" value="1" size="1">
+			<button>-</button></td>
+		<td>1</td>
+		<td>删除</td>
+	</tr>
+	<tr>
+		<td><input type="checkbox"></td>
+		<td>C4</td>
+		<td>999</td>
+		<td>
+			<button>+</button>
+			<input type="text" value="1" size="1">
+			<button>-</button></td>
+		<td>1</td>
+		<td>删除</td>
+	</tr>
+	<tr>
+		<td><input type="checkbox"></td>
+		<td>闪光弹</td>
+		<td>700</td>
+		<td>
+			<button>+</button>
+			<input type="text" value="1" size="1">
+			<button>-</button></td>
+		<td>1</td>
+		<td>删除</td>
+	</tr>
+	</tbody>
+	<tfoot id="tfoot" class="tfoot">
+	<tr><td colspan="6">全选 <input type="checkbox">
+		<button>删除所选</button>
+		<button>清空购物车</button>
+		<span>总计价格：<strong>0</strong></span>
+	</td></tr>
+	</tfoot>
+
+</table>
+</body>
+</html>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+	$(function(){
+		$("button:contains('+')").click(function(){//左右切换加加减减input的值 --过滤性选择器选择button的-+号点击事件封装函数
+			var num = $(this).next().val()-0;//变量 并且赋值  $（自己）的相邻的input元素val()值转Number类型
+			if(num>=5){
+				alert('上限')
+				return false;
+			}
+			num = $(this).next().val(num+1)//val(num+1)
+		})
+
+			$("button:contains('-')").click(function(){
+				var num = $(this).prev().val()-0;
+				if(num>1){
+					alert('不可为零')
+					return;
+				}
+				num = $(this).prev().val(num-1)
+			})
+		$("#tbody td:contains('删除')").click(function(){//选中元素
+//			alert('归零')
+			$(this).parent('tr').remove();//寻找他的父亲parent('tr')删除
+		})
+		//清空
+		$("#tfoot>tr>td>button:eq(1)").click(function(){
+			$("#tbody").empty();
+		})
+		//删除所选
+		$("#tfoot>tr>td>button:eq(0)").click(function(){
+			$("#tbody :checked").parents('tr').remove();
+		})
+		//全选
+			$("#thead :checkbox,#tfoot :checkbox").click(function(){
+//				alert('秦时明月汉时关，万里长征人未还。但叫龙城飞将在。不教胡马度阴山')
+				//获取thead全选中的checked属性
+				var bool = $(this).prop('checked')
+//				将1中结果赋给tbody中所有复选框checked
+				$("#tbody :checkbox").prop("checked",bool)
+			})
+		//反选
+		//将tbody中所有的 复选框数量=tbody中的 所有复选框数量 此时就为全选
+		$("#tbody :checkbox").click(function(){
+			var checkboxNum = $("#tbody :checkbox").length;
+			var checkedNum = $("#tbody :checked").length;
+					console.log(checkedNum,checkboxNum)
+			if(checkedNum == checkboxNum){
+			   $("#thed :checkbox,#tfoot :checkbox").prop("checked",true)
+			}else{
+				$("#thed :checkbox,#tfoot :checkbox").prop("checked",false)
+			}
+		})
+
+	})
+</script>
